@@ -1,0 +1,174 @@
+// Typography
+// ------------------------------------------------------------------------ //
+$base_px_font_size: 16;
+$base_font_size: $base_px_font_size * 1px;
+$base_line_height: 1.6;
+$font_serif: 'Inter',
+-apple-system,
+system-ui,
+BlinkMacSystemFont,
+sans-serif;
+$base_font_family: $font_serif;
+$space: $base_line_height * 1em;
+
+// Colors
+// ------------------------------------------------------------------------ //
+
+$palettes: ('primary': #e0383e,
+	'secondary': #F8F8F8,
+	'purple': #032457,
+	'red': #e53935,
+	'black': #231f20,
+	'light-blue': #e1f2ff,
+	'yellow': #f8aa0e,
+	// Text Color
+	'text-head': #232735,
+	'text-pbody': #505565,
+	'text-pbody-light': #9296a3,
+	'subtext': #6e7692,
+	'subtext-light': #b3b7c6,
+	'inverse-text': #ffffff,
+	'link-text': #2096f3,
+	// Background Color
+	'primary-bg': #ffffff,
+	'secondary-bg': #f6f8fb,
+	'tertiary-bg': #eceff7,
+	'divider-bg': #f9f9fb,
+	'bg-grey': #e5e5e572,
+	'divider-border-bg': #f3f3f3,
+	'light-grey-bg': #e8eaef,
+	'emp-border-bg': #cecece,
+	'dark-bg': #222736,
+	// Alert Color
+	'danger': #e52a34,
+	'danger-border': #eeb4b0,
+	'danger-surface': #ffe0e1,
+	'warning': #fbaf18,
+
+	'warning-text': #d48e01,
+	'warning-border': #fcdfa7,
+	'warning-surface': #fff3db,
+	'success': #20ae73,
+	'success-border': #b8dbca,
+	'success-surface': #e8f6f0,
+	'info': #3267e3,
+	'info-border': #b1c5f6,
+	'info-surface': #deecfd,
+
+	// Text Color
+	'tc-head': #232735,
+	'tc-pbody': #505565,
+	'tc-pbody-light': #9296A3,
+	'tc-subtext': #6E7692,
+	'tc-subtext-light': #B3B7C6,
+	'tc-inverse': #FFFFFF,
+	'tc-link': #2096F3,
+);
+
+$light-palettes: ('light-grey': #ededed,
+	'white': #fff,
+	'light-green': #66b947);
+
+@function palette($color) {
+	@if map-has-key($palettes, $color) {
+		@return map-get($palettes, $color);
+	}
+
+	@else if map-has-key($light-palettes, $color) {
+		@return map-get($light-palettes, $color);
+	}
+
+	@else {
+		@warn "key `#{$color}` was not found. Falling back to #000";
+		@return #000;
+	}
+}
+
+$primary: palette('primary');
+$secondary: palette('secondary');
+$purple: palette('purple');
+$red: palette('red');
+// $grey: palette('grey');
+// $dark-grey: palette('dark-grey');
+$yellow: palette('yellow');
+$blue: #4f8ad0;
+$light-green: palette('light-green');
+$black-origin: #000;
+$black: palette('black');
+$light-blue: palette('light-blue');
+
+$tc-head: palette('tc-head');
+$tc-pbody: palette('tc-pbody');
+$tc-pbody-light: palette('tc-pbody-light');
+$tc-subtext: palette('tc-subtext');
+$tc-subtext-light: palette('tc-subtext-light');
+$tc-inverse: palette('tc-inverse');
+$tc-link: palette('tc-link');
+
+$primary-bg: palette('primary-bg');
+$secondary-bg: palette('secondary-bg');
+$tertiary-bg: palette('tertiary-bg');
+$divider-bg: palette('divider-bg');
+$divider-border-bg: palette('divider-border-bg');
+$light-grey-bg: palette('light-grey-bg');
+$grey-bg: palette('bg-grey');
+$emp-border-bg: palette('emp-border-bg');
+$dark-bg: palette('dark-bg');
+
+$danger: palette('danger');
+$danger-border: palette('danger-border');
+$danger-surface: palette('danger-surface');
+
+$warning: palette('warning');
+$warning-text: palette('warning-text');
+$warning-border: palette('warning-border');
+$warning-surface: palette('warning-surface');
+
+$success: palette('success');
+$success-border: palette('success-border');
+$success-surface: palette('success-surface');
+
+$info: palette('info');
+$info-border: palette('info-border');
+$info-surface: palette('info-surface');
+
+$light-grey: palette('light-grey');
+$white: palette('white');
+
+$black90: lighten($black, 10%);
+$black80: lighten($black, 20%);
+$black70: lighten($black, 30%);
+$black60: lighten($black, 40%);
+$black50: lighten($black, 50%);
+$black40: lighten($black, 60%);
+$black30: lighten($black, 70%);
+$black20: lighten($black, 80%);
+$black10: lighten($black, 90%);
+$black7: lighten($black, 93%);
+$black5: lighten($black, 95%);
+
+$link: $tc-link;
+$link_hover: darken($link, 10%);
+
+$selection_bg: #b3d4fc;
+$selection_color: $black;
+
+$shadow: 0 2px 6px rgba($black, 0.4);
+
+// Break Points
+// ------------------------------------------------------------------------ //
+
+$small: 'screen and (min-width: 28em)';
+$small_portrait: 'screen and (min-width: 28em) and (orientation: portrait)';
+$small_landscape: 'screen and (min-width: 28em) and (orientation: landscape)';
+
+$medium: 'screen and (min-width: 48em)';
+$medium_portrait: 'screen and (min-width: 48em) and (orientation: portrait)';
+$medium_landscape: 'screen and (min-width: 48em) and (orientation: landscape)';
+
+$large: 'screen and (min-width: 64em)';
+$extra_large: 'screen and (min-width: 75em)';
+
+$retina: '(-webkit-min-device-pixel-ratio: 1.3), (min-resolution: 1.25dppx), (min-resolution: 120dpi)';
+
+@import '../mixin/mixin';
