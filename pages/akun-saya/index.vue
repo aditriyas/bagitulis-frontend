@@ -5,20 +5,20 @@
 				<div class="photo flex mb-20">
 					<img src="/assets/img/dummy-profile-pic.png" alt="" />
 					<label for="photo" class="photo-label">
-						<input
-							id="photo"
-							type="file"
-							name="photo"
-							accept="image/*"
-							class=""
-						/>
+						<input id="photo" type="file" name="photo" accept="image/*" />
 					</label>
 				</div>
 				<div class="form-item">
 					<label for="name"
 						>{{ $t('Name') }}<span class="text-primary">*</span></label
 					>
-					<input id="name" type="text" name="name" class="form-input w-100" />
+					<input
+						id="name"
+						type="text"
+						name="name"
+						class="form-input w-100"
+						:value="$auth.user.name"
+					/>
 				</div>
 				<div class="form-item">
 					<label for="email">Email<span class="text-primary">*</span></label>
@@ -27,6 +27,7 @@
 						type="email"
 						name="email"
 						class="form-input w-100"
+						:value="$auth.user.email"
 					/>
 				</div>
 				<div class="form-item">
@@ -38,6 +39,7 @@
 						type="password"
 						name="password"
 						class="form-input w-100"
+						:value="$auth.user.password"
 					/>
 				</div>
 				<div class="form-item">
@@ -53,9 +55,7 @@
 					/>
 				</div>
 				<div class="button-container flex">
-					<button type="submit" class="btn btn--primary">
-						{{ $t('btns.submit') }}
-					</button>
+					<button type="submit" class="btn btn--primary">Ubah</button>
 				</div>
 			</form>
 		</div>
@@ -64,6 +64,7 @@
 
 <script>
 export default {
+	middleware: 'auth',
 	nuxtI18n: {
 		paths: {
 			id: '/akun-saya',
@@ -84,6 +85,7 @@ export default {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	gap: 10px;
 
 	img {
 		width: 90px;

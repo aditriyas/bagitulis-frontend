@@ -212,6 +212,7 @@ import {
 	numeric
 } from 'vuelidate/lib/validators'
 export default {
+	auth: false,
 	nuxtI18n: {
 		paths: {
 			id: '/hubungi-kami',

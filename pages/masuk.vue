@@ -70,8 +70,8 @@
 				</div>
 				<button
 					type="submit"
-					:disabled="$v.$invalid"
 					class="btn--primary login-submit btn"
+					@click.prevent="login()"
 				>
 					Masuk
 				</button>
@@ -91,6 +91,7 @@
 <script>
 import { required, email, maxLength } from 'vuelidate/lib/validators'
 export default {
+	middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/masuk',
@@ -101,6 +102,10 @@ export default {
 	data() {
 		return {
 			showPassword: false,
+			form: {
+				email: 'admin@mail.com',
+				password: 'root'
+			},
 			formData: {
 				email: null,
 				password: null
@@ -117,6 +122,19 @@ export default {
 				required,
 				maxLength: maxLength(20)
 			}
+		}
+	},
+	methods: {
+		login() {
+			this.$auth
+				.loginWith('laravelSanctum', {
+					data: {
+						email: this.formData.email,
+						password: this.formData.password
+					}
+				})
+				.then(response => console.log(response))
+				.catch(error => console.log(error))
 		}
 	}
 }

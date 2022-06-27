@@ -77,6 +77,7 @@
 
 <script>
 export default {
+	auth: false,
 	nuxtI18n: {
 		paths: {
 			id: '/artikel',

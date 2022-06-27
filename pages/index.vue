@@ -47,6 +47,7 @@
 import MostLiked from '../components/journals/MostLiked.vue'
 
 export default {
+	auth: false,
 	components: { MostLiked },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
