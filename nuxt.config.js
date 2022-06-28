@@ -1,21 +1,9 @@
 import defaultMeta from './config/defaultMeta'
-import sitemapConfig from './config/sitemapConfig'
+// import sitemapConfig from './config/sitemapConfig'
 import {
 	I18N
 } from './lang/localeConfig'
 
-/*
- ** Axios Instance
- */
-const AxiosInstance = {
-	baseURL: process.env.BASE_URL,
-	// withCredentials: false,
-	retry: true,
-	headers: {
-		Accept: 'application/json',
-		'Content-Type': 'application/json'
-	}
-}
 
 export default {
 	target: 'server',
@@ -69,9 +57,6 @@ export default {
 		},
 		{
 			src: '~/plugins/vuelidate'
-		},
-		{
-			src: '~/plugins/vue-gtag.js'
 		}
 	],
 
@@ -84,11 +69,8 @@ export default {
 	// Modules (https://go.nuxtjs.dev/config-modules)
 	modules: [
 		'@nuxtjs/axios',
-		'@nuxtjs/auth',
+		'@nuxtjs/auth-next',
 		'@nuxtjs/style-resources',
-		['nuxt-lazy-load', {
-			directiveOnly: true
-		}],
 		'@nuxtjs/sitemap',
 		'@nuxtjs/robots',
 		['@nuxtjs/i18n', I18N],
@@ -112,10 +94,6 @@ export default {
 		path: '/sitemap.xml',
 		exclude: []
 	},
-	robots: [{
-		UserAgent: '*',
-		Allow: '/'
-	}],
 
 	// i18n module configuration (https://i18n.nuxtjs.org/basic-usage)
 	i18n: {
@@ -134,55 +112,32 @@ export default {
 		}
 	},
 
-	// Axios module configuration (https://go.nuxtjs.dev/config-axios)
-	axios: {
-		proxy: true,
-		AxiosInstance
-	},
-
-	privateRuntimeConfig: {
-		axios: {
-			baseURL: process.env.BASE_URL
-		}
-	},
-	proxy: {
-		'/api': {
-			target: process.env.API_URL,
-			pathRewrite: {
-				'^/api/': ''
-			},
-			changeOrigin: true,
-			onProxyReq(request) {
-				request.setHeader('origin', process.env.API_URL)
-			}
-		}
-	},
-
 	// AUTH
 	auth: {
 		strategies: {
-			local: {
+			laravelSanctum: {
+				provider: 'laravel/sanctum',
+				url: 'http://auth-api-training.test',
 				endpoints: {
 					login: {
-						url: '/auth/login',
-						method: 'post'
+						url: '/api/login'
 					},
 					logout: {
-						url: '/auth/logout',
-						method: 'post'
+						url: '/api/logout'
 					},
 					user: {
-						url: '/current-user/profile',
-						method: 'get',
-						propertyName: false
+						url: '/api/user'
 					}
 				},
-				tokenType: 'Bearer'
-			},
-			google: {
-				client_id: process.env.GOOGLE_CLIENT_ID,
-				redirect_uri: process.env.GOOGLE_REDIRECT_URI
+				user: {
+					property: false
+				}
 			}
+		},
+		redirect: {
+			login: '/id/masuk',
+			logout: '/id',
+			home: '/id'
 		}
 	},
 
@@ -191,7 +146,7 @@ export default {
 	},
 
 	router: {
-		middleware: ['redirection']
+		middleware: ['auth']
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)

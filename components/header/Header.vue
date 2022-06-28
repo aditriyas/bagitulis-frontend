@@ -8,14 +8,15 @@
 				<div class="nav-container">
 					<nav class="main-nav">
 						<ul class="list-nostyle main-nav__wrapper v-center">
-							<li class="main-nav__item flex">
+							<li
+								class="main-nav__item flex"
+								@mouseover="showCategoryDropdown = true"
+								@mouseleave="showCategoryDropdown = false"
+							>
 								<div class="product-container flex v-center relative">
 									<button
 										class="popup-button"
 										:class="showCategoryDropdown === true ? 'text-primary' : ''"
-										@click.prevent="
-											showCategoryDropdown = !showCategoryDropdown
-										"
 									>
 										Kategori
 										<span
@@ -85,23 +86,26 @@
 								</div>
 							</li>
 							<li class="main-nav__item separator"></li>
-							<li class="main-nav__item flex">
-								<nuxt-link
-									:to="localePath('/masuk')"
-									class="header-link"
-									title="Login"
-									>{{ $t('login') }}</nuxt-link
-								>
-							</li>
-							<li class="main-nav__item flex">
-								<nuxt-link
-									:to="localePath('/daftar')"
-									class="header-link"
-									title="Register"
-									>{{ $t('register') }}</nuxt-link
-								>
-							</li>
+							<template v-if="!$auth.loggedIn">
+								<li class="main-nav__item flex">
+									<nuxt-link
+										:to="localePath('/masuk')"
+										class="header-link"
+										title="Login"
+										>{{ $t('login') }}</nuxt-link
+									>
+								</li>
+								<li class="main-nav__item flex">
+									<nuxt-link
+										:to="localePath('/daftar')"
+										class="header-link"
+										title="Register"
+										>{{ $t('register') }}</nuxt-link
+									>
+								</li>
+							</template>
 							<li
+								v-if="$auth.loggedIn"
 								class="main-nav__item flex relative"
 								@mouseover="showProfileDropdown = true"
 								@mouseleave="showProfileDropdown = false"
@@ -111,12 +115,15 @@
 									class="header-link"
 									title="Akun Saya"
 									><img src="/assets/img/dummy-profile-pic.png" alt="" />
+									<span class="text-black">Hi, {{ $auth.user.name }}!</span>
 								</nuxt-link>
 								<div
 									v-if="showProfileDropdown === true"
 									class="profile-dropdown"
 								>
-									<div class="profile-dropdown--item">Logout</div>
+									<div class="profile-dropdown--item" @click.prevent="logout">
+										Logout
+									</div>
 									<nuxt-link
 										class="profile-dropdown--item"
 										:to="localePath('/akun-saya')"
@@ -250,6 +257,13 @@ export default {
 		document.removeEventListener('click', this.hideOpts)
 	},
 	methods: {
+		async logout() {
+			try {
+				await this.$auth.logout()
+			} catch (e) {
+				console.log(e)
+			}
+		},
 		hideOpts(e) {
 			if (!this.$el.contains(e.target.closest('.popup-button'))) {
 				this.showCategoryDropdown = false
@@ -408,10 +422,6 @@ export default {
 					color: $tc-head;
 					font-size: 14px;
 
-					&:not(:last-child) {
-						border-bottom: 1px solid $light-grey;
-					}
-
 					.coming-soon {
 						box-sizing: border-box;
 						width: 60px;
@@ -481,6 +491,7 @@ export default {
 	width: max-content;
 	background-color: #fff;
 	padding: 0 24px;
+	min-width: 200px;
 	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 	top: 60px;
 	left: -30px;
@@ -495,6 +506,13 @@ export default {
 		&:not(:last-child) {
 			border-bottom: 1px solid $light-grey;
 		}
+	}
+}
+
+.search-container {
+	input {
+		font-size: 14px;
+		color: $black;
 	}
 }
 </style>

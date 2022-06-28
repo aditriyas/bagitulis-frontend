@@ -125,6 +125,7 @@
 					type="submit"
 					:disabled="$v.$invalid"
 					class="btn--primary register-submit btn"
+					@click.prevent="onSubmit()"
 				>
 					Daftar
 				</button>
@@ -145,6 +146,7 @@
 <script>
 import { required, email, maxLength, sameAs } from 'vuelidate/lib/validators'
 export default {
+	middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/daftar',
@@ -182,6 +184,28 @@ export default {
 				required,
 				sameAsPassword: sameAs('password')
 			}
+		}
+	},
+	methods: {
+		async onSubmit() {
+			const formData = new FormData()
+
+			formData.set('name', this.formData.name)
+			formData.set('email', this.formData.email)
+			formData.set('password', this.formData.password)
+
+			await this.$axios
+				.get('http://auth-api-training.test/api/register', formData)
+				.then(res => {
+					// eslint-disable-next-line no-console
+					this.$router.push({
+						path: this.localePath('/hubungi-kami/sukses')
+					})
+				})
+				.catch(error => {
+					console.log(error)
+					this.$nuxt.refresh()
+				})
 		}
 	}
 }

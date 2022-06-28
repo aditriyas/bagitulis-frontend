@@ -8,30 +8,34 @@
 					<div class="profile-info flex pt-0">
 						<img src="/assets/img/dummy-profile-pic.png" alt="" />
 						<div class="profile-info--text">
-							<span class="name d-block">John Doe</span>
-							<span class="email d-block">example@mail.com</span>
+							<span class="name d-block">{{
+								$auth.loggedIn ? `${$auth.user.name}` : 'John Doe'
+							}}</span>
+							<span class="email d-block">{{
+								$auth.loggedIn ? `${$auth.user.email}` : 'example@mail.com'
+							}}</span>
 						</div>
 					</div>
 					<hr />
 					<ul class="nav list-nostyle">
 						<li class="nav-item">
+							<span class="bzi bzi-Settings-alt bzi-1_5x"></span>
 							<nuxt-link :to="localePath('/akun-saya')" exact
-								><span class="bzi bzi-Settings-alt bzi-1_5x"></span>Pengaturan
-								Akun</nuxt-link
+								>Pengaturan Akun</nuxt-link
 							>
 						</li>
 						<li class="nav-item">
+							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
 							<nuxt-link
 								:to="localePath('/akun-saya/karya-tulis-tersimpan')"
 								exact
-								><span class="bzi bzi-Book-mark bzi-1_5x"></span>Karya Tulis
-								Tersimpan</nuxt-link
+								>Karya Tulis Tersimpan</nuxt-link
 							>
 						</li>
 						<li class="nav-item">
+							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
 							<nuxt-link :to="localePath('/akun-saya/karya-tulis-saya')" exact
-								><span class="bzi bzi-Book-mark bzi-1_5x"></span>Karya Tulis
-								Saya</nuxt-link
+								>Karya Tulis Saya</nuxt-link
 							>
 						</li>
 					</ul>
@@ -68,7 +72,6 @@ export default {}
 	&-info {
 		gap: 12px;
 		align-items: center;
-		// padding: 8px 8px;
 		text-align: center;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -83,15 +86,19 @@ export default {}
 		&--text {
 			.name {
 				margin-bottom: 0;
-				font-size: 20px;
 				text-transform: capitalize;
 				font-weight: bold;
+				font-size: 14px;
+			}
+
+			.email {
+				font-size: 14px;
 			}
 		}
 		img {
 			border-radius: 50%;
-			width: 80px;
-			height: 80px;
+			width: 70px;
+			height: 70px;
 		}
 	}
 	&-item {
@@ -107,6 +114,8 @@ export default {}
 		color: $tc-head !important;
 		border-radius: 12px;
 		padding: 12px 8px;
+		display: flex;
+		gap: 10px;
 
 		&:not(:last-child) {
 			margin-bottom: 8px;
@@ -127,8 +136,8 @@ export default {}
 		}
 	}
 
-	.bzi {
-		padding-right: 12px;
-	}
+	// .bzi {
+	// 	padding-right: 12px;
+	// }
 }
 </style>
