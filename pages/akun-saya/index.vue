@@ -12,13 +12,7 @@
 					<label for="name"
 						>{{ $t('Name') }}<span class="text-primary">*</span></label
 					>
-					<input
-						id="name"
-						type="text"
-						name="name"
-						class="form-input w-100"
-						:value="$auth.user.name"
-					/>
+					<input id="name" type="text" name="name" class="form-input w-100" />
 				</div>
 				<div class="form-item">
 					<label for="email">Email<span class="text-primary">*</span></label>
@@ -27,7 +21,6 @@
 						type="email"
 						name="email"
 						class="form-input w-100"
-						:value="$auth.user.email"
 					/>
 				</div>
 				<div class="form-item">
@@ -39,7 +32,6 @@
 						type="password"
 						name="password"
 						class="form-input w-100"
-						:value="$auth.user.password"
 					/>
 				</div>
 				<div class="form-item">
@@ -64,7 +56,7 @@
 
 <script>
 export default {
-	middleware: 'auth',
+	// middleware: 'auth',
 	nuxtI18n: {
 		paths: {
 			id: '/akun-saya',

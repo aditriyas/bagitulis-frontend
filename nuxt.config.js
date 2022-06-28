@@ -1,9 +1,15 @@
 import defaultMeta from './config/defaultMeta'
 // import sitemapConfig from './config/sitemapConfig'
-import {
-	I18N
-} from './lang/localeConfig'
+import { I18N } from './lang/localeConfig'
 
+const AxiosInstance = {
+	baseURL: process.env.BASE_URL,
+	retry: true,
+	headers: {
+		Accept: 'application/json',
+		'Content-Type': 'application/json'
+	}
+}
 
 export default {
 	target: 'server',
@@ -18,7 +24,8 @@ export default {
 	head: {
 		title: 'Bagitulis - Online Repository',
 		meta: defaultMeta,
-		link: [{
+		link: [
+			{
 				rel: 'apple-touch-icon',
 				href: 'bagitulis-icon.png'
 			},
@@ -46,7 +53,8 @@ export default {
 	],
 
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-	plugins: [{
+	plugins: [
+		{
 			src: './plugins/vue-slick-carousel.js'
 		},
 		{
@@ -85,6 +93,12 @@ export default {
 			}
 		]
 	],
+
+	axios: {
+		proxy: true,
+		AxiosInstance
+	},
+
 	sitemap: {
 		defaults: {
 			changefreq: 'daily',
@@ -117,13 +131,15 @@ export default {
 		strategies: {
 			laravelSanctum: {
 				provider: 'laravel/sanctum',
-				url: 'http://auth-api-training.test',
+				url: 'http://bagitulis-cms.test',
 				endpoints: {
 					login: {
-						url: '/api/login'
+						url: '/api/login',
+						propertyName: 'token'
 					},
 					logout: {
-						url: '/api/logout'
+						url: '/api/logout',
+						propertyName: 'token'
 					},
 					user: {
 						url: '/api/user'
@@ -131,6 +147,10 @@ export default {
 				},
 				user: {
 					property: false
+				},
+				token: {
+					property: 'access_token',
+					maxAge: 60 * 60
 				}
 			}
 		},
@@ -146,7 +166,7 @@ export default {
 	},
 
 	router: {
-		middleware: ['auth']
+		// middleware: ['auth']
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)

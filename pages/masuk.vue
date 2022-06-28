@@ -103,8 +103,8 @@ export default {
 		return {
 			showPassword: false,
 			form: {
-				email: 'admin@mail.com',
-				password: 'root'
+				email: 'admin@gmail.com',
+				password: 'password'
 			},
 			formData: {
 				email: null,
@@ -129,8 +129,8 @@ export default {
 			this.$auth
 				.loginWith('laravelSanctum', {
 					data: {
-						email: this.formData.email,
-						password: this.formData.password
+						email: this.form.email,
+						password: this.form.password
 					}
 				})
 				.then(response => console.log(response))
