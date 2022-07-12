@@ -76,5 +76,10 @@ export default {
 .body {
 	justify-content: space-between;
 	row-gap: 20px;
+
+	&-card {
+		box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
+		border-radius: 12px;
+	}
 }
 </style>

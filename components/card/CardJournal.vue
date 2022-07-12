@@ -88,7 +88,7 @@ export default {
 		max-width: 400px;
 		flex-direction: column;
 		border-radius: 16px;
-		box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
+		// box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 
 		&--info {
 			border: none !important;

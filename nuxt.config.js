@@ -131,15 +131,13 @@ export default {
 		strategies: {
 			laravelSanctum: {
 				provider: 'laravel/sanctum',
-				url: 'http://bagitulis-cms.test',
+				url: 'http://auth-api-training.test',
 				endpoints: {
 					login: {
-						url: '/api/login',
-						propertyName: 'token'
+						url: '/api/login'
 					},
 					logout: {
-						url: '/api/logout',
-						propertyName: 'token'
+						url: '/api/logout'
 					},
 					user: {
 						url: '/api/user'
@@ -147,10 +145,6 @@ export default {
 				},
 				user: {
 					property: false
-				},
-				token: {
-					property: 'access_token',
-					maxAge: 60 * 60
 				}
 			}
 		},
@@ -160,6 +154,68 @@ export default {
 			home: '/id'
 		}
 	},
+	// auth: {
+	// 	strategies: {
+	// 		laravelSanctum: {
+	// 			provider: 'laravel/sanctum',
+	// 			url: 'http://bagitulis-cms.test',
+	// 			endpoints: {
+	// 				login: {
+	// 					url: '/api/login',
+	// 					propertyName: 'token'
+	// 				},
+	// 				logout: {
+	// 					url: '/api/logout',
+	// 					propertyName: 'token'
+	// 				}
+	// 			},
+	// 			user: {
+	// 				url: '/api/profile',
+	// 				method: 'get',
+	// 				propertyName: 'user',
+	// 				withCredentials: true,
+	// 				data: {},
+	// 				headers: {
+	// 					Referer: 'http://localhost::3000', // <- here
+	// 					Accept: 'application/json',
+	// 					'X-Requested-With': 'XMLHttpRequest',
+	// 					'Content-Type': 'application/json'
+	// 				}
+	// 			}
+	// 			// user: {
+	// 			// 	property: 'user'
+	// 			// }
+	// 		}
+	// 	},
+	// 	redirect: {
+	// 		login: '/id/masuk',
+	// 		logout: '/id',
+	// 		home: '/id'
+	// 	}
+	// },
+
+	// auth: {
+	// 	strategies: {
+	// 		local: {
+	// 			url: 'http://bagitulis-cms.test',
+	// 			token: {
+	// 				property: 'token',
+	// 				global: true,
+	// 				type: 'Bearer'
+	// 				// required: true,
+	// 			},
+	// 			user: {
+	// 				property: 'user'
+	// 				// autoFetch: true
+	// 			},
+	// 			endpoints: {
+	// 				login: { url: '/api/login', method: 'post' },
+	// 				logout: { url: '/api/logout', method: 'post' },
+	// 				user: { url: '/api/profile', method: 'get' }
+	// 			}
+	// 		}
+	// 	}
+	// },
 
 	styleResources: {
 		scss: ['./assets/scss/partials/_variables.scss']
