@@ -30,15 +30,15 @@
 				</div>
 				<div v-if="isEmpty === false" class="tab-content flex flex--wrap">
 					<div
-						v-for="(item, index) in articleCards"
+						v-for="(item, index) in articles"
 						:key="index"
 						class="tab-content--card"
 					>
-						<nuxt-link :to="localePath('/artikel/:title')">
+						<nuxt-link :to="localePath(`/artikel/${item.id}`)">
 							<img
-								:src="item.cardImage"
+								:src="item.thumbnail"
 								alt="Tab Card Image"
-								:title="item.cardTitle"
+								:title="item.title"
 								class="mb-16"
 							/>
 							<div
@@ -52,16 +52,16 @@
 								{{ item.cardCategory }}
 							</div>
 							<h4 class="title">
-								{{ item.cardTitle }}
+								{{ item.title }}
 							</h4>
-							<p class="date">{{ item.cardDate }}</p>
+							<p class="date">{{ item.created_at }}</p>
 						</nuxt-link>
 					</div>
 				</div>
 				<div v-else>
 					<articlesEmpty />
 				</div>
-				<Pagination
+				<!-- <Pagination
 					v-if="isEmpty === false"
 					:total-pages="512"
 					:max-visible-buttons="8"
@@ -69,7 +69,7 @@
 					:per-page="1"
 					:current-page="1"
 					class="mb-0"
-				/>
+				/> -->
 			</div>
 		</div>
 	</main>
@@ -78,6 +78,24 @@
 <script>
 export default {
 	auth: false,
+	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
+		try {
+			const [articles] = await Promise.all([
+				$axios.$get('http://bagitulis-cms.test/api/articles')
+			])
+			return {
+				articles: articles.data
+			}
+		} catch (e) {
+			if (e.response.status === 401) {
+				error($catch401)
+			} else if (e.response.status === 404) {
+				error($catch404)
+			} else {
+				error($catch500)
+			}
+		}
+	},
 	nuxtI18n: {
 		paths: {
 			id: '/artikel',

@@ -26,7 +26,8 @@
 					</div>
 					<div class="info">
 						<span class="journal-card--tags text-tc-subtext"
-							>Tags: {{ tags }}</span
+							>Tags:
+							<span v-for="(item, i) in tags" :key="i">{{ item }} </span></span
 						>
 						<span class="journal-card--author d-block"
 							><span class="text-black">Diunggah oleh: </span>{{ user }} on May
@@ -43,7 +44,7 @@
 export default {
 	props: {
 		slug: {
-			type: String,
+			type: Number,
 			default: null
 		},
 		file: {
