@@ -288,14 +288,14 @@ export default {
 		async onSubmit() {
 			const formData = new FormData()
 
-			formData.set('full_name', this.formData.fullName)
+			formData.set('name', this.formData.fullName)
 			formData.set('email', this.formData.email)
 			formData.set('phone', `+62${this.formData.phoneNumber}`)
 			formData.set('subject', this.formData.subject)
-			formData.set('messages', this.formData.message)
+			formData.set('message', this.formData.message)
 
 			await this.$axios
-				.post('/api/contact_us', formData)
+				.post('http://bagitulis-cms.test/api/feedback', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
 					this.$router.push({

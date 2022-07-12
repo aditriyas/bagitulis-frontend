@@ -1,0 +1,16 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "..\\..\\..\\..\\..\\laragon\\www\\bagitulis-cms"
+	},
+	{
+		"path": "D:\\CODING\\Suitmedia\\mansek-portal-frontend"
+	}
+],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib"
+  }
+}

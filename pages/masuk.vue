@@ -91,7 +91,7 @@
 <script>
 import { required, email, maxLength } from 'vuelidate/lib/validators'
 export default {
-	middleware: ['guest'],
+	// middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/masuk',
@@ -103,8 +103,8 @@ export default {
 		return {
 			showPassword: false,
 			form: {
-				email: 'admin@mail.com',
-				password: 'root'
+				email: 'admin@gmail.com',
+				password: 'password'
 			},
 			formData: {
 				email: null,
@@ -125,6 +125,20 @@ export default {
 		}
 	},
 	methods: {
+		// async login() {
+		// 	try {
+		// 		const response = await this.$auth.loginWith('laravelSanctum', {
+		// 			data: this.formData
+		// 		})
+		// 		// this.$auth.$storage.setUniversal('user', response.data.data.user, true)
+		// 		this.$auth.setUser(response.data.user)
+		// 		this.$auth.$storage.setState('loggedIn', true)
+		// 		// this.$auth.$storage.setLocalStorage('loggedIn', true)
+		// 		console.log(response)
+		// 	} catch (err) {
+		// 		console.log(err)
+		// 	}
+		// }
 		login() {
 			this.$auth
 				.loginWith('laravelSanctum', {

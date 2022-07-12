@@ -8,10 +8,10 @@
 			<img :src="thumbnail" alt="" class="journal-card--img" />
 			<div class="journal-card--info text-left flex flex--row">
 				<div class="journal-card--category mb-12 d-block">
-					Kategori: {{ category }}
+					Kategori: {{ category.name }}
 				</div>
 				<span class="journal-card--title d-block">
-					{{ title }}
+					{{ title.slice(0, 30) }}<span>...</span>
 				</span>
 
 				<span class="journal-card--subtitle d-block text-tc-subtext">
@@ -20,13 +20,14 @@
 				<div class="journal-card--footer flex">
 					<div class="photo">
 						<img
-							:src="photo ? photo : 'assets/img/dummy-profile-pic.png'"
+							:src="photo != null ? photo : 'assets/img/dummy-profile-pic.png'"
 							alt=""
 						/>
 					</div>
 					<div class="info">
 						<span class="journal-card--tags text-tc-subtext"
-							>Tags: {{ tags }}</span
+							>Tags:
+							<span v-for="(item, i) in tags" :key="i">{{ item }} </span></span
 						>
 						<span class="journal-card--author d-block"
 							><span class="text-black">Diunggah oleh: </span>{{ user }} on May
@@ -43,7 +44,7 @@
 export default {
 	props: {
 		slug: {
-			type: String,
+			type: Number,
 			default: null
 		},
 		file: {
@@ -55,7 +56,7 @@ export default {
 			default: null
 		},
 		category: {
-			type: String,
+			type: Object,
 			default: null
 		},
 		title: {
@@ -87,15 +88,14 @@ export default {
 	&-card {
 		max-width: 400px;
 		flex-direction: column;
-		// box-shadow: 4px 1px $black90;
-		// border: 1px solid $primary;
 		border-radius: 16px;
+		// box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 
 		&--info {
 			border: none !important;
 			padding: 12px 20px 18px 20px;
 			background-color: $white;
-			// border-radius: 0 0 16px 16px;
+			border-radius: 0 0 16px 16px;
 			border: 1px solid $black30;
 			height: 350px;
 			flex-direction: column;

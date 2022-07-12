@@ -44,6 +44,7 @@
 													:class="category.isDisabled ? 'disabled' : ''"
 													:to="localePath(`/karya-tulis/${category.link}`)"
 													title="Category"
+													exact
 													@click.native="showCategoryDropdown = false"
 												>
 													{{ category.name }}
@@ -216,13 +217,18 @@ export default {
 			categories: [
 				{
 					id: 1,
+					name: 'Semua',
+					link: ''
+				},
+				{
+					id: 1,
 					name: `${this.$t('journal')}`,
-					link: '/jurnal'
+					link: 'jurnal'
 				},
 				{
 					id: 2,
 					name: `${this.$t('scientificWritings')}`,
-					link: '/ilmiah',
+					link: 'ilmiah',
 					isDisabled: false,
 					comingSoon: false
 				},

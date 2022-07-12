@@ -146,7 +146,7 @@
 <script>
 import { required, email, maxLength, sameAs } from 'vuelidate/lib/validators'
 export default {
-	middleware: ['guest'],
+	// middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/daftar',
@@ -195,7 +195,7 @@ export default {
 			formData.set('password', this.formData.password)
 
 			await this.$axios
-				.get('http://auth-api-training.test/api/register', formData)
+				.post('http://bagitulis-cms.test/api/register', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
 					this.$router.push({

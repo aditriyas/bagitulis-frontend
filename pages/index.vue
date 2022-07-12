@@ -52,7 +52,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [posts] = await Promise.all([
-				$axios.$get('https://62b331104f851f87f456726b.mockapi.io/api/journals')
+				$axios.$get('http://bagitulis-cms.test/api/journals')
 			])
 			return {
 				posts: posts.data
@@ -141,93 +141,6 @@ export default {
 					textMid: 'Menjaga pelanggan setia, menarik lebih banyak',
 					textBottom:
 						'Membangun hubungan jangka panjang dengan pelanggan dengan loyalty solution kami'
-				}
-			],
-			reviews: [
-				{
-					reviewBrand: 'assets/img/adhi-testimony.png',
-					reviewText:
-						'"Great support and wide knowledge on creating marketplace website."',
-					reviewName: 'Rangga Maulana',
-					reviewInfo: 'Adhi Karya Marketplace'
-				},
-				{
-					reviewBrand: 'assets/img/klink-testimony.png',
-					reviewText:
-						'"Suitmedia was helpfull when find out solutions. Some of problems solve with their idea. Now, our members use this apps and they are happy."',
-					reviewName: 'Nandang Hermansyah',
-					reviewInfo: 'IT Manager of K-Link'
-				},
-				{
-					reviewBrand: 'assets/img/courts-testimony.png',
-					reviewText: `"We've been working closely since 2014. Our E -Commerce business growth also with support from Suitmedia. Keep up the Good work!"`,
-					reviewName: 'Pramudya Bayu Sasongko',
-					reviewInfo: 'Head Marketing & E-Commerce of COURTS'
-				}
-			],
-			journals: [
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
-				},
-				{
-					img: 'assets/img/jurnal-img-1.png',
-					title: 'lorem ipsum dolor sit amet, consectetur',
-					author: 'John Parment',
-					subtitle:
-						'lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetur'
 				}
 			]
 		}
