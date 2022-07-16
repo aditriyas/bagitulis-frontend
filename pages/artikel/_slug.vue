@@ -1,33 +1,27 @@
 <template>
-	<main class="site-main pv-56">
+	<main class="site-main pb-40 pt-24">
 		<div class="detail container">
-			<div class="card">
-				<div class="card-image flex mb-32">
-					<img src="/assets/img/dummy-profile-pic.png" alt="" class="mv-auto" />
-				</div>
-				<div class="card-info flex pb-32">
-					<div class="card-info--item">
-						<p class="info-title">Author</p>
-						<p>John Doe, {{ dateFormat(article.created_at) }}</p>
-					</div>
-					<div class="card-info--item">
-						<p class="info-title">Category</p>
-						<!-- <p>{{ article.category.name }}</p> -->
-					</div>
-					<div class="card-info--item">
-						<p class="info-title">Download</p>
-						<!-- <a :href="article.file" :download="article.title">Download</a> -->
-					</div>
-				</div>
-				<hr />
-				<div class="card-main">
-					<p class="main-title d-block">Title</p>
-					<h3 class="title">{{ article.title }}</h3>
-					<p class="main-desc d-block">Description</p>
-					<p class="desc">{{ article.description }}</p>
-					<p class="main-published d-block">Published at</p>
-					<p class="published">{{ dateFormat(article.updated_at) }}</p>
-				</div>
+			<div class="img-container">
+				<img
+					:src="
+						article.thumbnail === null
+							? '/assets/img/dummy-profile-pic.png'
+							: article.thumbnail
+					"
+					alt=""
+					class="w-100 article-img"
+				/>
+			</div>
+			<div class="article-head mt-32 text-center mb-50">
+				<h1 class="title text-black">{{ article.title }}</h1>
+				<p class="mb-0 text-body">
+					Updated by: {{ article.user_id }},
+					{{ dateFormat(article.updated_at) }}
+				</p>
+			</div>
+			<div class="article-body">
+				<p class="text-pbody">{{ article.description }}</p>
+				<hr class="mt-60" />
 			</div>
 		</div>
 	</main>
@@ -64,7 +58,7 @@ export default {
 			const day = tanggal.getDate()
 			const year = tanggal.getFullYear()
 			const month = tanggal.toLocaleString('default', { month: 'long' })
-			return `${month} ${day} ${year}`
+			return `${day} ${month} ${year}`
 		}
 	}
 }
@@ -81,7 +75,7 @@ export default {
 		border-radius: 12px;
 
 		img {
-			width: 700px;
+			width: 800px;
 			height: 500px;
 			object-fit: cover;
 		}
@@ -123,6 +117,37 @@ export default {
 				text-transform: uppercase;
 				max-width: 500px;
 			}
+		}
+	}
+}
+
+.img-container {
+	width: 100%;
+	max-height: 400px;
+}
+.article-img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+}
+
+.article {
+	&-head {
+		width: 700px;
+		margin: 0 auto;
+		h2 {
+			margin-bottom: 8px;
+		}
+		p {
+			font-size: 14px;
+		}
+	}
+	&-body {
+		width: 900px;
+		margin: 0 auto;
+
+		p {
+			font-size: 18px;
 		}
 	}
 }

@@ -68,7 +68,7 @@ export default {
 			default: null
 		},
 		tags: {
-			type: String,
+			type: Array,
 			default: null
 		},
 		user: {

@@ -13,7 +13,7 @@
 				/>
 
 				<!-- Tab Navigation -->
-				<div class="tab-nav mb-40">
+				<!-- <div class="tab-nav mb-40">
 					<ul class="pl-0 mb-0 list-nostyle">
 						<li v-for="(item, index) in tabnames" :key="index" class="tab-opt">
 							<nuxt-link
@@ -27,7 +27,7 @@
 							</nuxt-link>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 				<div v-if="isEmpty === false" class="tab-content flex flex--wrap">
 					<div
 						v-for="(item, index) in articles"

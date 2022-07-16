@@ -143,11 +143,14 @@ export default {
 			this.$auth
 				.loginWith('laravelSanctum', {
 					data: {
-						email: this.formData.email,
-						password: this.formData.password
+						email: this.form.email,
+						password: this.form.password
 					}
 				})
-				.then(response => console.log(response))
+				.then(
+					response => console.log(response)
+					// (this.$store.state.auth.loggedIn = true)
+				)
 				.catch(error => console.log(error))
 		}
 	}

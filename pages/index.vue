@@ -37,9 +37,9 @@
 		</section>
 
 		<!-- Banner -->
-		<section>
+		<!-- <section>
 			<Demo :demo="demo" :title="demo.title" :sub-title="demo.subTitle" />
-		</section>
+		</section> -->
 	</main>
 </template>
 
