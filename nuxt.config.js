@@ -131,20 +131,18 @@ export default {
 		strategies: {
 			laravelSanctum: {
 				provider: 'laravel/sanctum',
-				url: 'http://auth-api-training.test',
+				url: 'http://bagitulis-cms.test',
 				endpoints: {
 					login: {
 						url: '/api/login'
 					},
 					logout: {
 						url: '/api/logout'
-					},
-					user: {
-						url: '/api/user'
 					}
 				},
 				user: {
-					property: false
+					property: false,
+					autoFetch: true
 				}
 			}
 		},

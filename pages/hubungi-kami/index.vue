@@ -4,14 +4,15 @@
 			<div class="contact relative">
 				<div class="contact-left">
 					<div class="contact-left--map">
-						<iframe
+						<!-- <iframe
 							title="RocketMall"
 							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.904827929205!2d106.82244961455521!3d-6.276242695457351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f2247acd037f%3A0xddf875f24f8daae7!2sSuitmedia!5e0!3m2!1sen!2sid!4v1643621241164!5m2!1sen!2sid"
 							class="map"
 							style="border: 0"
 							allowfullscreen=""
 							loading="lazy"
-						></iframe>
+						></iframe> -->
+						<img src="/assets/img/hubungi-kami-illustration.jpg" alt="" />
 					</div>
 					<div class="contact-left--info">
 						<div v-for="(item, index) in info" :key="index" class="info flex">
@@ -299,7 +300,7 @@ export default {
 				.then(res => {
 					// eslint-disable-next-line no-console
 					this.$router.push({
-						path: this.localePath('/hubungi-kami/sukses')
+						path: this.localePath('/')
 					})
 				})
 				.catch(error => {
@@ -376,6 +377,9 @@ export default {
 		}
 		&--map {
 			margin-bottom: 58px;
+			img {
+				max-width: 600px;
+			}
 			.map {
 				border-radius: 16px;
 				width: 100%;
@@ -426,101 +430,6 @@ export default {
 
 	textarea {
 		resize: none;
-	}
-
-	&-country,
-	&-products {
-		/deep/ {
-			.vs--open {
-				box-sizing: border-box;
-				border: 1px solid $primary !important;
-				border-radius: 6px;
-			}
-			.v-select {
-				padding: 0;
-
-				.vs__dropdown-toggle {
-				}
-
-				.vs__dropdown-menu {
-					border-radius: 6px;
-					margin-top: 8px;
-					box-shadow: 0px 0px 15px 0px rgba(35, 39, 53, 0.2);
-					border: none;
-					overflow: hidden;
-					padding: 24px;
-					overflow-y: auto;
-
-					.vs__dropdown-option {
-						border-radius: 4px;
-						background-color: transparent;
-						color: #505565;
-						padding: 8px;
-						position: relative;
-						overflow: hidden;
-
-						&:not(:last-child) {
-							margin-bottom: 12px;
-						}
-
-						&:hover {
-							background-color: #f6f8fb;
-						}
-
-						&:not(:last-child) {
-							border-bottom: 1px solid #e8eaef;
-						}
-					}
-				}
-
-				.vs--open {
-					&::placeholder {
-						padding-top: 10px;
-					}
-				}
-
-				.vs__selected {
-					margin: 0;
-					font-size: 16px;
-					// padding: 2px 0 2px 4px;
-					padding: 0;
-					color: #505565;
-				}
-
-				.vs__actions {
-					padding-left: 0;
-					padding-bottom: 6px;
-					z-index: 2;
-
-					.vs__clear {
-						display: none !important;
-					}
-				}
-
-				.vs__dropdown-toggle {
-					padding: 13px 16px;
-					border-radius: 6px;
-					background-color: transparent;
-					border: 1px solid #e8eaef;
-				}
-
-				.vs__search {
-					z-index: 3;
-					padding: 0;
-					margin: 0;
-					&::placeholder {
-						color: #232735;
-						font-size: 14px;
-						padding-left: 6px;
-					}
-				}
-
-				.vs__selected-options {
-					padding: 0;
-					color: #232735;
-				}
-			}
-		}
 	}
 
 	&-error {
@@ -581,63 +490,6 @@ export default {
 	&-phone {
 		.number {
 			padding-left: 76px;
-		}
-		/deep/ {
-			.v-select {
-				padding: 0;
-				.vs__dropdown-menu {
-					display: block !important;
-				}
-
-				.vs--open {
-					&::placeholder {
-						padding-top: 10px;
-					}
-				}
-
-				.vs__selected {
-					margin: 0;
-					font-size: 14px;
-					padding: 2px 0 2px 4px;
-				}
-
-				.vs__actions {
-					padding-left: 0;
-					padding-bottom: 6px;
-					z-index: 2;
-
-					// svg {
-					// 	display: none;
-					// }
-
-					.vs__clear {
-						display: none !important;
-					}
-				}
-
-				.vs__dropdown-toggle {
-					padding-bottom: 0;
-					border-radius: 4px;
-					border: none !important;
-					background-color: #eceff7;
-				}
-
-				.vs__search {
-					z-index: 3;
-					padding: 2px 0px;
-					margin: 0;
-					&::placeholder {
-						color: $black60;
-						font-size: 14px;
-						padding-left: 6px;
-					}
-				}
-
-				.vs__selected-options {
-					padding: 0;
-					color: #232735;
-				}
-			}
 		}
 	}
 

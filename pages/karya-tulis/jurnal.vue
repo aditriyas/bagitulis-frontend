@@ -2,25 +2,24 @@
 	<main class="site-main pv-56">
 		<div class="writings container">
 			<div class="head text-center mb-40">
-				<h2 class="head-title text-black">Semua Karya Tulis</h2>
-				<p class="head-subtitle">
-					Semua Karya Tulis yang telah dibagikan ke Bagitulis.
-				</p>
-				<!-- <input v-model="journalSearch" type="text" class="form-input" /> -->
+				<h2 class="head-title text-black">Jurnal</h2>
+				<p class="head-subtitle">Jurnal yang telah dibagikan ke Bagitulis.</p>
 			</div>
 			<div class="body flex flex--wrap">
 				<div v-for="(item, i) in writings" :key="i" class="body-card">
-					<CardJournal
-						:file="item.file"
-						:thumbnail="item.thumbnail"
-						:category="item.category"
-						:title="item.title"
-						:description="item.description"
-						:tags="item.tags"
-						:user="item.user"
-						:photo="item.photo"
-						:slug="item.id"
-					/>
+					<div v-if="item.category.name === 'Jurnal'">
+						<CardJournal
+							:file="item.file"
+							:thumbnail="item.thumbnail"
+							:category="item.category"
+							:title="item.title"
+							:description="item.description"
+							:tags="item.tags"
+							:user="item.user"
+							:photo="item.photo"
+							:slug="item.id"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -30,6 +29,7 @@
 <script>
 import CardJournal from '../../components/card/CardJournal.vue'
 export default {
+	components: { CardJournal },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [writings] = await Promise.all([
@@ -54,8 +54,7 @@ export default {
 			journalSearch: ''
 		}
 	},
-	methods: {},
-	components: { CardJournal }
+	methods: {}
 }
 </script>
 
