@@ -75,7 +75,7 @@
 									>{{ $t('article') }}</nuxt-link
 								>
 							</li>
-							<li class="main-nav__item flex">
+							<!-- <li class="main-nav__item flex">
 								<div class="search-container relative">
 									<input type="text" class="form-input" />
 									<button
@@ -85,7 +85,7 @@
 										<span class="bzi bzi_2x bzi-Search"></span>
 									</button>
 								</div>
-							</li>
+							</li> -->
 							<li class="main-nav__item separator"></li>
 							<template v-if="!$auth.loggedIn">
 								<li class="main-nav__item flex">
@@ -106,7 +106,6 @@
 								</li>
 							</template>
 							<li
-								v-if="$auth.loggedIn"
 								class="main-nav__item flex relative"
 								@mouseover="showProfileDropdown = true"
 								@mouseleave="showProfileDropdown = false"
@@ -116,7 +115,7 @@
 									class="header-link"
 									title="Akun Saya"
 									><img src="/assets/img/dummy-profile-pic.png" alt="" />
-									<span class="text-black">Hi, {{ $auth.user.name }}!</span>
+									<span class="text-black">Hi, Admin!</span>
 								</nuxt-link>
 								<div
 									v-if="showProfileDropdown === true"

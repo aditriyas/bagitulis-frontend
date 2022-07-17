@@ -3,18 +3,18 @@
 		<div class="article-head text-center">
 			<h1 class="title">Artikel</h1>
 			<p class="subtitle">
-				Cari tahu lebih banyak tentang e-commerce dan semua hal yang bisnis Anda
-				butuhkan.
+				Perluas pengetahuan dengan berbagai macam Artikel yang kami sediakan
+				untuk kamu!
 			</p>
 		</div>
-		<div class="article-search relative mb-56">
+		<!-- <div class="article-search relative mb-56">
 			<input
 				type="text"
 				class="form-input--block form-input search-field"
 				placeholder="Cari Artikel"
 			/>
 			<span class="bzi bzi-Search search-icon"></span>
-		</div>
+		</div> -->
 	</div>
 </template>
 

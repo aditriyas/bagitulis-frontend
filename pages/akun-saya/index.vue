@@ -57,6 +57,7 @@
 <script>
 export default {
 	// middleware: 'auth',
+
 	nuxtI18n: {
 		paths: {
 			id: '/akun-saya',

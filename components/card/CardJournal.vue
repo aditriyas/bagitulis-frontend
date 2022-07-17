@@ -11,11 +11,13 @@
 					Kategori: {{ category.name }}
 				</div>
 				<span class="journal-card--title d-block">
-					{{ title.slice(0, 30) }}<span>...</span>
+					{{ title.slice(0, 30) }}
+					<span v-if="title.length > 25">...</span>
 				</span>
 
 				<span class="journal-card--subtitle d-block text-tc-subtext">
-					{{ description.slice(0, 120) }}<span>...</span>
+					{{ description.slice(0, 120) }}
+					<span v-if="description.length > 200">...</span>
 				</span>
 				<div class="journal-card--footer flex">
 					<div class="photo">
@@ -68,7 +70,7 @@ export default {
 			default: null
 		},
 		tags: {
-			type: Array,
+			type: String,
 			default: null
 		},
 		user: {

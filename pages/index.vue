@@ -2,7 +2,7 @@
 	<main class="site-main">
 		<!-- Hero -->
 		<section>
-			<homepageHero />
+			<homepageHero :reviews="reviews" />
 		</section>
 
 		<LinkCopied />
@@ -54,8 +54,12 @@ export default {
 			const [posts] = await Promise.all([
 				$axios.$get('http://bagitulis-cms.test/api/journals')
 			])
+			const [reviews] = await Promise.all([
+				$axios.$get('http://bagitulis-cms.test/api/banners')
+			])
 			return {
-				posts: posts.data
+				posts: posts.data,
+				reviews: reviews.data
 			}
 		} catch (e) {
 			if (e.response.status === 401) {

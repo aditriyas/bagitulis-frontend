@@ -1,17 +1,9 @@
 <template>
-	<main class="site-main">
-		<div class="container">
+	<main class="site-main relative">
+		<div class="container pv-32">
 			<div class="contact relative">
 				<div class="contact-left">
 					<div class="contact-left--map">
-						<!-- <iframe
-							title="RocketMall"
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.904827929205!2d106.82244961455521!3d-6.276242695457351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f2247acd037f%3A0xddf875f24f8daae7!2sSuitmedia!5e0!3m2!1sen!2sid!4v1643621241164!5m2!1sen!2sid"
-							class="map"
-							style="border: 0"
-							allowfullscreen=""
-							loading="lazy"
-						></iframe> -->
 						<img src="/assets/img/hubungi-kami-illustration.jpg" alt="" />
 					</div>
 					<div class="contact-left--info">
@@ -201,6 +193,21 @@
 				</div>
 			</div>
 		</div>
+		<div v-if="success === true">
+			<div class="modal p-24">
+				<div class="body mb-40">
+					<h3 class="text-black">Terimakasih telah menghubungi kami</h3>
+					<p>
+						Pesan Anda telah kami terima, kami akan menghubungi anda kembali
+						secepatnya!
+					</p>
+				</div>
+				<nuxt-link :to="localePath('/')" exact class="btn--primary success-btn"
+					>Kembali ke Home</nuxt-link
+				>
+			</div>
+			<div class="overlay"></div>
+		</div>
 	</main>
 </template>
 
@@ -223,6 +230,7 @@ export default {
 	data() {
 		return {
 			isSending: false,
+			success: false,
 			countries: ['Indonesia'],
 			products: [],
 			countryOptions: ['Indonesia', 'America'],
@@ -299,9 +307,7 @@ export default {
 				.post('http://bagitulis-cms.test/api/feedback', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					this.$router.push({
-						path: this.localePath('/')
-					})
+					this.success = true
 				})
 				.catch(error => {
 					console.log(error)
@@ -314,7 +320,7 @@ export default {
 
 <style lang="scss" scoped>
 .site-main {
-	padding: 40px 0 300px 0;
+	// padding: 40px 0 300px 0;
 }
 
 .contact {
@@ -525,5 +531,34 @@ export default {
 	img {
 		padding-top: 2px;
 	}
+}
+
+.modal {
+	background-color: #fff;
+	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
+	border-radius: 16px;
+	max-width: 600px;
+	z-index: 1000;
+	position: absolute;
+	height: max-content;
+	margin: 0 auto;
+	left: 0;
+	top: 30%;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+}
+
+.overlay {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.success-btn {
+	padding: 12px 32px;
 }
 </style>

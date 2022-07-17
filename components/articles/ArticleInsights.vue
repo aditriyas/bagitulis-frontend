@@ -122,6 +122,7 @@ export default {
 
 			.card-wrapper {
 				gap: 26px;
+				justify-content: center;
 
 				img {
 					max-width: 100%;

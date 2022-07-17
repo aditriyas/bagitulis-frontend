@@ -7,28 +7,11 @@
 
 				<!-- Article Insights -->
 				<articlesArticleInsights
-					v-if="isEmpty === false"
+					v-if="articles.length >= 1"
 					:left-articles="leftArticles"
 					:right-articles="rightArticles"
 				/>
-
-				<!-- Tab Navigation -->
-				<!-- <div class="tab-nav mb-40">
-					<ul class="pl-0 mb-0 list-nostyle">
-						<li v-for="(item, index) in tabnames" :key="index" class="tab-opt">
-							<nuxt-link
-								:to="localePath(`/artikel/${tablinks[index]}`)"
-								:title="item"
-								class="tab-opt-link pv-16 ph-56"
-								:class="tablinks[index] === null ? 'disabled' : ''"
-								exact
-							>
-								<h4 class="mb-0 f-20 text-semibold text-cap">{{ item }}</h4>
-							</nuxt-link>
-						</li>
-					</ul>
-				</div> -->
-				<div v-if="isEmpty === false" class="tab-content flex flex--wrap">
+				<div v-if="articles.length >= 1" class="tab-content flex flex--wrap">
 					<div
 						v-for="(item, index) in articles"
 						:key="index"
@@ -36,12 +19,12 @@
 					>
 						<nuxt-link :to="localePath(`/artikel/${item.id}`)">
 							<img
-								:src="item.thumbnail"
+								src="/assets/img/article-image-1.png"
 								alt="Tab Card Image"
 								:title="item.title"
-								class="mb-16"
+								class="article-img mb-12"
 							/>
-							<div
+							<!-- <div
 								class="category"
 								:class="[
 									item.cardCategory === 'Business Insights' ? 'cat-green' : '',
@@ -50,26 +33,24 @@
 								]"
 							>
 								{{ item.cardCategory }}
+							</div> -->
+							<div class="body">
+								<h4 class="title">
+									{{ item.title.slice(0, 40) }}
+									<span v-if="item.title.length > 30">...</span>
+								</h4>
+								<p class="desc text-black">
+									{{ item.description.slice(0, 200) }}
+									<span v-if="item.description.length > 200">...</span>
+								</p>
+								<p class="date">{{ dateFormat(item.created_at) }}</p>
 							</div>
-							<h4 class="title">
-								{{ item.title }}
-							</h4>
-							<p class="date">{{ item.created_at }}</p>
 						</nuxt-link>
 					</div>
 				</div>
 				<div v-else>
 					<articlesEmpty />
 				</div>
-				<!-- <Pagination
-					v-if="isEmpty === false"
-					:total-pages="512"
-					:max-visible-buttons="8"
-					:total="512"
-					:per-page="1"
-					:current-page="1"
-					class="mb-0"
-				/> -->
 			</div>
 		</div>
 	</main>
@@ -195,6 +176,15 @@ export default {
 					'Cari artikel sesuai dengan kategori yang Anda perlukan disini.'
 			})
 		}
+	},
+	methods: {
+		dateFormat(date) {
+			const tanggal = new Date()
+			const day = tanggal.getDate()
+			const year = tanggal.getFullYear()
+			const month = tanggal.toLocaleString('default', { month: 'long' })
+			return `${day} ${month} ${year}`
+		}
 	}
 }
 </script>
@@ -204,66 +194,6 @@ export default {
 	padding-bottom: 96px;
 }
 
-/deep/ {
-	.slick-slider {
-		@media #{$large} {
-			position: relative;
-			&::before {
-				content: '';
-				height: 100%;
-				position: absolute;
-				left: 0;
-				z-index: 2;
-				background-image: linear-gradient(
-					to left,
-					rgba(255, 255, 255, 0),
-					white
-				);
-				@media #{$extra_large} {
-					width: 750px;
-				}
-				// background: black;
-			}
-			&::after {
-				content: '';
-				height: 100%;
-				position: absolute;
-				width: 350px;
-				right: 0;
-				z-index: 2;
-				background-image: linear-gradient(
-					to right,
-					rgba(255, 255, 255, 0),
-					white
-				);
-				top: 0;
-				@media #{$extra_large} {
-					width: 750px;
-				}
-			}
-		}
-	}
-	:not(.slick-active) {
-		.slide-right {
-			opacity: 1;
-		}
-	}
-
-	.slick-active {
-		.slide-left {
-			opacity: 1;
-		}
-
-		.slide-right {
-			transform: translateX(0) scale(1);
-
-			opacity: 1;
-			@media #{$large} {
-				margin-inline: 40px;
-			}
-		}
-	}
-}
 .article {
 	&-tab {
 		margin-bottom: 32px;
@@ -325,7 +255,17 @@ export default {
 		justify-content: space-evenly;
 		&--card {
 			width: 100%;
-			max-width: 357px;
+			max-width: 400px;
+			background-color: transparent;
+			box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
+			padding: 16px 20px;
+			border-radius: 10px;
+
+			&:hover {
+				transform: scale(1.07);
+				transition: all 0.3s ease-in-out;
+				box-shadow: 0px 2px 32px 0px rgba(0, 30, 51, 0.2);
+			}
 
 			.title {
 				color: $tc-head;
@@ -335,12 +275,23 @@ export default {
 				margin-bottom: 16px;
 			}
 
+			.desc {
+				font-size: 14px;
+			}
+
 			.category {
 				width: max-content;
 				font-size: 12px;
 				padding: 6px 12px;
 				border-radius: 13px;
 				margin-bottom: 15px;
+			}
+
+			.article-img {
+				width: 100%;
+				max-height: 232px;
+				object-fit: cover;
+				border-radius: 10px;
 			}
 
 			.date {
