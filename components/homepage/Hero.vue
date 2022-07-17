@@ -13,9 +13,9 @@
 				<div class="review-slide container">
 					<div class="slide-main slide-right">
 						<img
-							:src="`assets/img/${item.bannerImage}`"
-							:alt="item.reviewInfo"
-							:title="item.reviewInfo"
+							:src="`storage/banner-image/${item.image}`"
+							:alt="item.title"
+							:title="item.title"
 							class="slide-brand mb-32"
 						/>
 					</div>
@@ -27,6 +27,12 @@
 
 <script>
 export default {
+	props: {
+		reviews: {
+			type: Array,
+			default: null
+		}
+	},
 	data() {
 		return {
 			reviewSlidesConfig: {
@@ -40,7 +46,7 @@ export default {
 				slidesToScroll: 1,
 				autoplay: true
 			},
-			reviews: [
+			reviewsDum: [
 				{
 					bannerImage: 'banner-1.jpg'
 				},

@@ -8,19 +8,21 @@
 				</p>
 			</div>
 			<div class="body flex flex--wrap">
-				<div v-for="(item, i) in writings" :key="i" class="body-card">
+				<div v-for="(item, i) in writings" :key="i">
 					<div v-if="item.category.name === 'Karya Tulis Non-Ilmiah'">
-						<CardJournal
-							:file="item.file"
-							:thumbnail="item.thumbnail"
-							:category="item.category"
-							:title="item.title"
-							:description="item.description"
-							:tags="item.tags"
-							:user="item.user"
-							:photo="item.photo"
-							:slug="item.id"
-						/>
+						<div class="body-card">
+							<CardJournal
+								:file="item.file"
+								:thumbnail="item.thumbnail"
+								:category="item.category"
+								:title="item.title"
+								:description="item.description"
+								:tags="item.tags"
+								:user="item.user"
+								:photo="item.photo"
+								:slug="item.id"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

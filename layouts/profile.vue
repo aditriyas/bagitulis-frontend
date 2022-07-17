@@ -34,6 +34,12 @@
 						</li>
 						<li class="nav-item">
 							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
+							<nuxt-link :to="localePath('/akun-saya/unggah')" exact
+								>Unggah Karya Tulis</nuxt-link
+							>
+						</li>
+						<li class="nav-item">
+							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
 							<nuxt-link :to="localePath('/akun-saya/karya-tulis-saya')" exact
 								>Karya Tulis Saya</nuxt-link
 							>
