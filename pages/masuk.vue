@@ -102,10 +102,6 @@ export default {
 	data() {
 		return {
 			showPassword: false,
-			form: {
-				email: 'admin@gmail.com',
-				password: 'password'
-			},
 			formData: {
 				email: null,
 				password: null
@@ -125,32 +121,15 @@ export default {
 		}
 	},
 	methods: {
-		// async login() {
-		// 	try {
-		// 		const response = await this.$auth.loginWith('laravelSanctum', {
-		// 			data: this.formData
-		// 		})
-		// 		// this.$auth.$storage.setUniversal('user', response.data.data.user, true)
-		// 		this.$auth.setUser(response.data.user)
-		// 		this.$auth.$storage.setState('loggedIn', true)
-		// 		// this.$auth.$storage.setLocalStorage('loggedIn', true)
-		// 		console.log(response)
-		// 	} catch (err) {
-		// 		console.log(err)
-		// 	}
-		// }
 		login() {
 			this.$auth
 				.loginWith('laravelSanctum', {
 					data: {
-						email: this.form.email,
-						password: this.form.password
+						email: this.formData.email,
+						password: this.formData.password
 					}
 				})
-				.then(
-					response => console.log(response)
-					// (this.$store.state.auth.loggedIn = true)
-				)
+				.then(response => console.log(response))
 				.catch(error => console.log(error))
 		}
 	}

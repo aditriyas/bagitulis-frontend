@@ -3,7 +3,7 @@
 		<div class="detail container">
 			<div class="card">
 				<div class="card-image flex mb-32">
-					<img src="/assets/img/dummy-profile-pic.png" alt="" class="mv-auto" />
+					<img :src="writing.thumbnail_path" alt="" class="mv-auto" />
 				</div>
 				<div class="card-info flex pb-32">
 					<div class="card-info--item">

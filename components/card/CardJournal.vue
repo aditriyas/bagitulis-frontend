@@ -5,7 +5,7 @@
 		class="journal"
 	>
 		<div class="journal-card text-center">
-			<img :src="thumbnail" alt="" class="journal-card--img" />
+			<img :src="`${thumbnail}`" alt="" class="journal-card--img" />
 			<div class="journal-card--info text-left flex flex--row">
 				<div class="journal-card--category mb-12 d-block">
 					Kategori: {{ category.name }}
@@ -91,7 +91,6 @@ export default {
 		max-width: 400px;
 		flex-direction: column;
 		border-radius: 16px;
-		// box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 
 		&--info {
 			border: none !important;
@@ -107,8 +106,9 @@ export default {
 		}
 		&--img {
 			width: 100%;
+			height: 230px;
 			object-fit: cover;
-			// border-radius: 16px 16px 0 0;
+			border-radius: 16px 16px 0 0;
 		}
 
 		&--author {

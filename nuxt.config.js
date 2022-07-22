@@ -138,11 +138,12 @@ export default {
 					},
 					logout: {
 						url: '/api/logout'
+					},
+					user: {
+						url: '/api/profile',
+						method: 'GET',
+						propertyName: 'user'
 					}
-				},
-				user: {
-					property: false,
-					autoFetch: true
 				}
 			}
 		},

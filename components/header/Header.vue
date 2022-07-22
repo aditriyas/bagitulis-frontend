@@ -105,32 +105,36 @@
 									>
 								</li>
 							</template>
-							<li
-								class="main-nav__item flex relative"
-								@mouseover="showProfileDropdown = true"
-								@mouseleave="showProfileDropdown = false"
-							>
-								<nuxt-link
-									:to="localePath('/akun-saya')"
-									class="header-link"
-									title="Akun Saya"
-									><img src="/assets/img/dummy-profile-pic.png" alt="" />
-									<span class="text-black">Hi, Admin!</span>
-								</nuxt-link>
-								<div
-									v-if="showProfileDropdown === true"
-									class="profile-dropdown"
+							<template v-if="$auth.loggedIn">
+								<li
+									class="main-nav__item flex relative"
+									@mouseover="showProfileDropdown = true"
+									@mouseleave="showProfileDropdown = false"
 								>
-									<div class="profile-dropdown--item" @click.prevent="logout">
-										Logout
-									</div>
 									<nuxt-link
-										class="profile-dropdown--item"
 										:to="localePath('/akun-saya')"
-										>Akun Saya</nuxt-link
+										class="header-link"
+										title="Akun Saya"
+										><img src="/assets/img/dummy-profile-pic.png" alt="" />
+										<span class="text-black"
+											>Hi, {{ $auth.user.user.name }}!</span
+										>
+									</nuxt-link>
+									<div
+										v-if="showProfileDropdown === true"
+										class="profile-dropdown"
 									>
-								</div>
-							</li>
+										<div class="profile-dropdown--item" @click.prevent="logout">
+											Logout
+										</div>
+										<nuxt-link
+											class="profile-dropdown--item"
+											:to="localePath('/akun-saya')"
+											>Akun Saya</nuxt-link
+										>
+									</div>
+								</li>
+							</template>
 							<li class="burger flex">
 								<button
 									class="burger-button"

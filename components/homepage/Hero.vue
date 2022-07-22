@@ -13,7 +13,7 @@
 				<div class="review-slide container">
 					<div class="slide-main slide-right">
 						<img
-							:src="`storage/banner-image/${item.image}`"
+							:src="`http://bagitulis-cms.test/storage/${item.image}`"
 							:alt="item.title"
 							:title="item.title"
 							class="slide-brand mb-32"

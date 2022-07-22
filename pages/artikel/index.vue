@@ -19,7 +19,7 @@
 					>
 						<nuxt-link :to="localePath(`/artikel/${item.id}`)">
 							<img
-								src="/assets/img/article-image-1.png"
+								:src="`http://bagitulis-cms.test/storage/${item.thumbnail}`"
 								alt="Tab Card Image"
 								:title="item.title"
 								class="article-img mb-12"

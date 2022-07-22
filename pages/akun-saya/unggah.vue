@@ -25,7 +25,6 @@
 					<v-select
 						v-model="formData.category"
 						:options="categories"
-						:value="categories.id"
 						title="category"
 						name="category"
 						label="name"
@@ -44,7 +43,6 @@
 						class="form-input w-100"
 					></textarea>
 				</div>
-				<!-- <div class="form-item-flex flex"> -->
 				<div class="thumbnail">
 					<label for="thumbnail" class="d-block"
 						>Thumbnail<span class="text-primary">*</span></label
@@ -75,7 +73,6 @@
 						/>
 					</div>
 				</div>
-				<!-- </div> -->
 				<div class="button-container flex">
 					<button
 						type="submit"
@@ -96,7 +93,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [categories] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/categories')
+				$axios.$get('http://bagitulis-cms.test/api/category')
 			])
 			return {
 				categories: categories.data
@@ -133,8 +130,8 @@ export default {
 			const formData = new FormData()
 
 			formData.set('title', this.formData.title)
-			formData.set('category_id', 1)
-			formData.set('user_id', 1)
+			formData.set('category', this.formData.category.id)
+			formData.set('user_id', this.$auth.user.user.id)
 			formData.set('description', this.formData.description)
 			formData.set('thumbnail', this.formData.thumbnail)
 			formData.set('file', this.formData.file)
@@ -144,11 +141,10 @@ export default {
 				.post('http://bagitulis-cms.test/api/journal', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					this.success = true
+					alert('Success')
 				})
 				.catch(error => {
 					console.log(error)
-					this.$nuxt.refresh()
 				})
 		},
 		file(event) {

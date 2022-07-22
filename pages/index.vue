@@ -2,7 +2,9 @@
 	<main class="site-main">
 		<!-- Hero -->
 		<section>
-			<homepageHero :reviews="reviews" />
+			<template v-if="reviews.length > 0">
+				<homepageHero :reviews="reviews" />
+			</template>
 		</section>
 
 		<LinkCopied />

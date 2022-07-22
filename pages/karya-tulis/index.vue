@@ -12,7 +12,7 @@
 				<div v-for="(item, i) in writings" :key="i" class="body-card">
 					<CardJournal
 						:file="item.file"
-						:thumbnail="item.thumbnail"
+						:thumbnail="item.thumbnail_path"
 						:category="item.category"
 						:title="item.title"
 						:description="item.description"
