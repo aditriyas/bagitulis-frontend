@@ -321,6 +321,7 @@ export default {
 <style lang="scss" scoped>
 .site-main {
 	// padding: 40px 0 300px 0;
+	min-height: 100vh;
 }
 
 .contact {

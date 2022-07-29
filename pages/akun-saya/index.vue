@@ -12,7 +12,13 @@
 					<label for="name"
 						>{{ $t('Name') }}<span class="text-primary">*</span></label
 					>
-					<input id="name" type="text" name="name" class="form-input w-100" />
+					<input
+						id="name"
+						type="text"
+						name="name"
+						class="form-input w-100"
+						:value="$auth.user[0].name"
+					/>
 				</div>
 				<div class="form-item">
 					<label for="email">Email<span class="text-primary">*</span></label>
@@ -21,6 +27,8 @@
 						type="email"
 						name="email"
 						class="form-input w-100"
+						:value="$auth.user[0].email"
+						disabled
 					/>
 				</div>
 				<div class="form-item">

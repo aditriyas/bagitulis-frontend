@@ -117,7 +117,7 @@
 										title="Akun Saya"
 										><img src="/assets/img/dummy-profile-pic.png" alt="" />
 										<span class="text-black"
-											>Hi, {{ $auth.user.user.name }}!</span
+											>Hi, {{ $auth.user[0].name }}!</span
 										>
 									</nuxt-link>
 									<div
@@ -193,10 +193,6 @@ export default {
 						{
 							title: `${this.$t('nonScientificWritings')}`,
 							url: 'karya-tulis/non-ilmiah'
-						},
-						{
-							title: `${this.$t('readersFav')}`,
-							url: 'karya-tulis/favorit'
 						}
 					]
 				},
@@ -239,13 +235,6 @@ export default {
 					id: 3,
 					name: `${this.$t('nonScientificWritings')}`,
 					link: 'non-ilmiah',
-					isDisabled: false,
-					comingSoon: false
-				},
-				{
-					id: 4,
-					name: `${this.$t('readersFav')}`,
-					link: 'favorit',
 					isDisabled: false,
 					comingSoon: false
 				}

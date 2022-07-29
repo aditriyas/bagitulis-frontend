@@ -9,10 +9,10 @@
 						<img src="/assets/img/dummy-profile-pic.png" alt="" />
 						<div class="profile-info--text">
 							<span class="name d-block">{{
-								$auth.loggedIn ? `${$auth.user.user.name}` : 'John Doe'
+								$auth.loggedIn ? `${$auth.user[0].name}` : 'John Doe'
 							}}</span>
 							<span class="email d-block">{{
-								$auth.loggedIn ? `${$auth.user.user.email}` : 'example@mail.com'
+								$auth.loggedIn ? `${$auth.user[0].email}` : 'example@mail.com'
 							}}</span>
 						</div>
 					</div>

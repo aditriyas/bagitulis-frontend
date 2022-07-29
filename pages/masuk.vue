@@ -1,6 +1,10 @@
 <template>
 	<main class="main">
-		<form class="login">
+		<form class="login relative">
+			<div v-if="err === true" class="error-notif flex">
+				<span> Login gagal, periksa kembali data Anda! </span>
+				<span class="bzi bzi-Cancel bzi-2x" @click.prevent="err = false"></span>
+			</div>
 			<div class="login-form left flex--wrap">
 				<h2 class="text-center mb-0 text-tc-head">Masuk</h2>
 				<div class="email-container form-item">
@@ -102,6 +106,8 @@ export default {
 	data() {
 		return {
 			showPassword: false,
+			showNotif: false,
+			err: false,
 			formData: {
 				email: null,
 				password: null
@@ -130,7 +136,7 @@ export default {
 					}
 				})
 				.then(response => console.log(response))
-				.catch(error => console.log(error))
+				.catch(error => console.log(error), (this.err = true))
 		}
 	}
 }
@@ -226,7 +232,30 @@ label {
 	}
 }
 
+.relative {
+	position: relative;
+}
+
 .form-input {
 	width: 100%;
+}
+
+.error-notif {
+	// width: 400px;
+	padding: 12px;
+	background-color: rgba(255, 0, 0, 0.613);
+	color: white;
+	font-size: 14px;
+	border-radius: 10px;
+	justify-content: space-between;
+	position: absolute;
+	top: -80px;
+	left: 0;
+	gap: 24px;
+	align-items: center;
+}
+
+.bzi-Cancel {
+	color: white;
 }
 </style>

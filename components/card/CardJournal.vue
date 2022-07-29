@@ -27,13 +27,17 @@
 						/>
 					</div>
 					<div class="info">
-						<span class="journal-card--tags text-tc-subtext"
-							>Tags:
-							<span v-for="(item, i) in tags" :key="i">{{ item }} </span></span
-						>
+						<template v-if="tags">
+							<span class="journal-card--tags text-tc-subtext"
+								>Tags:
+								<span v-for="(item, i) in tags" :key="i"
+									>{{ item.name.en }}
+								</span></span
+							>
+						</template>
 						<span class="journal-card--author d-block"
-							><span class="text-black">Diunggah oleh: </span>{{ user }} on May
-							18, 2018</span
+							><span class="text-black">Diunggah oleh: </span>{{ user }} on
+							{{ dateFormat(date) }}</span
 						>
 					</div>
 				</div>
@@ -70,7 +74,7 @@ export default {
 			default: null
 		},
 		tags: {
-			type: String,
+			type: Array,
 			default: null
 		},
 		user: {
@@ -80,6 +84,19 @@ export default {
 		photo: {
 			type: String,
 			default: null
+		},
+		date: {
+			type: String,
+			default: null
+		}
+	},
+	methods: {
+		dateFormat(date) {
+			const tanggal = new Date()
+			const day = tanggal.getDate()
+			const year = tanggal.getFullYear()
+			const month = tanggal.toLocaleString('default', { month: 'long' })
+			return `${month} ${day} ${year}`
 		}
 	}
 }

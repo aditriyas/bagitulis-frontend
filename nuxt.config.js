@@ -141,8 +141,7 @@ export default {
 					},
 					user: {
 						url: '/api/profile',
-						method: 'GET',
-						propertyName: 'user'
+						method: 'GET'
 					}
 				}
 			}

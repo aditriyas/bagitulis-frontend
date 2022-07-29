@@ -16,7 +16,12 @@
 					</div>
 					<div class="card-info--item">
 						<p class="info-title">Download</p>
-						<a :href="writing.file" :download="writing.title">Download</a>
+						<a
+							:href="writing.file_path"
+							:download="writing.name"
+							target="_blank"
+							>Download</a
+						>
 					</div>
 				</div>
 				<hr />
@@ -37,13 +42,11 @@
 export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
-			const [writing, writings] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/journal/${params.slug}`),
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+			const [writing] = await Promise.all([
+				$axios.$get(`http://bagitulis-cms.test/api/journal/${params.slug}`)
 			])
 			return {
-				writing: writing.data,
-				writings: writings.data
+				writing: writing.data
 			}
 		} catch (e) {
 			if (e.response.status === 401) {

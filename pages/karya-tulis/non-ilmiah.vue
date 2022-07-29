@@ -9,20 +9,19 @@
 			</div>
 			<div class="body flex flex--wrap">
 				<div v-for="(item, i) in writings" :key="i">
-					<div v-if="item.category.name === 'Karya Tulis Non-Ilmiah'">
-						<div class="body-card">
-							<CardJournal
-								:file="item.file"
-								:thumbnail="item.thumbnail"
-								:category="item.category"
-								:title="item.title"
-								:description="item.description"
-								:tags="item.tags"
-								:user="item.user"
-								:photo="item.photo"
-								:slug="item.id"
-							/>
-						</div>
+					<div class="body-card">
+						<CardJournal
+							:file="item.file_path"
+							:thumbnail="item.thumbnail_path"
+							:category="item.category"
+							:title="item.title"
+							:description="item.description"
+							:tags="item.tags"
+							:user="item.user"
+							:photo="item.photo"
+							:slug="item.id"
+							:date="item.updated_at"
+						/>
 					</div>
 				</div>
 			</div>
@@ -36,8 +35,9 @@ export default {
 	components: { CardJournal },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
+			const cat = 'Non Ilmiah'
 			const [writings] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+				$axios.$get(`http://bagitulis-cms.test/api/journals?category=${cat}`)
 			])
 			return {
 				writings: writings.data

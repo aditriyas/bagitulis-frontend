@@ -9,15 +9,16 @@
 				<div v-for="(item, i) in writings" :key="i" class="body-card">
 					<div v-if="item.category.name === 'Jurnal'">
 						<CardJournal
-							:file="item.file"
-							:thumbnail="item.thumbnail"
+							:file="item.file_path"
+							:thumbnail="item.thumbnail_path"
 							:category="item.category"
 							:title="item.title"
 							:description="item.description"
 							:tags="item.tags"
 							:user="item.user"
-							:photo="item.photo"
+							:photo="item.thumbnail"
 							:slug="item.id"
+							:date="item.updated_at"
 						/>
 					</div>
 				</div>
@@ -32,8 +33,9 @@ export default {
 	components: { CardJournal },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
+			const cat = 'Jurnal'
 			const [writings] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+				$axios.$get(`http://bagitulis-cms.test/api/journals?category=${cat}`)
 			])
 			return {
 				writings: writings.data

@@ -2,26 +2,6 @@
 	<footer class="site-footer pv-24">
 		<div class="container flex f-space-between flex--wrap v-center">
 			<div class="copyright">©2022 Bagitulis, Aditya Triyaswanda</div>
-			<div class="links flex">
-				<nuxt-link
-					:to="localePath('/tentang-kami')"
-					class="links-item"
-					title="Tentang Kami"
-					>Tentang Kami</nuxt-link
-				>
-				<nuxt-link
-					:to="localePath('/faq/tentang-rocketmall')"
-					class="links-item"
-					title="Faq"
-					>FAQ</nuxt-link
-				>
-				<nuxt-link
-					:to="localePath('/kebijakan-pribadi')"
-					class="links-item"
-					title="Kebijakan Pribadi"
-					>Kebijakan Pribadi</nuxt-link
-				>
-			</div>
 		</div>
 	</footer>
 </template>
