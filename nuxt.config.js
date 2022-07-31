@@ -96,7 +96,8 @@ export default {
 
 	axios: {
 		proxy: true,
-		AxiosInstance
+		AxiosInstance,
+		credentials: true
 	},
 
 	sitemap: {

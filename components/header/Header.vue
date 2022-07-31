@@ -116,7 +116,7 @@
 										class="header-link"
 										title="Akun Saya"
 										><img src="/assets/img/dummy-profile-pic.png" alt="" />
-										<span class="text-black"
+										<span class="text-black" style="text-transform: capitalize"
 											>Hi, {{ $auth.user[0].name }}!</span
 										>
 									</nuxt-link>

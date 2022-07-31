@@ -74,6 +74,7 @@
 				</div>
 				<button
 					type="submit"
+					:disabled="$v.$invalid"
 					class="btn--primary login-submit btn"
 					@click.prevent="login()"
 				>

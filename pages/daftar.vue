@@ -1,5 +1,5 @@
 <template>
-	<main class="main">
+	<main class="main relative">
 		<form class="register">
 			<div class="register-form left flex--wrap">
 				<h2 class="text-center mb-0 text-tc-head">Daftar</h2>
@@ -140,6 +140,21 @@
 				<img src="/assets/img/login-illustration.jpg" alt="" />
 			</div>
 		</form>
+		<div v-if="success === true">
+			<div class="modal p-24">
+				<div class="body mb-40">
+					<h3 class="text-black">Terimakasih telah menghubungi kami</h3>
+					<p>
+						Pesan Anda telah kami terima, kami akan menghubungi anda kembali
+						secepatnya!
+					</p>
+				</div>
+				<nuxt-link :to="localePath('/')" exact class="btn--primary success-btn"
+					>Kembali ke Home</nuxt-link
+				>
+			</div>
+			<div class="overlay"></div>
+		</div>
 	</main>
 </template>
 
@@ -158,6 +173,7 @@ export default {
 		return {
 			showPassword: false,
 			showRepeatPassword: false,
+			// success: true,
 			formData: {
 				name: null,
 				email: null,
@@ -198,9 +214,7 @@ export default {
 				.post('http://bagitulis-cms.test/api/register', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					this.$router.push({
-						path: this.localePath('/hubungi-kami/sukses')
-					})
+					this.success = true
 				})
 				.catch(error => {
 					console.log(error)
@@ -300,6 +314,35 @@ label {
 			max-width: 600px;
 		}
 	}
+}
+
+.modal {
+	background-color: #fff;
+	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
+	border-radius: 16px;
+	max-width: 600px;
+	z-index: 1000;
+	position: absolute;
+	height: max-content;
+	margin: 0 auto;
+	left: 0;
+	top: 30%;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.success-btn {
+	padding: 12px 32px;
 }
 
 .form-input {

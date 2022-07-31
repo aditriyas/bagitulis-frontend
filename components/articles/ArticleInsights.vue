@@ -1,6 +1,6 @@
 <template>
 	<div class="article">
-		<div class="article-card flex flex--wrap">
+		<div class="article-card">
 			<div
 				v-for="(item, index) in leftArticles"
 				:key="index"
@@ -18,28 +18,6 @@
 						{{ item.articleTitle }}
 					</h2>
 					<p class="date">{{ item.articleDate }}</p>
-				</nuxt-link>
-			</div>
-			<div class="article-card--right">
-				<nuxt-link :to="localePath('/artikel/:title')" title="Article">
-					<div
-						v-for="(item, index) in rightArticles"
-						:key="index"
-						class="card-wrapper flex flex--wrap"
-					>
-						<img
-							:src="item.articleImage"
-							alt="Article Small Thumbnail"
-							img="Article Thumbnail"
-							width="228"
-							height="127"
-						/>
-						<div class="card-text">
-							<div class="category">{{ item.articleCategory }}</div>
-							<h3 class="title">{{ item.articleTitle }}</h3>
-							<p class="date">{{ item.articleDate }}</p>
-						</div>
-					</div>
 				</nuxt-link>
 			</div>
 		</div>

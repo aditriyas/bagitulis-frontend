@@ -8,22 +8,29 @@
 				</p>
 			</div>
 			<div class="body flex flex--wrap">
-				<div v-for="(item, i) in writings" :key="i">
-					<div class="body-card">
-						<CardJournal
-							:file="item.file_path"
-							:thumbnail="item.thumbnail_path"
-							:category="item.category"
-							:title="item.title"
-							:description="item.description"
-							:tags="item.tags"
-							:user="item.user"
-							:photo="item.photo"
-							:slug="item.id"
-							:date="item.updated_at"
-						/>
+				<template v-if="writings.length > 0">
+					<div v-for="(item, i) in writings" :key="i">
+						<div class="body-card">
+							<CardJournal
+								:file="item.file_path"
+								:thumbnail="item.thumbnail_path"
+								:category="item.category"
+								:title="item.title"
+								:description="item.description"
+								:tags="item.tags"
+								:user="item.user"
+								:photo="item.photo"
+								:slug="item.id"
+								:date="item.updated_at"
+							/>
+						</div>
 					</div>
-				</div>
+				</template>
+				<template v-else>
+					<div class="container text-center">
+						<img src="/assets/img/empty.jpg" alt="" width="800" />
+					</div>
+				</template>
 			</div>
 		</div>
 	</main>

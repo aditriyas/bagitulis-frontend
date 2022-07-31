@@ -21,7 +21,7 @@
 			</div>
 			<div class="bzg_c success-right" data-col="m6" style="height: 100%">
 				<img
-					src="/assets/img/minta-demo-success-image.png"
+					src="/assets/img/success.jpg"
 					alt="Success Img"
 					title="Sukses"
 					class="succes-image"
@@ -57,8 +57,8 @@ export default {
 <style lang="scss" scoped>
 .site-main {
 	padding-top: 45px;
-	background: #f6f8fb;
-	height: 100%;
+	background: white;
+	// height: 100%;
 }
 .bzg {
 	justify-content: flex-end;

@@ -131,7 +131,7 @@ export default {
 
 			formData.set('title', this.formData.title)
 			formData.set('category', this.formData.category.id)
-			formData.set('user_id', this.$auth.user.user.id)
+			formData.set('user_id', this.$auth.user[0].id)
 			formData.set('description', this.formData.description)
 			formData.set('thumbnail', this.formData.thumbnail)
 			formData.set('file', this.formData.file)
@@ -141,7 +141,9 @@ export default {
 				.post('http://bagitulis-cms.test/api/journal', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					alert('Success')
+					this.$router.push({
+						path: this.localePath('/akun-saya/karya-tulis-saya')
+					})
 				})
 				.catch(error => {
 					console.log(error)
@@ -191,14 +193,22 @@ input[type='file'] {
 			color: $tc-head;
 		}
 
-		input {
-			font-size: 14px;
-		}
-
 		&-flex {
 			justify-content: flex-start;
 			gap: 30px;
 		}
+	}
+}
+input,
+textarea,
+select {
+	font-size: 14px;
+}
+
+/deep/ {
+	.vs__dropdown-toggle,
+	.vs__dropdown-menu {
+		font-size: 14px;
 	}
 }
 

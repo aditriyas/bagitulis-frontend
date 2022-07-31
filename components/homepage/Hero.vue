@@ -13,7 +13,11 @@
 				<div class="review-slide container">
 					<div class="slide-main slide-right">
 						<img
-							:src="`http://bagitulis-cms.test/storage/${item.image}`"
+							:src="
+								item.image_path === null
+									? `assets/img/banner-1.jpg`
+									: `${item.image_path}`
+							"
 							:alt="item.title"
 							:title="item.title"
 							class="slide-brand mb-32"

@@ -22,6 +22,7 @@
 							:tags="item.tags"
 							:user="item.user"
 							:photo="item.photo"
+							:slug="item.id"
 						/>
 					</div>
 				</VueSlickCarousel>

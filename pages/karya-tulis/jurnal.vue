@@ -6,8 +6,8 @@
 				<p class="head-subtitle">Jurnal yang telah dibagikan ke Bagitulis.</p>
 			</div>
 			<div class="body flex flex--wrap">
-				<div v-for="(item, i) in writings" :key="i" class="body-card">
-					<div v-if="item.category.name === 'Jurnal'">
+				<template v-if="writings.length > 0">
+					<div v-for="(item, i) in writings" :key="i" class="body-card">
 						<CardJournal
 							:file="item.file_path"
 							:thumbnail="item.thumbnail_path"
@@ -21,7 +21,12 @@
 							:date="item.updated_at"
 						/>
 					</div>
-				</div>
+				</template>
+				<template v-else>
+					<div class="container text-center">
+						<img src="/assets/img/empty.jpg" alt="" width="800" />
+					</div>
+				</template>
 			</div>
 		</div>
 	</main>

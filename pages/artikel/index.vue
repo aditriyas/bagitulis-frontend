@@ -6,11 +6,11 @@
 				<articlesHead />
 
 				<!-- Article Insights -->
-				<articlesArticleInsights
+				<!-- <articlesArticleInsights
 					v-if="articles.length >= 1"
 					:left-articles="leftArticles"
 					:right-articles="rightArticles"
-				/>
+				/> -->
 				<div v-if="articles.length >= 1" class="tab-content flex flex--wrap">
 					<div
 						v-for="(item, index) in articles"
@@ -19,21 +19,15 @@
 					>
 						<nuxt-link :to="localePath(`/artikel/${item.id}`)">
 							<img
-								:src="`http://bagitulis-cms.test/storage/${item.thumbnail}`"
+								:src="
+									item.thumbnail_path === null
+										? '/assets/img/article-image-origin.jpg'
+										: `${item.thumbnail_path}`
+								"
 								alt="Tab Card Image"
 								:title="item.title"
 								class="article-img mb-12"
 							/>
-							<!-- <div
-								class="category"
-								:class="[
-									item.cardCategory === 'Business Insights' ? 'cat-green' : '',
-									item.cardCategory === 'Tips & Trends' ? 'cat-yellow' : '',
-									item.cardCategory === 'E-Commerce Update' ? 'cat-blue' : ''
-								]"
-							>
-								{{ item.cardCategory }}
-							</div> -->
 							<div class="body">
 								<h4 class="title">
 									{{ item.title.slice(0, 40) }}

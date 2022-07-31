@@ -5,7 +5,13 @@
 		class="journal"
 	>
 		<div class="journal-card text-center">
-			<img :src="`${thumbnail}`" alt="" class="journal-card--img" />
+			<img
+				:src="
+					thumbnail === null ? '/assets/img/jurnal-img-1.png' : `${thumbnail}`
+				"
+				alt=""
+				class="journal-card--img"
+			/>
 			<div class="journal-card--info text-left flex flex--row">
 				<div class="journal-card--category mb-12 d-block">
 					Kategori: {{ category.name }}
@@ -22,8 +28,7 @@
 				<div class="journal-card--footer flex">
 					<div class="photo">
 						<img
-							:src="photo != null ? photo : 'assets/img/dummy-profile-pic.png'"
-							alt=""
+							:src="photo === null ? 'assets/img/dummy-profile-pic.png' : photo"
 						/>
 					</div>
 					<div class="info">
