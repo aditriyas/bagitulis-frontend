@@ -140,26 +140,12 @@
 				<img src="/assets/img/login-illustration.jpg" alt="" />
 			</div>
 		</form>
-		<div v-if="success === true">
-			<div class="modal p-24">
-				<div class="body mb-40">
-					<h3 class="text-black">Terimakasih telah menghubungi kami</h3>
-					<p>
-						Pesan Anda telah kami terima, kami akan menghubungi anda kembali
-						secepatnya!
-					</p>
-				</div>
-				<nuxt-link :to="localePath('/')" exact class="btn--primary success-btn"
-					>Kembali ke Home</nuxt-link
-				>
-			</div>
-			<div class="overlay"></div>
-		</div>
 	</main>
 </template>
 
 <script>
 import { required, email, maxLength, sameAs } from 'vuelidate/lib/validators'
+import swal from 'sweetalert2'
 export default {
 	// middleware: ['guest'],
 	nuxtI18n: {
@@ -173,7 +159,6 @@ export default {
 		return {
 			showPassword: false,
 			showRepeatPassword: false,
-			// success: true,
 			formData: {
 				name: null,
 				email: null,
@@ -214,12 +199,25 @@ export default {
 				.post('http://bagitulis-cms.test/api/register', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					this.success = true
+					// this.success = true
+					swal({
+						html: `<h4 class="mb-0">Anda berhasil mendaftar!</h4></br><p class="mb-0">Anda berhasil terdaftar kedalam sistem, sekarang silahkan <a href="/masuk">Login!</a></p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						showCloseButton: true
+					})
 				})
 				.catch(error => {
 					console.log(error)
 					this.$nuxt.refresh()
 				})
+		},
+		showSwal() {
+			swal({
+				title: `Here's a message!`,
+				buttonsStyling: false,
+				confirmButtonClass: 'btn btn-success btn-fill'
+			})
 		}
 	}
 }

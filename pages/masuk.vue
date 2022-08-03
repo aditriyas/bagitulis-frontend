@@ -1,10 +1,6 @@
 <template>
 	<main class="main">
 		<form class="login relative">
-			<div v-if="err === true" class="error-notif flex">
-				<span> Login gagal, periksa kembali data Anda! </span>
-				<span class="bzi bzi-Cancel bzi-2x" @click.prevent="err = false"></span>
-			</div>
 			<div class="login-form left flex--wrap">
 				<h2 class="text-center mb-0 text-tc-head">Masuk</h2>
 				<div class="email-container form-item">
@@ -95,6 +91,8 @@
 
 <script>
 import { required, email, maxLength } from 'vuelidate/lib/validators'
+import swal from 'sweetalert2'
+
 export default {
 	// middleware: ['guest'],
 	nuxtI18n: {
@@ -136,8 +134,25 @@ export default {
 						password: this.formData.password
 					}
 				})
-				.then(response => console.log(response))
-				.catch(error => console.log(error), (this.err = true))
+				.then(response => {
+					swal({
+						html: `<h4 class="mb-0">Login berhasil!</h4></br><p class="mb-0">Login berhasil, sekarang cari jurnal yang Anda mau!</p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						timer: 3000,
+						showCloseButton: true
+					})
+				})
+				.catch(
+					error => console.log(error),
+					swal({
+						html: `<h4 class="mb-0">Login gagal, periksa kembali identitas Anda!</h4></br><p class="mb-0">Login Anda gagal, silahkan periksa kembali Email dan Password yang Anda masukkan.</p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						timer: 2000,
+						showCloseButton: true
+					})
+				)
 		}
 	}
 }

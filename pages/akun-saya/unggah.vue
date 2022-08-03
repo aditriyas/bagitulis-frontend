@@ -88,6 +88,8 @@
 </template>
 
 <script>
+import swal from 'sweetalert2'
+
 export default {
 	layout: 'profile',
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
@@ -141,6 +143,13 @@ export default {
 				.post('http://bagitulis-cms.test/api/journal', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
+					swal({
+						html: `<h4 class="mb-0">Karya Tulis berhasil diunggah!</h4></br><p class="mb-0">Anda berhasil mengunggah Karya Tulis!</p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						timer: 2000,
+						showCloseButton: true
+					})
 					this.$router.push({
 						path: this.localePath('/akun-saya/karya-tulis-saya')
 					})

@@ -28,6 +28,7 @@
 							:href="writing.file_path"
 							:download="writing.name"
 							target="_blank"
+							:class="writing.file_path === null ? 'disabled' : ''"
 							>Download</a
 						>
 					</div>
@@ -137,6 +138,11 @@ export default {
 				max-width: 500px;
 			}
 		}
+	}
+
+	.disabled {
+		cursor: not-allowed;
+		color: $tc-pbody-light;
 	}
 }
 </style>

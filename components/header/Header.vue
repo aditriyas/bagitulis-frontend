@@ -75,17 +75,6 @@
 									>{{ $t('article') }}</nuxt-link
 								>
 							</li>
-							<!-- <li class="main-nav__item flex">
-								<div class="search-container relative">
-									<input type="text" class="form-input" />
-									<button
-										class="search-button"
-										@click.prevent="isSearch = !isSearch"
-									>
-										<span class="bzi bzi_2x bzi-Search"></span>
-									</button>
-								</div>
-							</li> -->
 							<li class="main-nav__item separator"></li>
 							<template v-if="!$auth.loggedIn">
 								<li class="main-nav__item flex">
@@ -179,13 +168,15 @@ export default {
 			mainNav: [
 				{
 					title: 'kategori',
-					url: 'karya-tulis/jurnal',
 					child: [
+						{
+							title: `Semua`,
+							url: 'karya-tulis'
+						},
 						{
 							title: `${this.$t('journal')}`,
 							url: 'karya-tulis/jurnal'
 						},
-
 						{
 							title: `${this.$t('scientificWritings')}`,
 							url: 'karya-tulis/ilmiah'
@@ -220,19 +211,19 @@ export default {
 					link: ''
 				},
 				{
-					id: 1,
+					id: 2,
 					name: `${this.$t('journal')}`,
 					link: 'jurnal'
 				},
 				{
-					id: 2,
+					id: 3,
 					name: `${this.$t('scientificWritings')}`,
 					link: 'ilmiah',
 					isDisabled: false,
 					comingSoon: false
 				},
 				{
-					id: 3,
+					id: 4,
 					name: `${this.$t('nonScientificWritings')}`,
 					link: 'non-ilmiah',
 					isDisabled: false,

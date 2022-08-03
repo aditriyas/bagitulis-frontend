@@ -46,7 +46,10 @@
 						</li>
 					</ul>
 				</div>
-				<div class="profile-content profile-item bzg_c" data-col="m8">
+				<div
+					class="profile-content profile-item bzg_c custom-overflow"
+					data-col="m8"
+				>
 					<nuxt />
 				</div>
 			</div>
@@ -112,6 +115,11 @@ export default {}
 		padding: 32px 24px;
 		box-shadow: 0px 24px 56px 30px rgba(35, 39, 53, 0.08);
 	}
+
+	&-content {
+		height: 700px;
+		overflow: auto;
+	}
 }
 
 .nav {
@@ -145,5 +153,28 @@ export default {}
 	// .bzi {
 	// 	padding-right: 12px;
 	// }
+}
+
+.custom-overflow {
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		// box-shadow: inset 0 0 5px grey;
+		border-radius: 10px;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: #9fa4b3b5;
+		border-radius: 10px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: #b30000;
+	}
 }
 </style>

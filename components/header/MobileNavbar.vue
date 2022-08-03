@@ -14,18 +14,6 @@
 			</div>
 
 			<ul class="link mnav-menu pv-24">
-				<li>
-					<div class="search-container relative mb-8">
-						<input
-							type="text"
-							class="form-input"
-							placeholder="Cari Jurnal..."
-						/>
-						<button class="search-button">
-							<span class="bzi bzi_2x bzi-Search"></span>
-						</button>
-					</div>
-				</li>
 				<li v-for="(nav, i) in mainNavData" :key="i">
 					<nuxt-link
 						:to="localePath(`${nav.url}`)"

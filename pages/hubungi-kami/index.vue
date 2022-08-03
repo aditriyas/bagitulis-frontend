@@ -193,7 +193,7 @@
 				</div>
 			</div>
 		</div>
-		<div v-if="success === true">
+		<!-- <div v-if="success === true">
 			<div class="modal p-24">
 				<div class="body mb-40">
 					<h3 class="text-black">Terimakasih telah menghubungi kami</h3>
@@ -207,7 +207,7 @@
 				>
 			</div>
 			<div class="overlay"></div>
-		</div>
+		</div> -->
 	</main>
 </template>
 
@@ -219,6 +219,8 @@ import {
 	maxLength,
 	numeric
 } from 'vuelidate/lib/validators'
+import swal from 'sweetalert2'
+
 export default {
 	auth: false,
 	nuxtI18n: {
@@ -307,7 +309,16 @@ export default {
 				.post('http://bagitulis-cms.test/api/feedback', formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					this.success = true
+					swal({
+						html: `<h4 class="mb-0">Terimakasih telah menghubungi kami!</h4></br><p class="mb-0">Kami telah menerima pesan Anda, dan akan segera menghubungi Anda!</p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						confirmButtonText: 'Oke',
+						timer: 2000,
+						timerProgressBar: true,
+						position: 'center',
+						showCloseButton: true
+					})
+					this.$router.push(this.localePath('/'))
 				})
 				.catch(error => {
 					console.log(error)

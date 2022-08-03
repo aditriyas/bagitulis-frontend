@@ -21,6 +21,12 @@ html {
 	width: 100%;
 }
 
+.btn-sweet--danger {
+	background-color: red !important;
+	border-radius: 12px !important;
+	color: #fff !important;
+}
+
 body {
 	// text-decoration-skip: ink;
 	text-decoration-skip-ink: auto;
@@ -40,7 +46,6 @@ a {
 }
 
 .color-inherit {
-
 	&:hover,
 	&:focus {
 		color: inherit !important;
@@ -118,3 +123,5 @@ a {
 .nuxt-link-active {
 	color: $primary !important;
 }
+
+
