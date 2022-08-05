@@ -2,9 +2,9 @@
 	<main class="site-main">
 		<div class="form">
 			<div class="head mb-24">
-				<h2 class="text-black mb-8">Unggah Karya Tulis Kamu!</h2>
+				<h2 class="text-black mb-8">Edit Karya Tulis Kamu!</h2>
 				<p style="font-size: 14px" class="mb-0">
-					Segera unggah Karya Tulis kamu disini!
+					Edit Karya Tulis kamu disini!
 				</p>
 			</div>
 			<form action="">
@@ -16,6 +16,7 @@
 						type="text"
 						name="title"
 						class="form-input w-100"
+						:placeholder="writing.title"
 						required
 					/>
 				</div>
@@ -29,6 +30,7 @@
 						title="category"
 						name="category"
 						label="name"
+						:placeholder="writing.category.name"
 						required
 					></v-select>
 				</div>
@@ -43,6 +45,7 @@
 						cols="30"
 						rows="5"
 						class="form-input w-100"
+						:placeholder="writing.description"
 					></textarea>
 				</div>
 				<div class="thumbnail">
@@ -104,13 +107,17 @@ import swal from 'sweetalert2'
 
 export default {
 	layout: 'profile',
-	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
+	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
 			const [categories] = await Promise.all([
 				$axios.$get('http://bagitulis-cms.test/api/category')
 			])
+			const [writing] = await Promise.all([
+				$axios.$get(`http://bagitulis-cms.test/api/journal/${params.slug}`)
+			])
 			return {
-				categories: categories.data
+				categories: categories.data,
+				writing: writing.data
 			}
 		} catch (e) {
 			if (e.response.status === 401) {
@@ -120,12 +127,6 @@ export default {
 			} else {
 				error($catch500)
 			}
-		}
-	},
-	nuxtI18n: {
-		paths: {
-			id: '/akun-saya/unggah',
-			en: '/profile/upload-writing'
 		}
 	},
 	data() {
@@ -145,18 +146,20 @@ export default {
 
 			formData.set('title', this.formData.title)
 			formData.set('category', this.formData.category.id)
-			formData.set('user_id', this.$auth.user[0].id)
 			formData.set('description', this.formData.description)
 			formData.set('thumbnail', this.formData.thumbnail)
 			formData.set('file', this.formData.file)
 			formData.set('published', 1)
 
 			await this.$axios
-				.post('http://bagitulis-cms.test/api/journal', formData)
+				.post(
+					`http://bagitulis-cms.test/api/journal/${this.$route.params.slug}`,
+					formData
+				)
 				.then(res => {
 					// eslint-disable-next-line no-console
 					swal({
-						html: `<h4 class="mb-0">Karya Tulis berhasil diunggah!</h4></br><p class="mb-0">Anda berhasil mengunggah Karya Tulis!</p>`,
+						html: `<h4 class="mb-0">Edit Karya Tulis berhasil!</h4></br><p class="mb-0">Anda berhasil mengubah Karya Tulis Anda!</p>`,
 						confirmButtonClass: 'btn-sweet--danger',
 						position: 'center',
 						timer: 2000,

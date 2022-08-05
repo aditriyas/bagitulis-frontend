@@ -63,7 +63,7 @@ export default {}
 
 <style lang="scss" scoped>
 .site-main {
-	padding-top: 70px;
+	padding-block: 50px;
 }
 
 .profile {
@@ -98,6 +98,7 @@ export default {}
 				text-transform: capitalize;
 				font-weight: bold;
 				font-size: 14px;
+				color: $tc-head;
 			}
 
 			.email {
@@ -145,7 +146,7 @@ export default {}
 			font-weight: bold;
 		}
 		a {
-			color: $tc-pbody !important;
+			color: $tc-head !important;
 			font-weight: bold;
 		}
 	}
@@ -163,18 +164,18 @@ export default {}
 	/* Track */
 	&::-webkit-scrollbar-track {
 		// box-shadow: inset 0 0 5px grey;
-		border-radius: 10px;
+		// border-radius: 10px;
 	}
 
 	/* Handle */
 	&::-webkit-scrollbar-thumb {
 		background: #9fa4b3b5;
-		border-radius: 10px;
+		border-radius: 16px;
 	}
 
 	/* Handle on hover */
 	&::-webkit-scrollbar-thumb:hover {
-		background: #b30000;
+		background: #9fa4b369;
 	}
 }
 </style>

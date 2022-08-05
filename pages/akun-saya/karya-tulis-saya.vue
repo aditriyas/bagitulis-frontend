@@ -1,9 +1,26 @@
 <template>
-	<div class="container">
+	<main class="site-main p-0 m-0">
+		<div class="head mb-24">
+			<h2 class="text-black mb-8">Karya Tulis yang Anda miliki!</h2>
+			<template v-if="writings.length > 0">
+				<p style="font-size: 14px" class="mb-0">
+					Berikut adalah Karya Tulis yang Anda miliki!
+				</p>
+			</template>
+			<template v-else>
+				<p style="font-size: 14px" class="mb-0">
+					Anda belum memiliki Karya Tulis,
+					<nuxt-link :to="localePath('/akun-saya/unggah')" class="text-primary"
+						>Klik Disini</nuxt-link
+					>
+					untuk mengunggah Karya Tulis Anda!
+				</p>
+			</template>
+		</div>
 		<div class="flex flex-con">
-			<div v-for="(item, i) in writings" :key="i">
-				<div class="card">
-					<nuxt-link :to="localePath(`/karya-tulis/${item.id}`)">
+			<template v-if="writings.length > 0">
+				<div v-for="(item, i) in writings" :key="i">
+					<div class="card">
 						<div class="image mb-12">
 							<img
 								:src="
@@ -16,6 +33,15 @@
 							/>
 						</div>
 						<div class="button flex flex-en">
+							<nuxt-link :to="localePath(`/karya-tulis/${item.id}`)">
+								<button class="bzi bzi-Eye btn btn--yellow button"></button>
+							</nuxt-link>
+							<nuxt-link :to="localePath(`/akun-saya/${item.id}`)">
+								<button
+									class="bzi bzi-Edit btn btn--secondary button"
+									style="color: black"
+								></button>
+							</nuxt-link>
 							<button
 								class="bzi bzi-Trash btn btn--primary button"
 								@click.prevent="delJournal(item.id)"
@@ -29,11 +55,16 @@
 							{{ item.description.slice(0, 130) }}
 							<span v-if="item.description.length > 130">...</span>
 						</p>
-					</nuxt-link>
+					</div>
 				</div>
-			</div>
+			</template>
+			<template v-else>
+				<div class="container text-center mt-20">
+					<img src="/assets/img/empty.jpg" alt="" width="800" />
+				</div>
+			</template>
 		</div>
-	</div>
+	</main>
 </template>
 
 <script>
@@ -67,7 +98,17 @@ export default {
 				.delete(`http://bagitulis-cms.test/api/journal/${id}`)
 				.then(response => {
 					swal({
-						html: `<h4 class="mb-0">Login berhasil!</h4></br><p class="mb-0">Login berhasil, sekarang cari jurnal yang Anda mau!</p>`,
+						html: `<h4 class="mb-0">Karya Tulis Terhapus!</h4><p class="mb-0">Anda berhasil menghapus karya tulis ini!</p></br>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						timer: 3000,
+						showCloseButton: true
+					})
+					this.$nuxt.refresh()
+				})
+				.catch(err => {
+					swal({
+						html: `<h4 class="mb-0">${err}</h4>`,
 						confirmButtonClass: 'btn-sweet--danger',
 						position: 'center',
 						timer: 3000,
@@ -81,12 +122,17 @@ export default {
 
 <style lang="scss" scoped>
 .flex-con {
-	justify-content: space-around;
 	flex-wrap: wrap;
 	gap: 20px;
+	row-gap: 15px;
+	justify-content: center;
+
+	@media #{$medium} {
+		justify-content: space-between;
+	}
 }
 .card {
-	max-width: 350px;
+	width: 380px;
 	height: 400px;
 	padding: 8px 12px;
 	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
@@ -119,5 +165,14 @@ export default {
 
 .button {
 	padding: 4px 8px;
+	justify-content: flex-end;
+	gap: 8px;
 }
+
+// .head {
+// 	top: 0;
+// 	position: sticky;
+// 	background-color: $white;
+// 	padding-top: -32px;
+// }
 </style>

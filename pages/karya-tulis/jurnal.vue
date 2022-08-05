@@ -3,7 +3,18 @@
 		<div class="writings container">
 			<div class="head text-center mb-40">
 				<h2 class="head-title text-black">Jurnal</h2>
-				<p class="head-subtitle">Jurnal yang telah dibagikan ke Bagitulis.</p>
+				<template v-if="writings.length > 0">
+					<p class="head-subtitle">Jurnal yang telah dibagikan ke Bagitulis.</p>
+				</template>
+				<template v-else>
+					<p class="head-subtitle">
+						Jurnal belum tersedia,
+						<nuxt-link :to="localePath('/daftar')" class="text-primary"
+							>Daftar</nuxt-link
+						>
+						untuk mengunggah Jurnal!
+					</p>
+				</template>
 			</div>
 			<div class="body flex flex--wrap">
 				<template v-if="writings.length > 0">
