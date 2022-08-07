@@ -12,7 +12,7 @@
 							<a
 								:href="item.url"
 								target="_blank"
-								title="RocketMall Info"
+								title="Info"
 								class="info-text"
 							>
 								<p class="info-text--title mb-8">{{ item.infoTitle }}</p>
@@ -193,21 +193,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div v-if="success === true">
-			<div class="modal p-24">
-				<div class="body mb-40">
-					<h3 class="text-black">Terimakasih telah menghubungi kami</h3>
-					<p>
-						Pesan Anda telah kami terima, kami akan menghubungi anda kembali
-						secepatnya!
-					</p>
-				</div>
-				<nuxt-link :to="localePath('/')" exact class="btn--primary success-btn"
-					>Kembali ke Home</nuxt-link
-				>
-			</div>
-			<div class="overlay"></div>
-		</div> -->
 	</main>
 </template>
 
@@ -263,9 +248,9 @@ export default {
 	},
 	head() {
 		return {
-			title: 'Hubungi Kami - Bagitulis',
+			title: 'Bagitulis - Hubungi Kami',
 			...this.$SEOMeta({
-				metaTitle: 'Hubungi Kami - Bagitulis',
+				metaTitle: 'Bagitulis - Hubungi Kami',
 				metaDesc: 'Hubungi tim Bagitulis untuk tahu lebih lanjut'
 			})
 		}
@@ -312,7 +297,7 @@ export default {
 					swal({
 						html: `<h4 class="mb-0">Terimakasih telah menghubungi kami!</h4></br><p class="mb-0">Kami telah menerima pesan Anda, dan akan segera menghubungi Anda!</p>`,
 						confirmButtonClass: 'btn-sweet--danger',
-						confirmButtonText: 'Oke',
+						confirmButtonText: 'Ok',
 						timer: 2000,
 						timerProgressBar: true,
 						position: 'center',
@@ -331,7 +316,6 @@ export default {
 
 <style lang="scss" scoped>
 .site-main {
-	// padding: 40px 0 300px 0;
 	min-height: 100vh;
 }
 
@@ -348,6 +332,10 @@ export default {
 	&-left {
 		width: 100%;
 		padding: 0 !important;
+		display: none;
+		@media #{$medium} {
+			display: block;
+		}
 	}
 
 	&-card {

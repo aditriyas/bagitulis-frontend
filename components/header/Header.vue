@@ -104,7 +104,15 @@
 										:to="localePath('/akun-saya')"
 										class="header-link"
 										title="Akun Saya"
-										><img src="/assets/img/dummy-profile-pic.png" alt="" />
+										><img
+											:src="
+												$auth.user[0].photo === null
+													? '/assets/img/dummy-profile-pic.png'
+													: $auth.user[0].photo
+											"
+											style="object-fit: cover"
+											:alt="$auth.user[0].name"
+										/>
 										<span class="text-black" style="text-transform: capitalize"
 											>Hi, {{ $auth.user[0].name }}!</span
 										>
@@ -167,41 +175,59 @@ export default {
 			],
 			mainNav: [
 				{
-					title: 'kategori',
+					title: `Akun Saya`,
+					url: '/akun-saya',
+					loggedIn: true,
 					child: [
 						{
-							title: `Semua`,
-							url: 'karya-tulis'
+							title: `Pengaturan Akun`,
+							url: '/akun-saya'
 						},
 						{
-							title: `${this.$t('journal')}`,
-							url: 'karya-tulis/jurnal'
+							title: `Karya Tulis Tersimpan`,
+							url: '/akun-saya/karya-tulis-tersimpan',
+							loggedIn: false
 						},
 						{
-							title: `${this.$t('scientificWritings')}`,
-							url: 'karya-tulis/ilmiah'
+							title: `Unggah Karya Tulis`,
+							url: '/akun-saya/unggah',
+							loggedIn: false
 						},
 						{
-							title: `${this.$t('nonScientificWritings')}`,
-							url: 'karya-tulis/non-ilmiah'
+							title: `Karya Tulis Saya`,
+							url: '/akun-saya/karya-tulis-saya',
+							loggedIn: false
 						}
 					]
 				},
 				{
-					title: `${this.$t('contactUs')}`,
-					url: '/hubungi-kami'
+					title: 'kategori',
+					child: [
+						{
+							title: `Semua`,
+							url: '/karya-tulis'
+						},
+						{
+							title: `${this.$t('journal')}`,
+							url: '/karya-tulis/jurnal',
+							loggedIn: false
+						},
+						{
+							title: `${this.$t('scientificWritings')}`,
+							url: '/karya-tulis/ilmiah',
+							loggedIn: false
+						},
+						{
+							title: `${this.$t('nonScientificWritings')}`,
+							url: '/karya-tulis/non-ilmiah',
+							loggedIn: false
+						}
+					]
 				},
 				{
 					title: `${this.$t('article')}`,
-					url: '/artikel'
-				},
-				{
-					title: `${this.$t('login')}`,
-					url: '/masuk'
-				},
-				{
-					title: `${this.$t('register')}`,
-					url: '/daftar'
+					url: '/artikel',
+					loggedIn: false
 				}
 			],
 			categories: [

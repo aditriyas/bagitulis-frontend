@@ -8,7 +8,7 @@
 			</div>
 			<div class="sticky-footer-container-item --pushed">
 				<Nuxt />
-				<button class="btn--ghost-primary btn-up" @click.prevent="scrollTop">
+				<button class="btn--ghost-primary btn-up" @click.prevent="scrollTo">
 					<span class="bzi-Arrow-up bzi-2x"></span>
 				</button>
 			</div>
@@ -23,11 +23,12 @@
 export default {
 	data() {
 		return {
-			isSearch: false
+			isSearch: false,
+			currTop: 0
 		}
 	},
 	methods: {
-		scrollTop() {
+		scrollTo() {
 			window.scrollTo(0, 0)
 		}
 	}
@@ -53,14 +54,14 @@ export default {
 .btn-up {
 	position: fixed;
 	right: 30px;
-	bottom: 30px;
+	bottom: 50px;
 	z-index: 9999;
 	padding: 8px 16px;
 	border: 2px solid $primary;
 
 	@media #{$large} {
-		right: 50px;
-		bottom: 90px;
+		right: 80px;
+		bottom: 100px;
 	}
 }
 </style>

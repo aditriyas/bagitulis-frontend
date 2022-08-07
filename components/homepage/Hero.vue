@@ -15,7 +15,7 @@
 						<img
 							:src="
 								item.image_path === null
-									? `assets/img/banner-1.jpg`
+									? `assets/img/banner-image-origin.jpg`
 									: `${item.image_path}`
 							"
 							:alt="item.title"

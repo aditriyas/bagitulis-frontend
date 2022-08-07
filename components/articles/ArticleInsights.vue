@@ -1,54 +1,53 @@
 <template>
-	<div class="article">
-		<div class="article-card">
-			<div
-				v-for="(item, index) in leftArticles"
-				:key="index"
-				class="article-card--left"
-			>
-				<nuxt-link :to="localePath('/artikel/:title')" title="Article">
-					<img
-						:src="item.articleImage"
-						alt="Article Big Thumbnail"
-						img="Article Thumbnail"
-						class="thumbnail mb-10"
-					/>
-					<div class="category">{{ item.articleCategory }}</div>
-					<h2 class="title">
-						{{ item.articleTitle }}
-					</h2>
-					<p class="date">{{ item.articleDate }}</p>
-				</nuxt-link>
-			</div>
-		</div>
+	<div :class="`div${num}`" class="article-card--left">
+		<nuxt-link :to="localePath('/artikel/:title')" title="Article">
+			<img
+				:src="image"
+				alt="Article Big Thumbnail"
+				img="Article Thumbnail"
+				class="thumbnail mb-10"
+			/>
+			<!-- <div class="category">{{ item.category }}</div> -->
+			<h2 class="title">
+				{{ title }}
+			</h2>
+			<p class="description">
+				{{ description }}
+			</p>
+			<p class="date">{{ date }}</p>
+		</nuxt-link>
 	</div>
 </template>
 
 <script>
 export default {
 	props: {
-		leftArticles: {
+		articles: {
 			type: Array,
 			default: null
 		},
-		rightArticles: {
-			type: Array,
-			default: null
-		},
-		articleImage: {
+		title: {
 			type: String,
 			default: null
 		},
-		articleCategory: {
+		// category: {
+		// 	type: String,
+		// 	default: null
+		// },
+		date: {
 			type: String,
 			default: null
 		},
-		articleTitle: {
+		description: {
 			type: String,
 			default: null
 		},
-		articleDate: {
+		image: {
 			type: String,
+			default: null
+		},
+		num: {
+			type: Number,
 			default: null
 		}
 	}
@@ -63,21 +62,10 @@ export default {
 		margin-bottom: 54px;
 		&--left {
 			width: 100%;
-			max-width: 540px;
+			// max-width: 540px;
 
 			.thumbnail {
 				border-radius: 16px;
-			}
-
-			.category {
-				width: 100%;
-				max-width: 123px;
-				font-size: 12px;
-				color: #20ae73;
-				padding: 6px 12px;
-				background-color: #e8f6f0;
-				border-radius: 13px;
-				margin-bottom: 14px;
 			}
 
 			.title {
@@ -138,5 +126,10 @@ export default {
 			}
 		}
 	}
+}
+
+.description {
+	font-size: 16px;
+	color: $tc-pbody;
 }
 </style>

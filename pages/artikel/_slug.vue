@@ -3,8 +3,11 @@
 		<div class="detail container">
 			<div class="img-container">
 				<img
-					src="/assets/img/article-image-origin.jpg"
-					alt=""
+					:src="
+						article.thumbnail_path === null
+							? '/assets/img/article-image-origin.jpg'
+							: article.thumbnail_path
+					"
 					class="w-100 article-img"
 				/>
 			</div>

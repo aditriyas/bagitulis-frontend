@@ -86,12 +86,13 @@ export default {
 
 <style lang="scss" scoped>
 .detail {
+	max-width: 700px;
 	.card {
 		padding: 16px 32px;
 		box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 		width: max-content;
 		margin: 0 auto;
-		max-width: 700px;
+		width: 100%;
 		border-radius: 12px;
 
 		img {
@@ -103,6 +104,7 @@ export default {
 		&-info {
 			justify-content: space-between;
 			text-align: left;
+			flex-wrap: wrap;
 
 			&--item {
 				max-width: 200px;

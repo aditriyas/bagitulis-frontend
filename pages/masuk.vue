@@ -64,7 +64,7 @@
 							>Format password yang anda masukkan salah</span
 						>
 					</div>
-					<nuxt-link :to="localePath('/masuk')" class="forgot-password"
+					<nuxt-link :to="localePath('/lupa-password')" class="forgot-password"
 						>Lupa password?</nuxt-link
 					>
 				</div>
@@ -79,7 +79,13 @@
 				<nuxt-link
 					:to="localePath('/daftar')"
 					class="btn--yellow login-submit btn"
-					>Register</nuxt-link
+					>Daftar</nuxt-link
+				>
+				<nuxt-link
+					:to="localePath('/')"
+					class="btn--link-text text-white login-submit btn"
+					exact
+					>Kembali ke Home</nuxt-link
 				>
 			</div>
 			<div class="right flex">
@@ -94,14 +100,14 @@ import { required, email, maxLength } from 'vuelidate/lib/validators'
 import swal from 'sweetalert2'
 
 export default {
-	// middleware: ['guest'],
+	layout: 'blanklayout',
+	middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/masuk',
 			en: '/login'
 		}
 	},
-	layout: 'blanklayout',
 	data() {
 		return {
 			showPassword: false,
@@ -143,13 +149,12 @@ export default {
 						showCloseButton: true
 					})
 				})
-				.catch(
-					error => console.log(error),
+				.catch(error =>
 					swal({
-						html: `<h4 class="mb-0">Login gagal, periksa kembali identitas Anda!</h4></br><p class="mb-0">Login Anda gagal, silahkan periksa kembali Email dan Password yang Anda masukkan.</p>`,
+						html: `<h4 class="mb-0">Login gagal, periksa kembali identitas Anda!</h4></br><p class="mb-0">${error}</p>`,
 						confirmButtonClass: 'btn-sweet--danger',
 						position: 'center',
-						timer: 2000,
+						timer: 1500,
 						showCloseButton: true
 					})
 				)

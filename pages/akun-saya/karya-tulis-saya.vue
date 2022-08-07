@@ -32,26 +32,26 @@
 								class=""
 							/>
 						</div>
-						<div class="button flex flex-en">
+						<div class="button flex flex-en mb-6">
 							<nuxt-link :to="localePath(`/karya-tulis/${item.id}`)">
 								<button class="bzi bzi-Eye btn btn--yellow button"></button>
 							</nuxt-link>
 							<nuxt-link :to="localePath(`/akun-saya/${item.id}`)">
-								<button
-									class="bzi bzi-Edit btn btn--secondary button"
-									style="color: black"
-								></button>
+								<button class="bzi bzi-Edit btn btn--link-text button"></button>
 							</nuxt-link>
 							<button
 								class="bzi bzi-Trash btn btn--primary button"
 								@click.prevent="delJournal(item.id)"
 							></button>
 						</div>
-						<h5 class="title mb-8">
-							{{ item.title.slice(0, 35) }}
-							<span v-if="item.description.length > 35">...</span>
-						</h5>
-						<p class="desc">
+						<div class="head-journal mb-8">
+							<h5 class="title mb-0">
+								{{ item.title.slice(0, 35) }}
+								<span v-if="item.description.length > 35">...</span>
+							</h5>
+							<span class="date-string">{{ dateFormat(item.created_at) }}</span>
+						</div>
+						<p class="desc mb-0">
 							{{ item.description.slice(0, 130) }}
 							<span v-if="item.description.length > 130">...</span>
 						</p>
@@ -72,6 +72,8 @@ import swal from 'sweetalert2'
 
 export default {
 	layout: 'profile',
+	middleware: 'auth',
+
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, $auth }) {
 		try {
 			const [writings] = await Promise.all([
@@ -115,6 +117,13 @@ export default {
 						showCloseButton: true
 					})
 				})
+		},
+		dateFormat(date) {
+			const tanggal = new Date()
+			const day = tanggal.getDate()
+			const year = tanggal.getFullYear()
+			const month = tanggal.toLocaleString('default', { month: 'long' })
+			return `${month} ${day} ${year}`
 		}
 	}
 }
@@ -132,7 +141,7 @@ export default {
 	}
 }
 .card {
-	width: 380px;
+	max-width: 380px;
 	height: 400px;
 	padding: 8px 12px;
 	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
@@ -169,10 +178,8 @@ export default {
 	gap: 8px;
 }
 
-// .head {
-// 	top: 0;
-// 	position: sticky;
-// 	background-color: $white;
-// 	padding-top: -32px;
-// }
+.date-string {
+	font-size: 12px;
+	padding-bottom: 8px;
+}
 </style>

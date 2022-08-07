@@ -7,7 +7,9 @@
 		<div class="journal-card text-center">
 			<img
 				:src="
-					thumbnail === null ? '/assets/img/jurnal-img-1.png' : `${thumbnail}`
+					thumbnail === null
+						? '/assets/img/journal-image-origin.jpg'
+						: `${thumbnail}`
 				"
 				alt=""
 				class="journal-card--img"
@@ -29,6 +31,7 @@
 					<div class="photo">
 						<img
 							:src="photo === null ? 'assets/img/dummy-profile-pic.png' : photo"
+							:alt="name"
 						/>
 					</div>
 					<div class="info">
@@ -41,7 +44,7 @@
 							>
 						</template>
 						<span class="journal-card--author d-block"
-							><span class="text-black">Diunggah oleh: </span>{{ user }} on
+							><span class="text-black">Diunggah pada: </span>{{ user }}
 							{{ dateFormat(date) }}</span
 						>
 					</div>

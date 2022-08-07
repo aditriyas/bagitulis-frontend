@@ -30,7 +30,7 @@
 						title="category"
 						name="category"
 						label="name"
-						:placeholder="writing.category.name"
+						:value="writing.category.name"
 						required
 					></v-select>
 				</div>
@@ -82,10 +82,12 @@
 					class="snk flex mb-32 mt-12 v-center"
 					style="gap: 12px; font-size: 12px; width: 50%"
 				>
-					<input type="checkbox" class="form-input" />
+					<input type="checkbox" class="form-input" checked disabled />
 					<span
-						>Saya {{ $auth.user[0].name }}, bertanggung jawab secara penuh
-						terhadap apa yang saya unggah pada <a href="/">Bagitulis.com</a>
+						>Saya <strong>{{ $auth.user[0].name }}</strong
+						>, akan bertanggung jawab secara penuh terhadap apa yang saya unggah
+						pada
+						<a href="/">Bagitulis.com</a>
 					</span>
 				</div>
 				<div class="button-container flex">
@@ -107,6 +109,8 @@ import swal from 'sweetalert2'
 
 export default {
 	layout: 'profile',
+	middleware: 'auth',
+
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
 			const [categories] = await Promise.all([
@@ -170,7 +174,13 @@ export default {
 					})
 				})
 				.catch(error => {
-					console.log(error)
+					swal({
+						html: `<h4 class="mb-0">${error}</h4></br><p class="mb-0">Anda berhasil mengubah Karya Tulis Anda!</p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						timer: 2000,
+						showCloseButton: true
+					})
 				})
 		},
 		file(event) {

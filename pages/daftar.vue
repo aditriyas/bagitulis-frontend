@@ -132,8 +132,8 @@
 				<nuxt-link
 					:to="localePath('/')"
 					exact
-					class="btn--yellow register-submit btn"
-					>Back to Home</nuxt-link
+					class="btn--link-text register-submit btn"
+					>Kembali ke Home</nuxt-link
 				>
 			</div>
 			<div class="right flex">
@@ -144,17 +144,23 @@
 </template>
 
 <script>
-import { required, email, maxLength, sameAs } from 'vuelidate/lib/validators'
+import {
+	required,
+	email,
+	maxLength,
+	minLength,
+	sameAs
+} from 'vuelidate/lib/validators'
 import swal from 'sweetalert2'
 export default {
-	// middleware: ['guest'],
+	layout: 'blanklayout',
+	middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/daftar',
 			en: '/register'
 		}
 	},
-	layout: 'blanklayout',
 	data() {
 		return {
 			showPassword: false,
@@ -179,10 +185,12 @@ export default {
 			},
 			password: {
 				required,
+				minLength: minLength(8),
 				maxLength: maxLength(20)
 			},
 			repeatPassword: {
 				required,
+				minLength: minLength(8),
 				sameAsPassword: sameAs('password')
 			}
 		}
@@ -206,18 +214,16 @@ export default {
 						position: 'center',
 						showCloseButton: true
 					})
+					this.$router.push(this.localePath('/masuk'))
 				})
 				.catch(error => {
-					console.log(error)
-					this.$nuxt.refresh()
+					swal({
+						html: `<h4 class="mb-0">${error}</h4></br>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						showCloseButton: true
+					})
 				})
-		},
-		showSwal() {
-			swal({
-				title: `Here's a message!`,
-				buttonsStyling: false,
-				confirmButtonClass: 'btn btn-success btn-fill'
-			})
 		}
 	}
 }

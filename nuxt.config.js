@@ -22,7 +22,7 @@ export default {
 	},
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {
-		title: 'Bagitulis - Online Repository',
+		title: 'Bagitulis - Repository Jurnal dan Karya Tulis Online',
 		meta: defaultMeta,
 		link: [
 			{

@@ -2,8 +2,8 @@
 	<main class="site-main">
 		<!-- Hero -->
 		<section>
-			<template v-if="reviews.length > 0">
-				<homepageHero :reviews="reviews" />
+			<template v-if="banners.length > 0">
+				<homepageHero :reviews="banners" />
 			</template>
 		</section>
 
@@ -11,37 +11,18 @@
 
 		<!-- Random Journal -->
 		<section id="solution">
-			<homepageJournals :journals="posts" />
+			<homepageJournals :journals="writings" />
 		</section>
 
 		<!-- Our Products -->
-		<section class="articles pt-64">
-			<div class="container">
-				<div class="articles-head text-center mb-64">
-					<h1 class="articles-title mb-24">
-						<span class="text-primary">Artikel </span> terkini
-					</h1>
-					<p class="articles-text">
-						Artikel dan info terbaru yang mungkin dapat membantu Anda dalam
-						menulis dan berkarya!
-					</p>
-				</div>
-				<articlesArticleInsights
-					:left-articles="leftArticles"
-					:right-articles="rightArticles"
-				/>
-			</div>
+		<section class="articles pv-64">
+			<homepageArticles :articles="articles" />
 		</section>
 
 		<!-- Most Saved -->
 		<section>
-			<MostLiked :journals="posts" />
+			<MostLiked :journals="writings" />
 		</section>
-
-		<!-- Banner -->
-		<!-- <section>
-			<Demo :demo="demo" :title="demo.title" :sub-title="demo.subTitle" />
-		</section> -->
 	</main>
 </template>
 
@@ -53,15 +34,19 @@ export default {
 	components: { MostLiked },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
-			const [posts] = await Promise.all([
+			const [writings] = await Promise.all([
 				$axios.$get('http://bagitulis-cms.test/api/journals')
 			])
-			const [reviews] = await Promise.all([
+			const [banners] = await Promise.all([
 				$axios.$get('http://bagitulis-cms.test/api/banners')
 			])
+			const [articles] = await Promise.all([
+				$axios.$get('http://bagitulis-cms.test/api/articles')
+			])
 			return {
-				posts: posts.data,
-				reviews: reviews.data
+				writings: writings.data,
+				banners: banners.data,
+				articles: articles.data
 			}
 		} catch (e) {
 			if (e.response.status === 401) {
@@ -78,77 +63,7 @@ export default {
 			isOut: false,
 			currentSlide: {},
 			currentIndex: 0,
-			linkCopied: true,
-			leftArticles: [
-				{
-					articleImage: '/assets/img/article-image-1.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'The 23 Most Profitable Business Opportunities in 2021',
-					articleDate: 'September 21 2021'
-				}
-			],
-			rightArticles: [
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 20 2021'
-				},
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 20 2021'
-				},
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 19 2021'
-				}
-			],
-			demo: [
-				{
-					title: 'Ayo unggah Jurnal dan Karya Tulis kamu! ',
-					subTitle: `"Ilmu itu adalah hasil panen/buruan dalam karung, menulis adalah ikatannya!"`,
-					path: '/karya-tulis/ilmiah',
-					pathName: 'Lihat Karya Tulis'
-				}
-			],
-			slides: [
-				{
-					id: 1,
-					slideImage: 'assets/img/comingsoon-slide-1.png',
-					textTop: 'OMS',
-					textMid: 'Memprofesionalkan performa bisnis Anda',
-					textBottom:
-						'Fasilitasi bisnis Anda dengan order management system untuk meminimalisir perbedaan penjualan.'
-				},
-				{
-					id: 2,
-					slideImage: 'assets/img/comingsoon-slide-2.png',
-					textTop: 'WMS',
-					textMid: 'Kelola penyimpanan e-commerce dengan sederhana',
-					textBottom:
-						'Mengoptimalkan inventaris dan penyimpanan Anda dengan tempat penyimpanan yang lancar dan solusi-solusi pemenuhan'
-				},
-				{
-					id: 3,
-					slideImage: 'assets/img/comingsoon-slide-3.png',
-					textTop: 'O2O',
-					textMid: 'Merealisasikan toko online Anda',
-					textBottom:
-						'Tidak hanya melalui online, kami juga akan membantu operasional offline dengan tim profesional kami'
-				},
-				{
-					id: 4,
-					slideImage: 'assets/img/comingsoon-slide-4.png',
-					textTop: 'Loyalty System',
-					textMid: 'Menjaga pelanggan setia, menarik lebih banyak',
-					textBottom:
-						'Membangun hubungan jangka panjang dengan pelanggan dengan loyalty solution kami'
-				}
-			]
+			linkCopied: true
 		}
 	},
 	head() {

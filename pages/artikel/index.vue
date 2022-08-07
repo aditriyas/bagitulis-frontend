@@ -4,13 +4,6 @@
 			<div class="container">
 				<!-- Head -->
 				<articlesHead />
-
-				<!-- Article Insights -->
-				<!-- <articlesArticleInsights
-					v-if="articles.length >= 1"
-					:left-articles="leftArticles"
-					:right-articles="rightArticles"
-				/> -->
 				<div v-if="articles.length >= 1" class="tab-content flex flex--wrap">
 					<div
 						v-for="(item, index) in articles"
@@ -79,93 +72,14 @@ export default {
 	},
 	data() {
 		return {
-			isEmpty: false,
-			tabnames: [
-				'Semua Kategori',
-				'Pengetahuan Bisnis',
-				'E-Commerce Terbaru',
-				'Tips & Tren'
-			],
-			tablinks: ['/', null, null, null],
-			leftArticles: [
-				{
-					articleImage: '/assets/img/article-image-1.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'The 23 Most Profitable Business Opportunities in 2021',
-					articleDate: 'September 21 2021'
-				}
-			],
-			rightArticles: [
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 20 2021'
-				},
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 20 2021'
-				},
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 19 2021'
-				}
-			],
-			articleCards: [
-				{
-					cardImage: '/assets/img/article-image-blank.png',
-					cardTitle: 'How to Make and Sell Stickers Online in 2021',
-					cardDate: 'September 18 2021',
-					cardCategory: 'Tips & Trends'
-				},
-				{
-					cardImage: '/assets/img/article-image-1.png',
-					cardTitle:
-						'How to Start an Online Boutique: A Complete 2021 Playbook',
-					cardDate: 'September 18 2021',
-					cardCategory: 'Business Insights'
-				},
-				{
-					cardImage: '/assets/img/article-image-blank.png',
-					cardTitle:
-						'How to Start a Phone Case Business From Home, Step by Step',
-					cardDate: 'September 17 2021',
-					cardCategory: 'E-Commerce Update'
-				},
-				{
-					cardImage: '/assets/img/article-image-blank.png',
-					cardTitle:
-						'How to Start a Phone Case Business From Home, Step by Step',
-					cardDate: 'September 16 2021',
-					cardCategory: 'E-Commerce Update'
-				},
-				{
-					cardImage: '/assets/img/article-image-blank.png',
-					cardTitle: 'How to Make and Sell Stickers Online in 2021',
-					cardDate: 'September 18 2021',
-					cardCategory: 'Tips & Trends'
-				},
-				{
-					cardImage: '/assets/img/article-image-1.png',
-					cardTitle:
-						'How to Start an Online Boutique: A Complete 2021 Playbook',
-					cardDate: 'September 18 2021',
-					cardCategory: 'Business Insights'
-				}
-			]
+			isEmpty: false
 		}
 	},
 	head() {
 		return {
-			title: 'Artikel Semua Kategori - RocketMall',
+			title: 'Bagitulis - Artikel Semua Kategori',
 			...this.$SEOMeta({
-				metaTitle: 'Artikel Semua Kategori - RocketMall',
-				metaImage:
-					'https://rocketmall-landlord-frontend.suitdev.com/assets/img/article-image-empty.png',
+				metaTitle: 'Bagitulis - Artikel Semua Kategori',
 				metaDesc:
 					'Cari artikel sesuai dengan kategori yang Anda perlukan disini.'
 			})

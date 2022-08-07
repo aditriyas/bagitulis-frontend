@@ -79,10 +79,15 @@
 					class="snk flex mb-32 mt-12 v-center"
 					style="gap: 12px; font-size: 12px; width: 50%"
 				>
-					<input type="checkbox" class="form-input" />
+					<input type="checkbox" class="form-input" checked disabled />
 					<span
-						>Saya {{ $auth.user[0].name }}, bertanggung jawab secara penuh
-						terhadap apa yang saya unggah pada <a href="/">Bagitulis.com</a>
+						>Saya
+						<strong style="text-transform: capitalize">{{
+							$auth.user[0].name
+						}}</strong
+						>, akan bertanggung jawab secara penuh terhadap apa yang saya unggah
+						pada
+						<a href="/">Bagitulis.com</a>
 					</span>
 				</div>
 				<div class="button-container flex">
@@ -104,6 +109,7 @@ import swal from 'sweetalert2'
 
 export default {
 	layout: 'profile',
+	middleware: 'auth',
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [categories] = await Promise.all([
@@ -154,7 +160,6 @@ export default {
 			await this.$axios
 				.post('http://bagitulis-cms.test/api/journal', formData)
 				.then(res => {
-					// eslint-disable-next-line no-console
 					swal({
 						html: `<h4 class="mb-0">Karya Tulis berhasil diunggah!</h4></br><p class="mb-0">Anda berhasil mengunggah Karya Tulis!</p>`,
 						confirmButtonClass: 'btn-sweet--danger',
@@ -167,7 +172,13 @@ export default {
 					})
 				})
 				.catch(error => {
-					console.log(error)
+					swal({
+						html: `<h4 class="mb-0">${error}</h4></br><p class="mb-0">Anda berhasil mengunggah Karya Tulis!</p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						timer: 2000,
+						showCloseButton: true
+					})
 				})
 		},
 		file(event) {

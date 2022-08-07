@@ -1,57 +1,76 @@
 <template>
-	<main class="site-main">
-		<Header />
-
-		<div class="container">
-			<div class="bzg bzg--no-gutter profile">
-				<div class="profile-nav profile-item bzg_c" data-col="m3">
-					<div class="profile-info flex pt-0">
-						<img src="/assets/img/dummy-profile-pic.png" alt="" />
-						<div class="profile-info--text">
-							<span class="name d-block">{{
-								$auth.loggedIn ? `${$auth.user[0].name}` : 'John Doe'
-							}}</span>
-							<span class="email d-block">{{
-								$auth.loggedIn ? `${$auth.user[0].email}` : 'example@mail.com'
-							}}</span>
+	<main class="site">
+		<div id="app" class="relative sticky-footer-container">
+			<div class="sticky-footer-container-item">
+				<Header />
+			</div>
+			<div class="sticky-footer-container-item --pushed site-main">
+				<div class="container">
+					<div class="bzg bzg--no-gutter profile">
+						<div class="profile-nav profile-item bzg_c" data-col="m3">
+							<div class="profile-info flex pt-0 pb-16">
+								<img
+									:src="
+										$auth.user[0].photo === null
+											? '/assets/img/dummy-profile-pic.png'
+											: $auth.user[0].photo
+									"
+									alt=""
+								/>
+								<div class="profile-info--text">
+									<span class="name d-block">{{
+										$auth.loggedIn ? `${$auth.user[0].name}` : 'John Doe'
+									}}</span>
+									<span class="email d-block">{{
+										$auth.loggedIn
+											? `${$auth.user[0].email}`
+											: 'example@mail.com'
+									}}</span>
+								</div>
+							</div>
+							<hr />
+							<ul class="nav list-nostyle">
+								<li class="nav-item">
+									<span class="bzi bzi-Settings-alt bzi-1_5x"></span>
+									<nuxt-link :to="localePath('/akun-saya')" exact
+										>Pengaturan Akun</nuxt-link
+									>
+								</li>
+								<li class="nav-item">
+									<span class="bzi bzi-Book-mark bzi-1_5x"></span>
+									<nuxt-link
+										:to="localePath('/akun-saya/karya-tulis-tersimpan')"
+										exact
+										>Karya Tulis Tersimpan</nuxt-link
+									>
+								</li>
+								<li class="nav-item">
+									<span class="bzi bzi-Cloud-upload bzi-1_5x"></span>
+									<nuxt-link :to="localePath('/akun-saya/unggah')" exact
+										>Unggah Karya Tulis</nuxt-link
+									>
+								</li>
+								<li class="nav-item">
+									<span class="bzi bzi-File bzi-1_5x"></span>
+									<nuxt-link
+										:to="localePath('/akun-saya/karya-tulis-saya')"
+										exact
+										>Karya Tulis Saya</nuxt-link
+									>
+								</li>
+							</ul>
+						</div>
+						<div
+							class="profile-content profile-item bzg_c custom-overflow"
+							data-col="m8"
+						>
+							<nuxt />
 						</div>
 					</div>
-					<hr />
-					<ul class="nav list-nostyle">
-						<li class="nav-item">
-							<span class="bzi bzi-Settings-alt bzi-1_5x"></span>
-							<nuxt-link :to="localePath('/akun-saya')" exact
-								>Pengaturan Akun</nuxt-link
-							>
-						</li>
-						<li class="nav-item">
-							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
-							<nuxt-link
-								:to="localePath('/akun-saya/karya-tulis-tersimpan')"
-								exact
-								>Karya Tulis Tersimpan</nuxt-link
-							>
-						</li>
-						<li class="nav-item">
-							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
-							<nuxt-link :to="localePath('/akun-saya/unggah')" exact
-								>Unggah Karya Tulis</nuxt-link
-							>
-						</li>
-						<li class="nav-item">
-							<span class="bzi bzi-Book-mark bzi-1_5x"></span>
-							<nuxt-link :to="localePath('/akun-saya/karya-tulis-saya')" exact
-								>Karya Tulis Saya</nuxt-link
-							>
-						</li>
-					</ul>
 				</div>
-				<div
-					class="profile-content profile-item bzg_c custom-overflow"
-					data-col="m8"
-				>
-					<nuxt />
-				</div>
+			</div>
+			<div class="sticky-footer-container-item">
+				<Footer />
 			</div>
 		</div>
 	</main>
@@ -62,8 +81,8 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.site-main {
-	padding-block: 50px;
+.container {
+	padding-block: 110px;
 }
 
 .profile {
@@ -92,6 +111,7 @@ export default {}
 			padding: 10px 16px;
 			flex-wrap: nowrap;
 		}
+
 		&--text {
 			.name {
 				margin-bottom: 0;
@@ -109,6 +129,7 @@ export default {}
 			border-radius: 50%;
 			width: 70px;
 			height: 70px;
+			object-fit: cover;
 		}
 	}
 	&-item {
@@ -177,5 +198,9 @@ export default {}
 	&::-webkit-scrollbar-thumb:hover {
 		background: #9fa4b369;
 	}
+}
+
+.img {
+	object-fit: cover;
 }
 </style>
