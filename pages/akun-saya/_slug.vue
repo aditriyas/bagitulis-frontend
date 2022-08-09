@@ -114,10 +114,10 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
 			const [categories] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/category')
+				$axios.$get(`${process.env.BASE_URL}/api/category`)
 			])
 			const [writing] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/journal/${params.slug}`)
+				$axios.$get(`${process.env.BASE_URL}/api/journal/${params.slug}`)
 			])
 			return {
 				categories: categories.data,
@@ -157,7 +157,7 @@ export default {
 
 			await this.$axios
 				.post(
-					`http://bagitulis-cms.test/api/journal/${this.$route.params.slug}`,
+					`${process.env.BASE_URL}/api/journal/${this.$route.params.slug}`,
 					formData
 				)
 				.then(res => {

@@ -57,11 +57,12 @@ export default {
 				centerMode: true,
 				centerPadding: '0',
 				infinite: true,
-				speed: 800,
+				speed: 700,
 				slidesToShow: 3,
 				slidesToScroll: 1,
 				swipeToSlide: true,
 				variableWidth: false,
+				autoplay: true,
 				rtl: false,
 				responsive: [
 					{

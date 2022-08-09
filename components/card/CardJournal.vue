@@ -30,8 +30,9 @@
 				<div class="journal-card--footer flex">
 					<div class="photo">
 						<img
-							:src="photo === null ? 'assets/img/dummy-profile-pic.png' : photo"
-							:alt="name"
+							:src="
+								photo === null ? '/assets/img/dummy-profile-pic.png' : photo
+							"
 						/>
 					</div>
 					<div class="info">

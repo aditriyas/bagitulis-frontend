@@ -40,7 +40,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [writings] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+				$axios.$get(`${process.env.BASE_URL}/api/journals`)
 			])
 			return {
 				writings: writings.data

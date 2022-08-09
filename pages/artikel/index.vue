@@ -1,45 +1,47 @@
 <template>
 	<main class="site-main pt-40">
-		<div class="article">
-			<div class="container">
-				<!-- Head -->
-				<articlesHead />
-				<div v-if="articles.length >= 1" class="tab-content flex flex--wrap">
-					<div
-						v-for="(item, index) in articles"
-						:key="index"
-						class="tab-content--card"
-					>
-						<nuxt-link :to="localePath(`/artikel/${item.id}`)">
-							<img
-								:src="
-									item.thumbnail_path === null
-										? '/assets/img/article-image-origin.jpg'
-										: `${item.thumbnail_path}`
-								"
-								alt="Tab Card Image"
-								:title="item.title"
-								class="article-img mb-12"
-							/>
-							<div class="body">
-								<h4 class="title">
-									{{ item.title.slice(0, 40) }}
-									<span v-if="item.title.length > 30">...</span>
-								</h4>
-								<p class="desc text-black">
-									{{ item.description.slice(0, 200) }}
-									<span v-if="item.description.length > 200">...</span>
-								</p>
-								<p class="date">{{ dateFormat(item.created_at) }}</p>
-							</div>
-						</nuxt-link>
+		<template v-if="articles.length > 0">
+			<div class="article">
+				<div class="container">
+					<!-- Head -->
+					<articlesHead />
+					<div class="tab-content flex flex--wrap">
+						<div
+							v-for="(item, index) in articles"
+							:key="index"
+							class="tab-content--card"
+						>
+							<nuxt-link :to="localePath(`/artikel/${item.id}`)">
+								<img
+									:src="
+										item.thumbnail_path === null
+											? '/assets/img/article-image-origin.jpg'
+											: `${item.thumbnail_path}`
+									"
+									alt="Tab Card Image"
+									:title="item.title"
+									class="article-img mb-12"
+								/>
+								<div class="body">
+									<h4 class="title">
+										{{ item.title.slice(0, 40) }}
+										<span v-if="item.title.length > 30">...</span>
+									</h4>
+									<p class="desc text-black">
+										{{ item.description.slice(0, 200) }}
+										<span v-if="item.description.length > 200">...</span>
+									</p>
+									<p class="date">{{ dateFormat(item.created_at) }}</p>
+								</div>
+							</nuxt-link>
+						</div>
 					</div>
 				</div>
-				<div v-else>
-					<articlesEmpty />
-				</div>
 			</div>
-		</div>
+		</template>
+		<template v-else>
+			<Empty />
+		</template>
 	</main>
 </template>
 
@@ -49,7 +51,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [articles] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/articles')
+				$axios.$get(`${process.env.BASE_URL}/api/articles`)
 			])
 			return {
 				articles: articles.data
@@ -72,7 +74,7 @@ export default {
 	},
 	data() {
 		return {
-			isEmpty: false
+			isEmpty: true
 		}
 	},
 	head() {

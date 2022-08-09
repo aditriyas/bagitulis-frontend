@@ -173,7 +173,7 @@ export default {
 			formData.set('password', this.formData.password)
 
 			await this.$axios
-				.post('http://bagitulis-cms.test/api/forgot-password', formData)
+				.post(`${process.env.BASE_URL}/api/forgot-password`, formData)
 				.then(res => {
 					swal({
 						html: `<h4 class="mb-0">Password berhasil diubah!</h4></br><p class="mb-0">Password Anda berhasil diubah, sekarang silahkan <a href="/masuk">Login!</a> dengan password terbaru</p>`,

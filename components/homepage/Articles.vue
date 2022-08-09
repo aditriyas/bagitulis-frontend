@@ -28,7 +28,9 @@
 									<h2 class="title">
 										{{ item.title }}
 									</h2>
-									<p class="date">Created at: {{ item.created_at }}</p>
+									<p class="date">
+										Created at: {{ dateFormat(item.created_at) }}
+									</p>
 									<hr />
 									<p class="description">
 										{{ item.description }}
@@ -67,11 +69,12 @@ export default {
 				centerMode: true,
 				centerPadding: '0',
 				infinite: true,
-				speed: 800,
+				speed: 600,
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				swipeToSlide: true,
 				variableWidth: false,
+				autoplay: true,
 				rtl: false,
 				responsive: [
 					{
@@ -102,6 +105,13 @@ export default {
 		}
 	},
 	methods: {
+		dateFormat(date) {
+			const tanggal = new Date()
+			const day = tanggal.getDate()
+			const year = tanggal.getFullYear()
+			const month = tanggal.toLocaleString('default', { month: 'long' })
+			return `${month} ${day} ${year}`
+		},
 		prevSlide() {
 			this.$refs.journalSlides.prev()
 		},

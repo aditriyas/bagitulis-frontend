@@ -204,7 +204,7 @@ export default {
 			formData.set('password', this.formData.password)
 
 			await this.$axios
-				.post('http://bagitulis-cms.test/api/register', formData)
+				.post(`${process.env.BASE_URL}/api/register`, formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
 					// this.success = true

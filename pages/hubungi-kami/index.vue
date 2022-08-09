@@ -291,7 +291,7 @@ export default {
 			formData.set('message', this.formData.message)
 
 			await this.$axios
-				.post('http://bagitulis-cms.test/api/feedback', formData)
+				.post(`${process.env.BASE_URL}/api/feedback`, formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
 					swal({

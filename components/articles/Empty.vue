@@ -1,11 +1,7 @@
 <template>
 	<div class="empty text-center">
 		<div class="empty-image">
-			<img
-				src="/assets/img/article-image-empty.png"
-				alt="Empty Image"
-				img="Empty Image"
-			/>
+			<img src="/assets/img/empty.jpg" alt="Empty Image" img="Empty Image" />
 		</div>
 		<div class="empty-text">
 			<h1 class="title">SEGERA HADIR</h1>
@@ -24,6 +20,7 @@ export default {}
 .empty {
 	&-image {
 		margin-bottom: 64px;
+		width: 60%;
 	}
 
 	&-text {

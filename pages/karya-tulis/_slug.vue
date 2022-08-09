@@ -6,7 +6,7 @@
 					<img
 						:src="
 							writing.thumbnail_path === null
-								? `/assets/img/jurnal-img-1.png`
+								? `/assets/img/journal-image-origin.jpg`
 								: writing.thumbnail_path
 						"
 						alt=""
@@ -52,7 +52,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
 			const [writing] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/journal/${params.slug}`)
+				$axios.$get(`${process.env.BASE_URL}/api/journal/${params.slug}`)
 			])
 			return {
 				writing: writing.data

@@ -1,29 +1,34 @@
 <template>
-	<main class="site-main">
-		<!-- Hero -->
-		<section>
-			<template v-if="banners.length > 0">
-				<homepageHero :reviews="banners" />
-			</template>
-		</section>
+	<div v-if="banners.length > 0 || writings.length > 0 || articles.length > 0">
+		<main class="site-main">
+			<!-- Hero -->
+			<section>
+				<template v-if="banners.length > 0">
+					<homepageHero :reviews="banners" />
+				</template>
+			</section>
 
-		<LinkCopied />
+			<LinkCopied />
 
-		<!-- Random Journal -->
-		<section id="solution">
-			<homepageJournals :journals="writings" />
-		</section>
+			<!-- Random Journal -->
+			<section id="solution">
+				<homepageJournals :journals="writings" />
+			</section>
 
-		<!-- Our Products -->
-		<section class="articles pv-64">
-			<homepageArticles :articles="articles" />
-		</section>
+			<!-- Our Products -->
+			<section class="articles pv-64">
+				<homepageArticles :articles="articles" />
+			</section>
 
-		<!-- Most Saved -->
-		<section>
-			<MostLiked :journals="writings" />
-		</section>
-	</main>
+			<!-- Most Saved -->
+			<section>
+				<MostLiked :journals="writings" />
+			</section>
+		</main>
+	</div>
+	<div v-else>
+		<Empty />
+	</div>
 </template>
 
 <script>
@@ -35,13 +40,13 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [writings] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+				$axios.$get(`${process.env.BASE_URL}/api/journals`)
 			])
 			const [banners] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/banners')
+				$axios.$get(`${process.env.BASE_URL}/api/banners`)
 			])
 			const [articles] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/articles')
+				$axios.$get(`${process.env.BASE_URL}/api/articles`)
 			])
 			return {
 				writings: writings.data,

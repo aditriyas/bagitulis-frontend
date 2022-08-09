@@ -31,7 +31,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
 			const [article] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/article/${params.slug}`)
+				$axios.$get(`${process.env.BASE_URL}/api/article/${params.slug}`)
 			])
 			return {
 				article: article.data

@@ -275,6 +275,7 @@ export default {
 		async logout() {
 			try {
 				await this.$auth.logout()
+				this.$router.push(this.localePath('/'))
 			} catch (e) {
 				console.log(e)
 			}

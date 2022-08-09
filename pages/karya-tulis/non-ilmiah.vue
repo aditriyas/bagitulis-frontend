@@ -55,7 +55,7 @@ export default {
 		try {
 			const cat = 'Non Ilmiah'
 			const [writings] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/journals?category=${cat}`)
+				$axios.$get(`${process.env.BASE_URL}/api/journals?category=${cat}`)
 			])
 			return {
 				writings: writings.data

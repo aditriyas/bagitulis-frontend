@@ -110,7 +110,7 @@ export default {
 				formData.set('password', this.formData.password)
 			}
 			await this.$axios
-				.post('http://bagitulis-cms.test/api/update-profile', formData)
+				.post(`${process.env.BASE_URL}/api/update-profile`, formData)
 				.then(res => {
 					swal({
 						html: `<h4 class="mb-0">Profile berhasil diupdate!</h4></br><p class="mb-0">Anda berhasil mengupdate profile Anda!</p>`,

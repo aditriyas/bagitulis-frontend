@@ -46,13 +46,13 @@
 						</div>
 						<div class="head-journal mb-8">
 							<h5 class="title mb-0">
-								{{ item.title.slice(0, 35) }}
-								<span v-if="item.description.length > 35">...</span>
+								{{ item.title.slice(0, 25) }}
+								<span v-if="item.description.length > 25">...</span>
 							</h5>
 							<span class="date-string">{{ dateFormat(item.created_at) }}</span>
 						</div>
 						<p class="desc mb-0">
-							{{ item.description.slice(0, 130) }}
+							{{ item.description.slice(0, 120) }}
 							<span v-if="item.description.length > 130">...</span>
 						</p>
 					</div>
@@ -78,7 +78,7 @@ export default {
 		try {
 			const [writings] = await Promise.all([
 				$axios.$get(
-					`http://bagitulis-cms.test/api/journal-user/${$auth.user[0].id}`
+					`${process.env.BASE_URL}/api/journal-user/${$auth.user[0].id}`
 				)
 			])
 			return {
@@ -97,7 +97,7 @@ export default {
 	methods: {
 		delJournal(id) {
 			this.$axios
-				.delete(`http://bagitulis-cms.test/api/journal/${id}`)
+				.delete(`${process.env.BASE_URL}/api/journal/${id}`)
 				.then(response => {
 					swal({
 						html: `<h4 class="mb-0">Karya Tulis Terhapus!</h4><p class="mb-0">Anda berhasil menghapus karya tulis ini!</p></br>`,
@@ -146,6 +146,12 @@ export default {
 	padding: 8px 12px;
 	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 	border-radius: 12px;
+	cursor: pointer;
+
+	&:hover {
+		transition: all 0.3s ease-in-out;
+		transform: scale(1.05);
+	}
 
 	img {
 		border-radius: 12px;
