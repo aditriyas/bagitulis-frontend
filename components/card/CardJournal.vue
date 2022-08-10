@@ -147,7 +147,7 @@ export default {
 			text-transform: uppercase;
 			font-weight: bold;
 			color: $black90;
-			font-size: 32px;
+			font-size: 26px;
 			line-height: 32px;
 		}
 
@@ -177,6 +177,14 @@ export default {
 				border-radius: 50%;
 			}
 		}
+	}
+}
+
+.like-button {
+	justify-content: flex-end;
+
+	span::before {
+		color: red;
 	}
 }
 </style>

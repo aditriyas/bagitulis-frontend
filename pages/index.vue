@@ -143,66 +143,66 @@ export default {
 		}
 	}
 
-	/deep/ {
-		.slick-slider {
-			@media #{$large} {
-				position: relative;
-				&::before {
-					content: '';
-					height: 100%;
-					position: absolute;
-					left: 0;
-					z-index: 2;
-					background-image: linear-gradient(
-						to left,
-						rgba(255, 255, 255, 0),
-						white
-					);
-					@media #{$extra_large} {
-						width: 750px;
-					}
-					// background: black;
-				}
-				&::after {
-					content: '';
-					height: 100%;
-					position: absolute;
-					width: 350px;
-					right: 0;
-					z-index: 2;
-					background-image: linear-gradient(
-						to right,
-						rgba(255, 255, 255, 0),
-						white
-					);
-					top: 0;
-					@media #{$extra_large} {
-						width: 750px;
-					}
-				}
-			}
-		}
-		:not(.slick-active) {
-			.slide-right {
-				opacity: 1;
-			}
-		}
+	// /deep/ {
+	// 	.slick-slider {
+	// 		@media #{$large} {
+	// 			position: relative;
+	// 			&::before {
+	// 				content: '';
+	// 				height: 100%;
+	// 				position: absolute;
+	// 				left: 0;
+	// 				z-index: 2;
+	// 				background-image: linear-gradient(
+	// 					to left,
+	// 					rgba(255, 255, 255, 0),
+	// 					white
+	// 				);
+	// 				@media #{$extra_large} {
+	// 					width: 750px;
+	// 				}
+	// 				// background: black;
+	// 			}
+	// 			&::after {
+	// 				content: '';
+	// 				height: 100%;
+	// 				position: absolute;
+	// 				width: 350px;
+	// 				right: 0;
+	// 				z-index: 2;
+	// 				background-image: linear-gradient(
+	// 					to right,
+	// 					rgba(255, 255, 255, 0),
+	// 					white
+	// 				);
+	// 				top: 0;
+	// 				@media #{$extra_large} {
+	// 					width: 750px;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	:not(.slick-active) {
+	// 		.slide-right {
+	// 			opacity: 1;
+	// 		}
+	// 	}
 
-		.slick-active {
-			.slide-left {
-				opacity: 1;
-			}
+	// 	.slick-active {
+	// 		.slide-left {
+	// 			opacity: 1;
+	// 		}
 
-			.slide-right {
-				transform: translateX(0) scale(1);
+	// 		.slide-right {
+	// 			transform: translateX(0) scale(1);
 
-				opacity: 1;
-				@media #{$large} {
-					margin-inline: 40px;
-				}
-			}
-		}
-	}
+	// 			opacity: 1;
+	// 			@media #{$large} {
+	// 				margin-inline: 40px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	&-slide {
 		margin-bottom: 0;

@@ -88,32 +88,32 @@ export default {
 	}
 }
 
-/deep/ {
-	.dots {
-		position: absolute;
-		left: 0;
-		right: 0;
-		margin: auto;
-		bottom: 40px;
-		button {
-			border: none;
-			cursor: pointer;
-			width: 8px;
-			height: 8px;
-			@media #{$medium} {
-				width: 12px;
-				height: 12px;
-			}
-		}
+// /deep/ {
+// 	.dots {
+// 		position: absolute;
+// 		left: 0;
+// 		right: 0;
+// 		margin: auto;
+// 		bottom: 40px;
+// 		button {
+// 			border: none;
+// 			cursor: pointer;
+// 			width: 8px;
+// 			height: 8px;
+// 			@media #{$medium} {
+// 				width: 12px;
+// 				height: 12px;
+// 			}
+// 		}
 
-		.slick-active {
-			button {
-				background-color: $primary;
-				border: none;
-			}
-		}
-	}
-}
+// 		.slick-active {
+// 			button {
+// 				background-color: $primary;
+// 				border: none;
+// 			}
+// 		}
+// 	}
+// }
 
 .hero {
 	// margin-bottom: 126px;

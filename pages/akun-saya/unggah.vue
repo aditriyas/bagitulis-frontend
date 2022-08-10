@@ -237,12 +237,12 @@ select {
 	font-size: 14px;
 }
 
-/deep/ {
-	.vs__dropdown-toggle,
-	.vs__dropdown-menu {
-		font-size: 14px;
-	}
-}
+// :deep(site-main) {
+// 	.vs__dropdown-toggle,
+// 	.vs__dropdown-menu {
+// 		font-size: 14px;
+// 	}
+// }
 
 .button-container {
 	justify-content: flex-end;

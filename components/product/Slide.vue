@@ -143,7 +143,7 @@ export default {
 		}
 		// width: 100%;
 
-		/deep/ {
+		&::v-deep {
 			.slick-slide {
 				min-height: 593px;
 				@media #{$medium} {
