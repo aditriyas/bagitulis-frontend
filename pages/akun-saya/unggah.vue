@@ -87,13 +87,22 @@
 						}}</strong
 						>, akan bertanggung jawab secara penuh terhadap apa yang saya unggah
 						pada
-						<a href="/">Bagitulis.com</a>
+						<a href="https://bagitulis.web.id" target="_blank"
+							>Bagitulis.web.id</a
+						>
 					</span>
 				</div>
 				<div class="button-container flex">
 					<button
 						type="submit"
 						class="btn btn--primary"
+						:disabled="
+							formData.category === null ||
+							formData.file === null ||
+							formData.thumbnail === null ||
+							formData.title === null ||
+							formData.description === null
+						"
 						@click.prevent="onSubmit()"
 					>
 						Unggah

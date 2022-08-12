@@ -164,14 +164,14 @@ export default {
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
-	build: {
-		extend(config, ctx) {},
-		postcss: {
-			preset: {
-				autoprefixer: {
-					overrideBrowserslist: ['last 2 versions']
-				}
-			}
-		}
-	}
+	// build: {
+	// 	extend(config, ctx) {},
+	// 	postcss: {
+	// 		preset: {
+	// 			autoprefixer: {
+	// 				overrideBrowserslist: ['last 2 versions']
+	// 			}
+	// 		}
+	// 	}
+	// }
 }

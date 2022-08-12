@@ -19,7 +19,7 @@
 		</div>
 		<div class="flex flex-con">
 			<template v-if="writings.length > 0">
-				<div v-for="(item, i) in writings" :key="i">
+				<div v-for="(item, i) in writings" :key="i" class="contain-card">
 					<div class="card">
 						<div class="image mb-12">
 							<img
@@ -140,8 +140,12 @@ export default {
 		justify-content: space-between;
 	}
 }
+
+.contain-card {
+	width: 380px;
+}
 .card {
-	max-width: 380px;
+	width: 100%;
 	height: 400px;
 	padding: 8px 12px;
 	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);

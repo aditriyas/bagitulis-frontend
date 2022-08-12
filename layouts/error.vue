@@ -1,21 +1,11 @@
 <template>
 	<div class="container text-center">
 		<div v-if="statusCode === 404" class="mb-24">
-			<img
-				v-lazy-load
-				data-src="~assets/img/error-image.png"
-				alt="Not Found"
-				title="Not Found"
-			/>
-			<p class="text mb-32">The page you are looking about is not available</p>
+			<img src="~assets/img/404.jpg" alt="Not Found" title="Not Found" />
+			<p class="text mb-32">The page you are looking for is not available</p>
 		</div>
 		<div v-else class="mb-24">
-			<img
-				v-lazy-load
-				data-src="~assets/img/error-image.png"
-				title="Server Error"
-				alt="Server Error"
-			/>
+			<img src="~assets/img/500.jpg" title="Server Error" alt="Server Error" />
 			<p class="text mb-32">This page is still under repair</p>
 		</div>
 		<nuxt-link

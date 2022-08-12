@@ -216,11 +216,7 @@ export default {
 	},
 	data() {
 		return {
-			isSending: false,
-			success: false,
-			countries: ['Indonesia'],
 			products: [],
-			countryOptions: ['Indonesia', 'America'],
 			formData: {
 				email: null,
 				phoneNumber: null,

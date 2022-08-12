@@ -61,6 +61,12 @@
 					<button
 						type="submit"
 						class="btn btn--primary"
+						:disabled="
+							formData.name === null &&
+							formData.photo === null &&
+							formData.email === null &&
+							formData.password === null
+						"
 						@click.prevent="onSubmit"
 					>
 						Ubah
