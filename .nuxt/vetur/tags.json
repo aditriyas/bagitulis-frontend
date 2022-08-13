@@ -1,0 +1,89 @@
+{
+  "BreadCrumbs": {
+    "description": "Auto imported from components/BreadCrumbs.vue"
+  },
+  "Demo": {
+    "description": "Auto imported from components/Demo.vue"
+  },
+  "Empty": {
+    "description": "Auto imported from components/Empty.vue"
+  },
+  "ErrorCode": {
+    "description": "Auto imported from components/ErrorCode.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "ImgResponsive": {
+    "description": "Auto imported from components/ImgResponsive.vue"
+  },
+  "LinkCopied": {
+    "description": "Auto imported from components/LinkCopied.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "Pagination": {
+    "description": "Auto imported from components/Pagination.vue"
+  },
+  "TabList": {
+    "description": "Auto imported from components/TabList.vue"
+  },
+  "ArticlesArticleInsights": {
+    "description": "Auto imported from components/articles/ArticleInsights.vue"
+  },
+  "ArticlesEmpty": {
+    "description": "Auto imported from components/articles/Empty.vue"
+  },
+  "ArticlesHead": {
+    "description": "Auto imported from components/articles/Head.vue"
+  },
+  "CardJournal": {
+    "description": "Auto imported from components/card/CardJournal.vue"
+  },
+  "FaqEmpty": {
+    "description": "Auto imported from components/faq/Empty.vue"
+  },
+  "FaqSearchBar": {
+    "description": "Auto imported from components/faq/SearchBar.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/header/Header.vue"
+  },
+  "HeaderNav": {
+    "description": "Auto imported from components/header/HeaderNav.vue"
+  },
+  "HeaderLangSwitcher": {
+    "description": "Auto imported from components/header/LangSwitcher.vue"
+  },
+  "HeaderMainNav": {
+    "description": "Auto imported from components/header/MainNav.vue"
+  },
+  "HeaderMobileNavbar": {
+    "description": "Auto imported from components/header/MobileNavbar.vue"
+  },
+  "HeaderNotif": {
+    "description": "Auto imported from components/header/Notif.vue"
+  },
+  "HeaderSiteSearch": {
+    "description": "Auto imported from components/header/SiteSearch.vue"
+  },
+  "HeaderUserNav": {
+    "description": "Auto imported from components/header/UserNav.vue"
+  },
+  "HomepageArticles": {
+    "description": "Auto imported from components/homepage/Articles.vue"
+  },
+  "HomepageHero": {
+    "description": "Auto imported from components/homepage/Hero.vue"
+  },
+  "HomepageJournals": {
+    "description": "Auto imported from components/homepage/Journals.vue"
+  },
+  "HomepageOurProduct": {
+    "description": "Auto imported from components/homepage/OurProduct.vue"
+  },
+  "JournalsMostLiked": {
+    "description": "Auto imported from components/journals/MostLiked.vue"
+  }
+}
