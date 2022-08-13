@@ -10,28 +10,30 @@
 				dari yang paling diminati banyak orang!
 			</p>
 		</div>
-		<div class="journal container v-center flex--wrap relative">
-			<VueSlickCarousel ref="journalSlides" v-bind="journalSlidesConfig">
-				<div v-for="(item, i) in journals" :key="i">
-					<CardJournal
-						:file="item.file"
-						:thumbnail="item.thumbnail"
-						:category="item.category"
-						:title="item.title"
-						:description="item.description"
-						:tags="item.tags"
-						:user="item.user"
-						:photo="item.photo"
-					/>
-				</div>
-			</VueSlickCarousel>
-			<button class="btn-arrow btn-arrow--right" @click.prevent="nextSlide()">
-				<span class="bzi bzi_2x bzi-Arrow-right bzi-1_5x"></span>
-			</button>
-			<button class="btn-arrow btn-arrow--left" @click.prevent="prevSlide()">
-				<span class="bzi bzi_2x bzi-Arrow-left bzi-1_5x"></span>
-			</button>
-		</div>
+		<template v-if="journals.length > 0">
+			<div class="journal container v-center flex--wrap relative">
+				<VueSlickCarousel ref="journalSlides" v-bind="journalSlidesConfig">
+					<div v-for="(item, i) in journals" :key="i">
+						<CardJournal
+							:file="item.file"
+							:thumbnail="item.thumbnail_path"
+							:category="item.category"
+							:title="item.title"
+							:description="item.description"
+							:tags="item.tags"
+							:user="item.user"
+							:photo="item.photo"
+						/>
+					</div>
+				</VueSlickCarousel>
+				<button class="btn-arrow btn-arrow--right" @click.prevent="nextSlide()">
+					<span class="bzi bzi_2x bzi-Arrow-right bzi-1_5x"></span>
+				</button>
+				<button class="btn-arrow btn-arrow--left" @click.prevent="prevSlide()">
+					<span class="bzi bzi_2x bzi-Arrow-left bzi-1_5x"></span>
+				</button>
+			</div>
+		</template>
 	</div>
 </template>
 

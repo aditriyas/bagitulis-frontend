@@ -1,5 +1,5 @@
 <template>
-	<main class="main">
+	<main class="main relative">
 		<form class="register">
 			<div class="register-form left flex--wrap">
 				<h2 class="text-center mb-0 text-tc-head">Daftar</h2>
@@ -132,8 +132,8 @@
 				<nuxt-link
 					:to="localePath('/')"
 					exact
-					class="btn--yellow register-submit btn"
-					>Back to Home</nuxt-link
+					class="btn--link-text register-submit btn"
+					>Kembali ke Home</nuxt-link
 				>
 			</div>
 			<div class="right flex">
@@ -144,16 +144,23 @@
 </template>
 
 <script>
-import { required, email, maxLength, sameAs } from 'vuelidate/lib/validators'
+import {
+	required,
+	email,
+	maxLength,
+	minLength,
+	sameAs
+} from 'vuelidate/lib/validators'
+import swal from 'sweetalert2'
 export default {
-	// middleware: ['guest'],
+	layout: 'blanklayout',
+	middleware: ['guest'],
 	nuxtI18n: {
 		paths: {
 			id: '/daftar',
 			en: '/register'
 		}
 	},
-	layout: 'blanklayout',
 	data() {
 		return {
 			showPassword: false,
@@ -178,10 +185,12 @@ export default {
 			},
 			password: {
 				required,
+				minLength: minLength(8),
 				maxLength: maxLength(20)
 			},
 			repeatPassword: {
 				required,
+				minLength: minLength(8),
 				sameAsPassword: sameAs('password')
 			}
 		}
@@ -195,16 +204,25 @@ export default {
 			formData.set('password', this.formData.password)
 
 			await this.$axios
-				.post('http://bagitulis-cms.test/api/register', formData)
+				.post(`${process.env.BASE_URL}/api/register`, formData)
 				.then(res => {
 					// eslint-disable-next-line no-console
-					this.$router.push({
-						path: this.localePath('/hubungi-kami/sukses')
+					// this.success = true
+					swal({
+						html: `<h4 class="mb-0">Anda berhasil mendaftar!</h4></br><p class="mb-0">Anda berhasil terdaftar kedalam sistem, sekarang silahkan <a href="/masuk">Login!</a></p>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						showCloseButton: true
 					})
+					this.$router.push(this.localePath('/masuk'))
 				})
 				.catch(error => {
-					console.log(error)
-					this.$nuxt.refresh()
+					swal({
+						html: `<h4 class="mb-0">${error}</h4></br>`,
+						confirmButtonClass: 'btn-sweet--danger',
+						position: 'center',
+						showCloseButton: true
+					})
 				})
 		}
 	}
@@ -300,6 +318,35 @@ label {
 			max-width: 600px;
 		}
 	}
+}
+
+.modal {
+	background-color: #fff;
+	box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
+	border-radius: 16px;
+	max-width: 600px;
+	z-index: 1000;
+	position: absolute;
+	height: max-content;
+	margin: 0 auto;
+	left: 0;
+	top: 30%;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.success-btn {
+	padding: 12px 32px;
 }
 
 .form-input {

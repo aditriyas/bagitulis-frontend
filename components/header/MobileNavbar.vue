@@ -1,64 +1,119 @@
 <template>
 	<nav class="mnav">
 		<div class="container bg-white" @click="$nuxt.$emit('toggleMobileNav')">
-			<div class="mnav-profile">
-				<div
-					class="
-						mnav-profile--user mnav-profile--link
-						flex
-						v-center
-						mb-16
-						pl-16
-					"
-				></div>
-			</div>
-
 			<ul class="link mnav-menu pv-24">
-				<li>
-					<div class="search-container relative mb-8">
-						<input
-							type="text"
-							class="form-input"
-							placeholder="Cari Jurnal..."
-						/>
-						<button class="search-button">
-							<span class="bzi bzi_2x bzi-Search"></span>
-						</button>
-					</div>
-				</li>
+				<template v-if="$auth.loggedIn">
+					<li class="mnav-menu mb-0">
+						<div class="profile-container flex v-center">
+							<nuxt-link :to="localePath('/akun-saya')">
+								<img
+									:src="
+										$auth.user[0].photo === null
+											? '/assets/img/dummy-profile-pic.png'
+											: $auth.user[0].photo
+									"
+									:alt="$auth.user[0].name"
+								/>
+							</nuxt-link>
+							<div class="info">
+								<span class="name d-block">{{ $auth.user[0].name }}</span>
+								<span class="email">{{ $auth.user[0].email }}</span>
+							</div>
+						</div>
+						<hr class="mt-20 mb-0" />
+					</li>
+				</template>
 				<li v-for="(nav, i) in mainNavData" :key="i">
-					<nuxt-link
-						:to="localePath(`${nav.url}`)"
-						title="Mobile Nav"
-						exact
-						class="d-block text-cap text-black pv-12 ph-24 mb-8"
-						>{{ nav.title }}</nuxt-link
-					>
-					<ul v-if="nav.child" class="link mnav-menu pb-16 mb-0">
-						<li
-							v-for="(child, idx) in nav.child"
-							:key="idx"
-							class="link mnav-menu"
-						>
+					<template v-if="nav.loggedIn">
+						<template v-if="$auth.loggedIn">
 							<nuxt-link
-								:to="localePath(child.url)"
-								exact
-								title="Mobile Nav Child"
-								class="d-block text-cap text-black pv-8 ph-40 f-14"
-								:class="child.isComingSoon ? 'disabled' : ''"
-								>{{ child.title }}</nuxt-link
+								:to="localePath(`${nav.url}`)"
+								title="Mobile Nav"
+								class="d-block text-cap text-black pv-12 ph-24 mb-8"
+								>{{ nav.title }}</nuxt-link
 							>
-						</li>
-					</ul>
+							<ul v-if="nav.child" class="link mnav-menu pb-16 mb-0">
+								<li
+									v-for="(child, idx) in nav.child"
+									:key="idx"
+									class="link mnav-menu"
+								>
+									<nuxt-link
+										:to="localePath(child.url)"
+										exact
+										title="Mobile Nav Child"
+										class="d-block text-cap text-black pv-8 ph-40 f-14"
+										:class="child.isComingSoon ? 'disabled' : ''"
+										>{{ child.title }}</nuxt-link
+									>
+								</li>
+							</ul>
+						</template>
+					</template>
+					<template v-else>
+						<nuxt-link
+							:to="localePath(`${nav.url}`)"
+							title="Mobile Nav"
+							exact
+							class="d-block text-cap text-black pv-12 ph-24 mb-8"
+							>{{ nav.title }}</nuxt-link
+						>
+						<ul v-if="nav.child" class="link mnav-menu pb-16 mb-0">
+							<li
+								v-for="(child, idx) in nav.child"
+								:key="idx"
+								class="link mnav-menu"
+							>
+								<nuxt-link
+									:to="localePath(child.url)"
+									exact
+									title="Mobile Nav Child"
+									class="d-block text-cap text-black pv-8 ph-40 f-14"
+									:class="child.isComingSoon ? 'disabled' : ''"
+									>{{ child.title }}</nuxt-link
+								>
+							</li>
+						</ul>
+					</template>
 				</li>
+				<template v-if="!$auth.loggedIn">
+					<li>
+						<nuxt-link
+							:to="localePath('/masuk')"
+							class="d-block text-cap text-black pv-12 ph-24 mb-8"
+							>Masuk</nuxt-link
+						>
+					</li>
+					<li>
+						<nuxt-link
+							:to="localePath('/daftar')"
+							class="d-block text-cap text-black pv-12 ph-24 mb-8"
+							>Daftar</nuxt-link
+						>
+					</li>
+				</template>
 				<li class="reqdemo-mobile pt-8">
 					<nuxt-link
 						class="text-white"
-						:to="localePath('/karya-tulis/jurnal')"
-						title="Minta Demo"
+						:to="localePath('/hubungi-kami')"
+						title="Hubungi Kami"
 					>
-						<button class="btn--primary request-button">
-							Lihat Karya Tulis
+						<button class="btn--yellow request-button p-10">
+							Hubungi Kami
+						</button>
+					</nuxt-link>
+				</li>
+				<li v-if="$auth.loggedIn" class="reqdemo-mobile pt-8">
+					<nuxt-link
+						class="text-white"
+						:to="localePath('/hubungi-kami')"
+						title="Hubungi Kami"
+					>
+						<button
+							class="btn--primary request-button p-10"
+							@click.prevent="logout()"
+						>
+							Logout
 						</button>
 					</nuxt-link>
 				</li>
@@ -82,6 +137,10 @@ export default {
 		supportNavData: {
 			type: Array,
 			default: null
+		},
+		loggedIn: {
+			type: Boolean,
+			default: false
 		}
 	},
 	methods: {
@@ -96,6 +155,14 @@ export default {
 			}
 
 			return url
+		},
+		async logout() {
+			try {
+				await this.$auth.logout()
+				this.$router.push(this.localePath('/'))
+			} catch (e) {
+				console.log(e)
+			}
 		}
 	}
 }
@@ -136,7 +203,7 @@ export default {
 		width: 100%;
 		height: 100%;
 		padding: 0 $space;
-		box-shadow: 0px 3px 20px rgba(#cccccc, 0.87);
+		box-shadow: 0px 3px 20px rgba(black, 0.4);
 	}
 
 	&-profile--user {
@@ -170,11 +237,16 @@ export default {
 	border-radius: 8px;
 }
 
+.nuxt-link-active {
+	font-weight: bold;
+	border-radius: 8px;
+}
+
 .reqdemo-mobile {
 	button {
 		width: 100%;
 		padding: 16px 24px;
-		border-radius: 12px;
+		border-radius: 8px;
 	}
 }
 
@@ -197,6 +269,23 @@ export default {
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
+	}
+}
+
+.profile-container {
+	gap: 20px;
+	justify-content: center;
+	.info {
+		.name {
+			text-transform: capitalize;
+			font-size: 16px;
+		}
+	}
+	img {
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+		object-fit: cover;
 	}
 }
 </style>

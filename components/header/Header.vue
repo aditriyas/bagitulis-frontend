@@ -75,17 +75,6 @@
 									>{{ $t('article') }}</nuxt-link
 								>
 							</li>
-							<!-- <li class="main-nav__item flex">
-								<div class="search-container relative">
-									<input type="text" class="form-input" />
-									<button
-										class="search-button"
-										@click.prevent="isSearch = !isSearch"
-									>
-										<span class="bzi bzi_2x bzi-Search"></span>
-									</button>
-								</div>
-							</li> -->
 							<li class="main-nav__item separator"></li>
 							<template v-if="!$auth.loggedIn">
 								<li class="main-nav__item flex">
@@ -105,32 +94,44 @@
 									>
 								</li>
 							</template>
-							<li
-								class="main-nav__item flex relative"
-								@mouseover="showProfileDropdown = true"
-								@mouseleave="showProfileDropdown = false"
-							>
-								<nuxt-link
-									:to="localePath('/akun-saya')"
-									class="header-link"
-									title="Akun Saya"
-									><img src="/assets/img/dummy-profile-pic.png" alt="" />
-									<span class="text-black">Hi, Admin!</span>
-								</nuxt-link>
-								<div
-									v-if="showProfileDropdown === true"
-									class="profile-dropdown"
+							<template v-if="$auth.loggedIn">
+								<li
+									class="main-nav__item flex relative"
+									@mouseover="showProfileDropdown = true"
+									@mouseleave="showProfileDropdown = false"
 								>
-									<div class="profile-dropdown--item" @click.prevent="logout">
-										Logout
-									</div>
 									<nuxt-link
-										class="profile-dropdown--item"
 										:to="localePath('/akun-saya')"
-										>Akun Saya</nuxt-link
+										class="header-link"
+										title="Akun Saya"
+										><img
+											:src="
+												$auth.user[0].photo === null
+													? '/assets/img/dummy-profile-pic.png'
+													: $auth.user[0].photo
+											"
+											style="object-fit: cover"
+											:alt="$auth.user[0].name"
+										/>
+										<span class="text-black" style="text-transform: capitalize"
+											>Hi, {{ $auth.user[0].name }}!</span
+										>
+									</nuxt-link>
+									<div
+										v-if="showProfileDropdown === true"
+										class="profile-dropdown"
 									>
-								</div>
-							</li>
+										<div class="profile-dropdown--item" @click.prevent="logout">
+											Logout
+										</div>
+										<nuxt-link
+											class="profile-dropdown--item"
+											:to="localePath('/akun-saya')"
+											>Akun Saya</nuxt-link
+										>
+									</div>
+								</li>
+							</template>
 							<li class="burger flex">
 								<button
 									class="burger-button"
@@ -174,43 +175,59 @@ export default {
 			],
 			mainNav: [
 				{
-					title: 'kategori',
-					url: 'karya-tulis/jurnal',
+					title: `Akun Saya`,
+					url: '/akun-saya',
+					loggedIn: true,
 					child: [
 						{
-							title: `${this.$t('journal')}`,
-							url: 'karya-tulis/jurnal'
-						},
-
-						{
-							title: `${this.$t('scientificWritings')}`,
-							url: 'karya-tulis/ilmiah'
+							title: `Pengaturan Akun`,
+							url: '/akun-saya'
 						},
 						{
-							title: `${this.$t('nonScientificWritings')}`,
-							url: 'karya-tulis/non-ilmiah'
+							title: `Karya Tulis Tersimpan`,
+							url: '/akun-saya/karya-tulis-tersimpan',
+							loggedIn: false
 						},
 						{
-							title: `${this.$t('readersFav')}`,
-							url: 'karya-tulis/favorit'
+							title: `Unggah Karya Tulis`,
+							url: '/akun-saya/unggah',
+							loggedIn: false
+						},
+						{
+							title: `Karya Tulis Saya`,
+							url: '/akun-saya/karya-tulis-saya',
+							loggedIn: false
 						}
 					]
 				},
 				{
-					title: `${this.$t('contactUs')}`,
-					url: '/hubungi-kami'
+					title: 'kategori',
+					child: [
+						{
+							title: `Semua`,
+							url: '/karya-tulis'
+						},
+						{
+							title: `${this.$t('journal')}`,
+							url: '/karya-tulis/jurnal',
+							loggedIn: false
+						},
+						{
+							title: `${this.$t('scientificWritings')}`,
+							url: '/karya-tulis/ilmiah',
+							loggedIn: false
+						},
+						{
+							title: `${this.$t('nonScientificWritings')}`,
+							url: '/karya-tulis/non-ilmiah',
+							loggedIn: false
+						}
+					]
 				},
 				{
 					title: `${this.$t('article')}`,
-					url: '/artikel'
-				},
-				{
-					title: `${this.$t('login')}`,
-					url: '/masuk'
-				},
-				{
-					title: `${this.$t('register')}`,
-					url: '/daftar'
+					url: '/artikel',
+					loggedIn: false
 				}
 			],
 			categories: [
@@ -220,28 +237,21 @@ export default {
 					link: ''
 				},
 				{
-					id: 1,
+					id: 2,
 					name: `${this.$t('journal')}`,
 					link: 'jurnal'
 				},
 				{
-					id: 2,
+					id: 3,
 					name: `${this.$t('scientificWritings')}`,
 					link: 'ilmiah',
 					isDisabled: false,
 					comingSoon: false
 				},
 				{
-					id: 3,
+					id: 4,
 					name: `${this.$t('nonScientificWritings')}`,
 					link: 'non-ilmiah',
-					isDisabled: false,
-					comingSoon: false
-				},
-				{
-					id: 4,
-					name: `${this.$t('readersFav')}`,
-					link: 'favorit',
 					isDisabled: false,
 					comingSoon: false
 				}
@@ -265,6 +275,7 @@ export default {
 		async logout() {
 			try {
 				await this.$auth.logout()
+				this.$router.push(this.localePath('/'))
 			} catch (e) {
 				console.log(e)
 			}

@@ -13,7 +13,11 @@
 				<div class="review-slide container">
 					<div class="slide-main slide-right">
 						<img
-							:src="`storage/banner-image/${item.image}`"
+							:src="
+								item.image_path === null
+									? `assets/img/banner-image-origin.jpg`
+									: `${item.image_path}`
+							"
 							:alt="item.title"
 							:title="item.title"
 							class="slide-brand mb-32"
@@ -84,32 +88,32 @@ export default {
 	}
 }
 
-/deep/ {
-	.dots {
-		position: absolute;
-		left: 0;
-		right: 0;
-		margin: auto;
-		bottom: 40px;
-		button {
-			border: none;
-			cursor: pointer;
-			width: 8px;
-			height: 8px;
-			@media #{$medium} {
-				width: 12px;
-				height: 12px;
-			}
-		}
+// /deep/ {
+// 	.dots {
+// 		position: absolute;
+// 		left: 0;
+// 		right: 0;
+// 		margin: auto;
+// 		bottom: 40px;
+// 		button {
+// 			border: none;
+// 			cursor: pointer;
+// 			width: 8px;
+// 			height: 8px;
+// 			@media #{$medium} {
+// 				width: 12px;
+// 				height: 12px;
+// 			}
+// 		}
 
-		.slick-active {
-			button {
-				background-color: $primary;
-				border: none;
-			}
-		}
-	}
-}
+// 		.slick-active {
+// 			button {
+// 				background-color: $primary;
+// 				border: none;
+// 			}
+// 		}
+// 	}
+// }
 
 .hero {
 	// margin-bottom: 126px;

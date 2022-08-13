@@ -3,17 +3,28 @@
 		<div class="writings container">
 			<div class="head text-center mb-40">
 				<h2 class="head-title text-black">Karya Tulis Non-Ilmiah</h2>
-				<p class="head-subtitle">
-					Karya Tulis Non-Ilmiah yang telah dibagikan ke Bagitulis.
-				</p>
+				<template v-if="writings.length > 0">
+					<p class="head-subtitle">
+						Karya Tulis Non-Ilmiah yang telah dibagikan ke Bagitulis.
+					</p>
+				</template>
+				<template v-else>
+					<p class="head-subtitle">
+						Karya Tulis Non-Ilmiah belum tersedia,
+						<nuxt-link :to="localePath('/daftar')" class="text-primary"
+							>Daftar</nuxt-link
+						>
+						untuk mengunggah Karya Tulis Non-Ilmiah!
+					</p>
+				</template>
 			</div>
 			<div class="body flex flex--wrap">
-				<div v-for="(item, i) in writings" :key="i">
-					<div v-if="item.category.name === 'Karya Tulis Non-Ilmiah'">
+				<template v-if="writings.length > 0">
+					<div v-for="(item, i) in writings" :key="i">
 						<div class="body-card">
 							<CardJournal
-								:file="item.file"
-								:thumbnail="item.thumbnail"
+								:file="item.file_path"
+								:thumbnail="item.thumbnail_path"
 								:category="item.category"
 								:title="item.title"
 								:description="item.description"
@@ -21,10 +32,16 @@
 								:user="item.user"
 								:photo="item.photo"
 								:slug="item.id"
+								:date="item.updated_at"
 							/>
 						</div>
 					</div>
-				</div>
+				</template>
+				<template v-else>
+					<div class="container text-center">
+						<img src="/assets/img/empty.jpg" alt="" width="800" />
+					</div>
+				</template>
 			</div>
 		</div>
 	</main>
@@ -36,8 +53,9 @@ export default {
 	components: { CardJournal },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
+			const cat = 'Non Ilmiah'
 			const [writings] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+				$axios.$get(`${process.env.BASE_URL}/api/journals?category=${cat}`)
 			])
 			return {
 				writings: writings.data

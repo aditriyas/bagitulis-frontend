@@ -4,18 +4,17 @@
 			<div class="img-container">
 				<img
 					:src="
-						article.thumbnail === null
-							? '/assets/img/dummy-profile-pic.png'
-							: article.thumbnail
+						article.thumbnail_path === null
+							? '/assets/img/article-image-origin.jpg'
+							: article.thumbnail_path
 					"
-					alt=""
 					class="w-100 article-img"
 				/>
 			</div>
 			<div class="article-head mt-32 text-center mb-50">
 				<h1 class="title text-black">{{ article.title }}</h1>
-				<p class="mb-0 text-body">
-					Updated by: {{ article.user_id }},
+				<p class="mb-0 text-body">Updated by: Aditya</p>
+				<p>
 					{{ dateFormat(article.updated_at) }}
 				</p>
 			</div>
@@ -32,7 +31,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
 			const [article] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/article/${params.slug}`)
+				$axios.$get(`${process.env.BASE_URL}/api/article/${params.slug}`)
 			])
 			return {
 				article: article.data

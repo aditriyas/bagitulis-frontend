@@ -1,65 +1,49 @@
 <template>
-	<main class="site-main">
-		<!-- Hero -->
-		<section>
-			<homepageHero :reviews="reviews" />
-		</section>
+	<div v-if="banners.length > 0 || writings.length > 0 || articles.length > 0">
+		<main class="site-main">
+			<!-- Hero -->
+			<section>
+				<template v-if="banners.length > 0">
+					<homepageHero :reviews="banners" />
+				</template>
+			</section>
 
-		<LinkCopied />
+			<LinkCopied />
 
-		<!-- Random Journal -->
-		<section id="solution">
-			<homepageJournals :journals="posts" />
-		</section>
+			<!-- Random Journal -->
+			<section id="solution">
+				<homepageJournals :journals="writings" />
+			</section>
 
-		<!-- Our Products -->
-		<section class="articles pt-64">
-			<div class="container">
-				<div class="articles-head text-center mb-64">
-					<h1 class="articles-title mb-24">
-						<span class="text-primary">Artikel </span> terkini
-					</h1>
-					<p class="articles-text">
-						Artikel dan info terbaru yang mungkin dapat membantu Anda dalam
-						menulis dan berkarya!
-					</p>
-				</div>
-				<articlesArticleInsights
-					:left-articles="leftArticles"
-					:right-articles="rightArticles"
-				/>
-			</div>
-		</section>
-
-		<!-- Most Saved -->
-		<section>
-			<MostLiked :journals="posts" />
-		</section>
-
-		<!-- Banner -->
-		<!-- <section>
-			<Demo :demo="demo" :title="demo.title" :sub-title="demo.subTitle" />
-		</section> -->
-	</main>
+			<!-- Our Products -->
+			<section class="articles pv-64">
+				<homepageArticles :articles="articles" />
+			</section>
+		</main>
+	</div>
+	<div v-else>
+		<Empty />
+	</div>
 </template>
 
 <script>
-import MostLiked from '../components/journals/MostLiked.vue'
-
 export default {
 	auth: false,
-	components: { MostLiked },
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
-			const [posts] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+			const [writings] = await Promise.all([
+				$axios.$get(`${process.env.BASE_URL}/api/journals`)
 			])
-			const [reviews] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/banners')
+			const [banners] = await Promise.all([
+				$axios.$get(`${process.env.BASE_URL}/api/banners`)
+			])
+			const [articles] = await Promise.all([
+				$axios.$get(`${process.env.BASE_URL}/api/articles`)
 			])
 			return {
-				posts: posts.data,
-				reviews: reviews.data
+				writings: writings.data,
+				banners: banners.data,
+				articles: articles.data
 			}
 		} catch (e) {
 			if (e.response.status === 401) {
@@ -76,77 +60,7 @@ export default {
 			isOut: false,
 			currentSlide: {},
 			currentIndex: 0,
-			linkCopied: true,
-			leftArticles: [
-				{
-					articleImage: '/assets/img/article-image-1.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'The 23 Most Profitable Business Opportunities in 2021',
-					articleDate: 'September 21 2021'
-				}
-			],
-			rightArticles: [
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 20 2021'
-				},
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 20 2021'
-				},
-				{
-					articleImage: '/assets/img/article-image-2.png',
-					articleCategory: 'Business Insights',
-					articleTitle: 'How to Make and Sell Stickers Online in 2021',
-					articleDate: 'September 19 2021'
-				}
-			],
-			demo: [
-				{
-					title: 'Ayo unggah Jurnal dan Karya Tulis kamu! ',
-					subTitle: `"Ilmu itu adalah hasil panen/buruan dalam karung, menulis adalah ikatannya!"`,
-					path: '/karya-tulis/ilmiah',
-					pathName: 'Lihat Karya Tulis'
-				}
-			],
-			slides: [
-				{
-					id: 1,
-					slideImage: 'assets/img/comingsoon-slide-1.png',
-					textTop: 'OMS',
-					textMid: 'Memprofesionalkan performa bisnis Anda',
-					textBottom:
-						'Fasilitasi bisnis Anda dengan order management system untuk meminimalisir perbedaan penjualan.'
-				},
-				{
-					id: 2,
-					slideImage: 'assets/img/comingsoon-slide-2.png',
-					textTop: 'WMS',
-					textMid: 'Kelola penyimpanan e-commerce dengan sederhana',
-					textBottom:
-						'Mengoptimalkan inventaris dan penyimpanan Anda dengan tempat penyimpanan yang lancar dan solusi-solusi pemenuhan'
-				},
-				{
-					id: 3,
-					slideImage: 'assets/img/comingsoon-slide-3.png',
-					textTop: 'O2O',
-					textMid: 'Merealisasikan toko online Anda',
-					textBottom:
-						'Tidak hanya melalui online, kami juga akan membantu operasional offline dengan tim profesional kami'
-				},
-				{
-					id: 4,
-					slideImage: 'assets/img/comingsoon-slide-4.png',
-					textTop: 'Loyalty System',
-					textMid: 'Menjaga pelanggan setia, menarik lebih banyak',
-					textBottom:
-						'Membangun hubungan jangka panjang dengan pelanggan dengan loyalty solution kami'
-				}
-			]
+			linkCopied: true
 		}
 	},
 	head() {
@@ -221,66 +135,66 @@ export default {
 		}
 	}
 
-	/deep/ {
-		.slick-slider {
-			@media #{$large} {
-				position: relative;
-				&::before {
-					content: '';
-					height: 100%;
-					position: absolute;
-					left: 0;
-					z-index: 2;
-					background-image: linear-gradient(
-						to left,
-						rgba(255, 255, 255, 0),
-						white
-					);
-					@media #{$extra_large} {
-						width: 750px;
-					}
-					// background: black;
-				}
-				&::after {
-					content: '';
-					height: 100%;
-					position: absolute;
-					width: 350px;
-					right: 0;
-					z-index: 2;
-					background-image: linear-gradient(
-						to right,
-						rgba(255, 255, 255, 0),
-						white
-					);
-					top: 0;
-					@media #{$extra_large} {
-						width: 750px;
-					}
-				}
-			}
-		}
-		:not(.slick-active) {
-			.slide-right {
-				opacity: 1;
-			}
-		}
+	// /deep/ {
+	// 	.slick-slider {
+	// 		@media #{$large} {
+	// 			position: relative;
+	// 			&::before {
+	// 				content: '';
+	// 				height: 100%;
+	// 				position: absolute;
+	// 				left: 0;
+	// 				z-index: 2;
+	// 				background-image: linear-gradient(
+	// 					to left,
+	// 					rgba(255, 255, 255, 0),
+	// 					white
+	// 				);
+	// 				@media #{$extra_large} {
+	// 					width: 750px;
+	// 				}
+	// 				// background: black;
+	// 			}
+	// 			&::after {
+	// 				content: '';
+	// 				height: 100%;
+	// 				position: absolute;
+	// 				width: 350px;
+	// 				right: 0;
+	// 				z-index: 2;
+	// 				background-image: linear-gradient(
+	// 					to right,
+	// 					rgba(255, 255, 255, 0),
+	// 					white
+	// 				);
+	// 				top: 0;
+	// 				@media #{$extra_large} {
+	// 					width: 750px;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	:not(.slick-active) {
+	// 		.slide-right {
+	// 			opacity: 1;
+	// 		}
+	// 	}
 
-		.slick-active {
-			.slide-left {
-				opacity: 1;
-			}
+	// 	.slick-active {
+	// 		.slide-left {
+	// 			opacity: 1;
+	// 		}
 
-			.slide-right {
-				transform: translateX(0) scale(1);
+	// 		.slide-right {
+	// 			transform: translateX(0) scale(1);
 
-				opacity: 1;
-				@media #{$large} {
-					margin-inline: 40px;
-				}
-			}
-		}
-	}
+	// 			opacity: 1;
+	// 			@media #{$large} {
+	// 				margin-inline: 40px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	&-slide {
 		margin-bottom: 0;

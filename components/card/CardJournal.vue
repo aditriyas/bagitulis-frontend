@@ -5,7 +5,15 @@
 		class="journal"
 	>
 		<div class="journal-card text-center">
-			<img :src="thumbnail" alt="" class="journal-card--img" />
+			<img
+				:src="
+					thumbnail === null
+						? '/assets/img/journal-image-origin.jpg'
+						: `${thumbnail}`
+				"
+				alt=""
+				class="journal-card--img"
+			/>
 			<div class="journal-card--info text-left flex flex--row">
 				<div class="journal-card--category mb-12 d-block">
 					Kategori: {{ category.name }}
@@ -22,18 +30,23 @@
 				<div class="journal-card--footer flex">
 					<div class="photo">
 						<img
-							:src="photo != null ? photo : 'assets/img/dummy-profile-pic.png'"
-							alt=""
+							:src="
+								photo === null ? '/assets/img/dummy-profile-pic.png' : photo
+							"
 						/>
 					</div>
 					<div class="info">
-						<span class="journal-card--tags text-tc-subtext"
-							>Tags:
-							<span v-for="(item, i) in tags" :key="i">{{ item }} </span></span
-						>
+						<template v-if="tags">
+							<span class="journal-card--tags text-tc-subtext"
+								>Tags:
+								<span v-for="(item, i) in tags" :key="i"
+									>{{ item.name.en }}
+								</span></span
+							>
+						</template>
 						<span class="journal-card--author d-block"
-							><span class="text-black">Diunggah oleh: </span>{{ user }} on May
-							18, 2018</span
+							><span class="text-black">Diunggah pada: </span>{{ user }}
+							{{ dateFormat(date) }}</span
 						>
 					</div>
 				</div>
@@ -70,7 +83,7 @@ export default {
 			default: null
 		},
 		tags: {
-			type: String,
+			type: Array,
 			default: null
 		},
 		user: {
@@ -80,6 +93,19 @@ export default {
 		photo: {
 			type: String,
 			default: null
+		},
+		date: {
+			type: String,
+			default: null
+		}
+	},
+	methods: {
+		dateFormat(date) {
+			const tanggal = new Date()
+			const day = tanggal.getDate()
+			const year = tanggal.getFullYear()
+			const month = tanggal.toLocaleString('default', { month: 'long' })
+			return `${month} ${day} ${year}`
 		}
 	}
 }
@@ -91,7 +117,6 @@ export default {
 		max-width: 400px;
 		flex-direction: column;
 		border-radius: 16px;
-		// box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 
 		&--info {
 			border: none !important;
@@ -107,8 +132,9 @@ export default {
 		}
 		&--img {
 			width: 100%;
+			height: 230px;
 			object-fit: cover;
-			// border-radius: 16px 16px 0 0;
+			border-radius: 16px 16px 0 0;
 		}
 
 		&--author {
@@ -121,7 +147,7 @@ export default {
 			text-transform: uppercase;
 			font-weight: bold;
 			color: $black90;
-			font-size: 32px;
+			font-size: 26px;
 			line-height: 32px;
 		}
 
@@ -151,6 +177,14 @@ export default {
 				border-radius: 50%;
 			}
 		}
+	}
+}
+
+.like-button {
+	justify-content: flex-end;
+
+	span::before {
+		color: red;
 	}
 }
 </style>

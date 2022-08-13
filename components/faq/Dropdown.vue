@@ -91,7 +91,7 @@ export default {
 	}
 
 	&-content {
-		/deep/ {
+		&::v-deep {
 			p {
 				color: #505565;
 				line-height: 28px;

@@ -22,7 +22,7 @@ export default {
 	},
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {
-		title: 'Bagitulis - Online Repository',
+		title: 'Bagitulis - Repository Jurnal dan Karya Tulis Online',
 		meta: defaultMeta,
 		link: [
 			{
@@ -79,6 +79,7 @@ export default {
 		'@nuxtjs/axios',
 		'@nuxtjs/auth-next',
 		'@nuxtjs/style-resources',
+		'nuxt-sweetalert2',
 		'@nuxtjs/sitemap',
 		'@nuxtjs/robots',
 		['@nuxtjs/i18n', I18N],
@@ -96,7 +97,8 @@ export default {
 
 	axios: {
 		proxy: true,
-		AxiosInstance
+		AxiosInstance,
+		credentials: true
 	},
 
 	sitemap: {
@@ -138,11 +140,11 @@ export default {
 					},
 					logout: {
 						url: '/api/logout'
+					},
+					user: {
+						url: '/api/profile',
+						method: 'GET'
 					}
-				},
-				user: {
-					property: false,
-					autoFetch: true
 				}
 			}
 		},
@@ -152,68 +154,6 @@ export default {
 			home: '/id'
 		}
 	},
-	// auth: {
-	// 	strategies: {
-	// 		laravelSanctum: {
-	// 			provider: 'laravel/sanctum',
-	// 			url: 'http://bagitulis-cms.test',
-	// 			endpoints: {
-	// 				login: {
-	// 					url: '/api/login',
-	// 					propertyName: 'token'
-	// 				},
-	// 				logout: {
-	// 					url: '/api/logout',
-	// 					propertyName: 'token'
-	// 				}
-	// 			},
-	// 			user: {
-	// 				url: '/api/profile',
-	// 				method: 'get',
-	// 				propertyName: 'user',
-	// 				withCredentials: true,
-	// 				data: {},
-	// 				headers: {
-	// 					Referer: 'http://localhost::3000', // <- here
-	// 					Accept: 'application/json',
-	// 					'X-Requested-With': 'XMLHttpRequest',
-	// 					'Content-Type': 'application/json'
-	// 				}
-	// 			}
-	// 			// user: {
-	// 			// 	property: 'user'
-	// 			// }
-	// 		}
-	// 	},
-	// 	redirect: {
-	// 		login: '/id/masuk',
-	// 		logout: '/id',
-	// 		home: '/id'
-	// 	}
-	// },
-
-	// auth: {
-	// 	strategies: {
-	// 		local: {
-	// 			url: 'http://bagitulis-cms.test',
-	// 			token: {
-	// 				property: 'token',
-	// 				global: true,
-	// 				type: 'Bearer'
-	// 				// required: true,
-	// 			},
-	// 			user: {
-	// 				property: 'user'
-	// 				// autoFetch: true
-	// 			},
-	// 			endpoints: {
-	// 				login: { url: '/api/login', method: 'post' },
-	// 				logout: { url: '/api/logout', method: 'post' },
-	// 				user: { url: '/api/profile', method: 'get' }
-	// 			}
-	// 		}
-	// 	}
-	// },
 
 	styleResources: {
 		scss: ['./assets/scss/partials/_variables.scss']
@@ -224,14 +164,14 @@ export default {
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
-	build: {
-		extend(config, ctx) {},
-		postcss: {
-			preset: {
-				autoprefixer: {
-					overrideBrowserslist: ['last 2 versions']
-				}
-			}
-		}
-	}
+	// build: {
+	// 	extend(config, ctx) {},
+	// 	postcss: {
+	// 		preset: {
+	// 			autoprefixer: {
+	// 				overrideBrowserslist: ['last 2 versions']
+	// 			}
+	// 		}
+	// 	}
+	// }
 }

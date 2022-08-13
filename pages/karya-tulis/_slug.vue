@@ -3,7 +3,15 @@
 		<div class="detail container">
 			<div class="card">
 				<div class="card-image flex mb-32">
-					<img src="/assets/img/dummy-profile-pic.png" alt="" class="mv-auto" />
+					<img
+						:src="
+							writing.thumbnail_path === null
+								? `/assets/img/journal-image-origin.jpg`
+								: writing.thumbnail_path
+						"
+						alt=""
+						class="mv-auto"
+					/>
 				</div>
 				<div class="card-info flex pb-32">
 					<div class="card-info--item">
@@ -16,7 +24,13 @@
 					</div>
 					<div class="card-info--item">
 						<p class="info-title">Download</p>
-						<a :href="writing.file" :download="writing.title">Download</a>
+						<a
+							:href="writing.file_path"
+							:download="writing.name"
+							target="_blank"
+							:class="writing.file_path === null ? 'disabled' : ''"
+							>Download</a
+						>
 					</div>
 				</div>
 				<hr />
@@ -37,13 +51,11 @@
 export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404, params }) {
 		try {
-			const [writing, writings] = await Promise.all([
-				$axios.$get(`http://bagitulis-cms.test/api/journal/${params.slug}`),
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+			const [writing] = await Promise.all([
+				$axios.$get(`${process.env.BASE_URL}/api/journal/${params.slug}`)
 			])
 			return {
-				writing: writing.data,
-				writings: writings.data
+				writing: writing.data
 			}
 		} catch (e) {
 			if (e.response.status === 401) {
@@ -74,12 +86,13 @@ export default {
 
 <style lang="scss" scoped>
 .detail {
+	max-width: 700px;
 	.card {
 		padding: 16px 32px;
 		box-shadow: 0px 2px 32px 0px rgba(0, 14, 51, 0.08);
 		width: max-content;
 		margin: 0 auto;
-		max-width: 700px;
+		width: 100%;
 		border-radius: 12px;
 
 		img {
@@ -91,6 +104,7 @@ export default {
 		&-info {
 			justify-content: space-between;
 			text-align: left;
+			flex-wrap: wrap;
 
 			&--item {
 				max-width: 200px;
@@ -126,6 +140,11 @@ export default {
 				max-width: 500px;
 			}
 		}
+	}
+
+	.disabled {
+		cursor: not-allowed;
+		color: $tc-pbody-light;
 	}
 }
 </style>

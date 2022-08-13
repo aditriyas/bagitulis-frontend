@@ -2,28 +2,42 @@
 	<div class="solutions">
 		<div class="solutions-head text-center">
 			<h1 class="solutions-title mb-24">
-				<span class="text-primary">Karya Tulis </span> yang bisa Anda lihat
+				<span class="text-primary">Artikel </span> yang bisa Anda lihat
 			</h1>
 			<p class="solutions-text">
-				Beberapa Jurnal yang telah diunggah dapat anda lihat disini, segera
-				unggah Karya Tulis dan Jurnal kamu!
+				Artikel yang mungkin dapat bermanfaat untuk Anda!
 			</p>
 		</div>
-		<template v-if="journals.length > 0">
+		<template v-if="articles.length > 0">
 			<div class="journal container relative">
 				<VueSlickCarousel ref="journalSlides" v-bind="journalSlidesConfig">
-					<div v-for="(item, i) in journals" :key="i">
-						<CardJournal
-							:file="item.file"
-							:thumbnail="item.thumbnail_path"
-							:category="item.category"
-							:title="item.title"
-							:description="item.description"
-							:tags="item.tags"
-							:user="item.user"
-							:photo="item.photo"
-							:slug="item.id"
-						/>
+					<div v-for="(item, i) in articles" :key="i">
+						<div class="article-card--left">
+							<nuxt-link :to="localePath(`/artikel/${item.id}`)">
+								<img
+									:src="
+										item.thumbnail_path === null
+											? '/assets/img/article-image-origin.jpg'
+											: item.thumbnail_path
+									"
+									:alt="item.title"
+									img="Article Thumbnail"
+									class="thumbnail mb-10"
+								/>
+								<div class="info text-center">
+									<h2 class="title">
+										{{ item.title }}
+									</h2>
+									<p class="date">
+										Created at: {{ dateFormat(item.created_at) }}
+									</p>
+									<hr />
+									<p class="description">
+										{{ item.description }}
+									</p>
+								</div>
+							</nuxt-link>
+						</div>
 					</div>
 				</VueSlickCarousel>
 				<button class="btn-arrow btn-arrow--right" @click.prevent="nextSlide()">
@@ -38,10 +52,9 @@
 </template>
 
 <script>
-import CardJournal from '../card/CardJournal.vue'
 export default {
 	props: {
-		journals: {
+		articles: {
 			type: Array,
 			default: null
 		}
@@ -49,7 +62,6 @@ export default {
 
 	data() {
 		return {
-			components: { CardJournal },
 			journalSlidesConfig: {
 				accessibility: true,
 				arrows: false,
@@ -57,8 +69,8 @@ export default {
 				centerMode: true,
 				centerPadding: '0',
 				infinite: true,
-				speed: 700,
-				slidesToShow: 3,
+				speed: 600,
+				slidesToShow: 1,
 				slidesToScroll: 1,
 				swipeToSlide: true,
 				variableWidth: false,
@@ -70,7 +82,7 @@ export default {
 						settings: {
 							variableWidth: false,
 							centerPadding: '0vw',
-							slidesToShow: 2
+							slidesToShow: 1
 						}
 					},
 					{
@@ -93,6 +105,13 @@ export default {
 		}
 	},
 	methods: {
+		dateFormat(date) {
+			const tanggal = new Date()
+			const day = tanggal.getDate()
+			const year = tanggal.getFullYear()
+			const month = tanggal.toLocaleString('default', { month: 'long' })
+			return `${month} ${day} ${year}`
+		},
 		prevSlide() {
 			this.$refs.journalSlides.prev()
 		},
@@ -112,12 +131,6 @@ export default {
 	flex-direction: column;
 }
 .solutions {
-	background-color: $grey-bg;
-	padding: 72px 16px;
-	@media #{$medium} {
-		padding-block: 72px;
-	}
-
 	&-head {
 		margin-bottom: 48px;
 	}
@@ -179,6 +192,30 @@ export default {
 		top: 0;
 		bottom: 0;
 		margin: auto;
+	}
+}
+
+.thumbnail {
+	width: 100%;
+	max-height: 300px;
+	object-fit: cover;
+}
+
+.info {
+	.title {
+		color: $tc-head;
+		text-transform: capitalize;
+		margin-bottom: 8px;
+	}
+
+	.date {
+		color: $tc-pbody;
+		font-weight: bold;
+		font-size: 14px;
+	}
+
+	.description {
+		color: $tc-pbody;
 	}
 }
 </style>

@@ -9,19 +9,26 @@
 				<!-- <input v-model="journalSearch" type="text" class="form-input" /> -->
 			</div>
 			<div class="body flex flex--wrap">
-				<div v-for="(item, i) in writings" :key="i" class="body-card">
-					<CardJournal
-						:file="item.file"
-						:thumbnail="item.thumbnail"
-						:category="item.category"
-						:title="item.title"
-						:description="item.description"
-						:tags="item.tags"
-						:user="item.user"
-						:photo="item.photo"
-						:slug="item.id"
-					/>
-				</div>
+				<template v-if="writings.length > 0">
+					<div v-for="(item, i) in writings" :key="i" class="body-card">
+						<CardJournal
+							:file="item.file"
+							:thumbnail="item.thumbnail_path"
+							:category="item.category"
+							:title="item.title"
+							:description="item.description"
+							:tags="item.tags"
+							:user="item.user"
+							:photo="item.photo"
+							:slug="item.id"
+						/>
+					</div>
+				</template>
+				<template v-else>
+					<div class="container text-center">
+						<img src="/assets/img/empty.jpg" alt="" width="800" />
+					</div>
+				</template>
 			</div>
 		</div>
 	</main>
@@ -33,7 +40,7 @@ export default {
 	async asyncData({ $axios, error, $catch500, $catch401, $catch404 }) {
 		try {
 			const [writings] = await Promise.all([
-				$axios.$get('http://bagitulis-cms.test/api/journals')
+				$axios.$get(`${process.env.BASE_URL}/api/journals`)
 			])
 			return {
 				writings: writings.data

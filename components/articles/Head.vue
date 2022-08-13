@@ -7,14 +7,6 @@
 				untuk kamu!
 			</p>
 		</div>
-		<!-- <div class="article-search relative mb-56">
-			<input
-				type="text"
-				class="form-input--block form-input search-field"
-				placeholder="Cari Artikel"
-			/>
-			<span class="bzi bzi-Search search-icon"></span>
-		</div> -->
 	</div>
 </template>
 
