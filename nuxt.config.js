@@ -174,4 +174,8 @@ export default {
 	// 		}
 	// 	}
 	// }
+
+	build: {
+		postcss: {}
+	}
 }
