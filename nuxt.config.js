@@ -176,6 +176,6 @@ export default {
 	// }
 
 	build: {
-		postcss: {}
+		postcss: null,
 	}
 }
