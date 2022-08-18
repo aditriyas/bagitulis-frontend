@@ -133,7 +133,7 @@ export default {
 		strategies: {
 			laravelSanctum: {
 				provider: 'laravel/sanctum',
-				url: 'http://bagitulis-cms.test',
+				url: process.env.BASE_URL,
 				endpoints: {
 					login: {
 						url: '/api/login'

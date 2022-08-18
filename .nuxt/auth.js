@@ -42,7 +42,7 @@ export default function (ctx, inject) {
   // Register strategies
   // laravelSanctum
   $auth.registerStrategy('laravelSanctum', new CookieScheme($auth, {
-  "url": "http://bagitulis-cms.test",
+  "url": "https://cms.bagitulis.web.id",
   "endpoints": {
     "csrf": {
       "withCredentials": true,
@@ -51,7 +51,7 @@ export default function (ctx, inject) {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      "url": "http://bagitulis-cms.test/sanctum/csrf-cookie"
+      "url": "https://cms.bagitulis.web.id/sanctum/csrf-cookie"
     },
     "login": {
       "withCredentials": true,
@@ -60,7 +60,7 @@ export default function (ctx, inject) {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      "url": "http://bagitulis-cms.test/api/login"
+      "url": "https://cms.bagitulis.web.id/api/login"
     },
     "logout": {
       "withCredentials": true,
@@ -69,7 +69,7 @@ export default function (ctx, inject) {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      "url": "http://bagitulis-cms.test/api/logout"
+      "url": "https://cms.bagitulis.web.id/api/logout"
     },
     "user": {
       "withCredentials": true,
@@ -78,7 +78,7 @@ export default function (ctx, inject) {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      "url": "http://bagitulis-cms.test/api/profile",
+      "url": "https://cms.bagitulis.web.id/api/profile",
       "method": "GET"
     }
   },

@@ -1,32 +1,32 @@
-export { default as BreadCrumbs } from '../..\\components\\BreadCrumbs.vue'
-export { default as Demo } from '../..\\components\\Demo.vue'
-export { default as Empty } from '../..\\components\\Empty.vue'
-export { default as ErrorCode } from '../..\\components\\ErrorCode.vue'
-export { default as Footer } from '../..\\components\\Footer.vue'
-export { default as ImgResponsive } from '../..\\components\\ImgResponsive.vue'
-export { default as LinkCopied } from '../..\\components\\LinkCopied.vue'
-export { default as Logo } from '../..\\components\\Logo.vue'
-export { default as Pagination } from '../..\\components\\Pagination.vue'
-export { default as TabList } from '../..\\components\\TabList.vue'
-export { default as ArticlesArticleInsights } from '../..\\components\\articles\\ArticleInsights.vue'
-export { default as ArticlesEmpty } from '../..\\components\\articles\\Empty.vue'
-export { default as ArticlesHead } from '../..\\components\\articles\\Head.vue'
-export { default as CardJournal } from '../..\\components\\card\\CardJournal.vue'
-export { default as FaqEmpty } from '../..\\components\\faq\\Empty.vue'
-export { default as FaqSearchBar } from '../..\\components\\faq\\SearchBar.vue'
-export { default as Header } from '../..\\components\\header\\Header.vue'
-export { default as HeaderNav } from '../..\\components\\header\\HeaderNav.vue'
-export { default as HeaderLangSwitcher } from '../..\\components\\header\\LangSwitcher.vue'
-export { default as HeaderMainNav } from '../..\\components\\header\\MainNav.vue'
-export { default as HeaderMobileNavbar } from '../..\\components\\header\\MobileNavbar.vue'
-export { default as HeaderNotif } from '../..\\components\\header\\Notif.vue'
-export { default as HeaderSiteSearch } from '../..\\components\\header\\SiteSearch.vue'
-export { default as HeaderUserNav } from '../..\\components\\header\\UserNav.vue'
-export { default as HomepageArticles } from '../..\\components\\homepage\\Articles.vue'
-export { default as HomepageHero } from '../..\\components\\homepage\\Hero.vue'
-export { default as HomepageJournals } from '../..\\components\\homepage\\Journals.vue'
-export { default as HomepageOurProduct } from '../..\\components\\homepage\\OurProduct.vue'
-export { default as JournalsMostLiked } from '../..\\components\\journals\\MostLiked.vue'
+export const BreadCrumbs = () => import('../..\\components\\BreadCrumbs.vue' /* webpackChunkName: "components/bread-crumbs" */).then(c => wrapFunctional(c.default || c))
+export const Demo = () => import('../..\\components\\Demo.vue' /* webpackChunkName: "components/demo" */).then(c => wrapFunctional(c.default || c))
+export const Empty = () => import('../..\\components\\Empty.vue' /* webpackChunkName: "components/empty" */).then(c => wrapFunctional(c.default || c))
+export const ErrorCode = () => import('../..\\components\\ErrorCode.vue' /* webpackChunkName: "components/error-code" */).then(c => wrapFunctional(c.default || c))
+export const Footer = () => import('../..\\components\\Footer.vue' /* webpackChunkName: "components/footer" */).then(c => wrapFunctional(c.default || c))
+export const ImgResponsive = () => import('../..\\components\\ImgResponsive.vue' /* webpackChunkName: "components/img-responsive" */).then(c => wrapFunctional(c.default || c))
+export const LinkCopied = () => import('../..\\components\\LinkCopied.vue' /* webpackChunkName: "components/link-copied" */).then(c => wrapFunctional(c.default || c))
+export const Logo = () => import('../..\\components\\Logo.vue' /* webpackChunkName: "components/logo" */).then(c => wrapFunctional(c.default || c))
+export const Pagination = () => import('../..\\components\\Pagination.vue' /* webpackChunkName: "components/pagination" */).then(c => wrapFunctional(c.default || c))
+export const TabList = () => import('../..\\components\\TabList.vue' /* webpackChunkName: "components/tab-list" */).then(c => wrapFunctional(c.default || c))
+export const ArticlesArticleInsights = () => import('../..\\components\\articles\\ArticleInsights.vue' /* webpackChunkName: "components/articles-article-insights" */).then(c => wrapFunctional(c.default || c))
+export const ArticlesEmpty = () => import('../..\\components\\articles\\Empty.vue' /* webpackChunkName: "components/articles-empty" */).then(c => wrapFunctional(c.default || c))
+export const ArticlesHead = () => import('../..\\components\\articles\\Head.vue' /* webpackChunkName: "components/articles-head" */).then(c => wrapFunctional(c.default || c))
+export const CardJournal = () => import('../..\\components\\card\\CardJournal.vue' /* webpackChunkName: "components/card-journal" */).then(c => wrapFunctional(c.default || c))
+export const FaqEmpty = () => import('../..\\components\\faq\\Empty.vue' /* webpackChunkName: "components/faq-empty" */).then(c => wrapFunctional(c.default || c))
+export const FaqSearchBar = () => import('../..\\components\\faq\\SearchBar.vue' /* webpackChunkName: "components/faq-search-bar" */).then(c => wrapFunctional(c.default || c))
+export const Header = () => import('../..\\components\\header\\Header.vue' /* webpackChunkName: "components/header" */).then(c => wrapFunctional(c.default || c))
+export const HeaderNav = () => import('../..\\components\\header\\HeaderNav.vue' /* webpackChunkName: "components/header-nav" */).then(c => wrapFunctional(c.default || c))
+export const HeaderLangSwitcher = () => import('../..\\components\\header\\LangSwitcher.vue' /* webpackChunkName: "components/header-lang-switcher" */).then(c => wrapFunctional(c.default || c))
+export const HeaderMainNav = () => import('../..\\components\\header\\MainNav.vue' /* webpackChunkName: "components/header-main-nav" */).then(c => wrapFunctional(c.default || c))
+export const HeaderMobileNavbar = () => import('../..\\components\\header\\MobileNavbar.vue' /* webpackChunkName: "components/header-mobile-navbar" */).then(c => wrapFunctional(c.default || c))
+export const HeaderNotif = () => import('../..\\components\\header\\Notif.vue' /* webpackChunkName: "components/header-notif" */).then(c => wrapFunctional(c.default || c))
+export const HeaderSiteSearch = () => import('../..\\components\\header\\SiteSearch.vue' /* webpackChunkName: "components/header-site-search" */).then(c => wrapFunctional(c.default || c))
+export const HeaderUserNav = () => import('../..\\components\\header\\UserNav.vue' /* webpackChunkName: "components/header-user-nav" */).then(c => wrapFunctional(c.default || c))
+export const HomepageArticles = () => import('../..\\components\\homepage\\Articles.vue' /* webpackChunkName: "components/homepage-articles" */).then(c => wrapFunctional(c.default || c))
+export const HomepageHero = () => import('../..\\components\\homepage\\Hero.vue' /* webpackChunkName: "components/homepage-hero" */).then(c => wrapFunctional(c.default || c))
+export const HomepageJournals = () => import('../..\\components\\homepage\\Journals.vue' /* webpackChunkName: "components/homepage-journals" */).then(c => wrapFunctional(c.default || c))
+export const HomepageOurProduct = () => import('../..\\components\\homepage\\OurProduct.vue' /* webpackChunkName: "components/homepage-our-product" */).then(c => wrapFunctional(c.default || c))
+export const JournalsMostLiked = () => import('../..\\components\\journals\\MostLiked.vue' /* webpackChunkName: "components/journals-most-liked" */).then(c => wrapFunctional(c.default || c))
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

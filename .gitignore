@@ -89,6 +89,7 @@
 
 # # Compiled binary addons (https://nodejs.org/api/addons.html)
 # build/Release
+tmp/
 
 # # Dependency directories
 node_modules/
@@ -122,7 +123,7 @@ jspm_packages/
 # .next
 
 # # nuxt.js build output
-# .nuxt
+.nuxt/
 
 # # Nuxt generate
 # dist
