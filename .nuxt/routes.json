@@ -2,267 +2,267 @@
   {
     "name": "index___en",
     "path": "/en",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
     "url": "/",
-    "_name": "_6054b9bc"
+    "_name": "_488c89c1"
   },
   {
     "name": "index___id",
     "path": "/id",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
     "url": "/",
-    "_name": "_6054b9bc"
+    "_name": "_488c89c1"
   },
   {
     "name": "artikel___en",
     "path": "/en/article",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\artikel\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\artikel\\\\index.vue",
     "chunkName": "pages/artikel/index",
     "url": "/artikel",
-    "_name": "_055863a8"
+    "_name": "_57559872"
   },
   {
     "name": "hubungi-kami___en",
     "path": "/en/contact-us",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\hubungi-kami\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\hubungi-kami\\\\index.vue",
     "chunkName": "pages/hubungi-kami/index",
     "url": "/hubungi-kami",
-    "_name": "_430459ed"
+    "_name": "_06993d32"
   },
   {
     "name": "lupa-password___en",
     "path": "/en/forgot-password",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\lupa-password.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\lupa-password.vue",
     "chunkName": "pages/lupa-password",
     "url": "/lupa-password",
-    "_name": "_080be2b8"
+    "_name": "_48c9ddbd"
   },
   {
     "name": "karya-tulis___en",
     "path": "/en/karya-tulis",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\index.vue",
     "chunkName": "pages/karya-tulis/index",
     "url": "/karya-tulis",
-    "_name": "_2f7633e8"
+    "_name": "_22d7f3b2"
   },
   {
     "name": "masuk___en",
     "path": "/en/login",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\masuk.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\masuk.vue",
     "chunkName": "pages/masuk",
     "url": "/masuk",
-    "_name": "_c1ea00c2"
+    "_name": "_f17a60b8"
   },
   {
     "name": "akun-saya___en",
     "path": "/en/profile",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\index.vue",
     "chunkName": "pages/akun-saya/index",
     "url": "/akun-saya",
-    "_name": "_7a9bb738"
+    "_name": "_d24bbbda"
   },
   {
     "name": "daftar___en",
     "path": "/en/register",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\daftar.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\daftar.vue",
     "chunkName": "pages/daftar",
     "url": "/daftar",
-    "_name": "_22f78b02"
+    "_name": "_41b9bb9d"
   },
   {
     "name": "akun-saya___id",
     "path": "/id/akun-saya",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\index.vue",
     "chunkName": "pages/akun-saya/index",
     "url": "/akun-saya",
-    "_name": "_7a9bb738"
+    "_name": "_d24bbbda"
   },
   {
     "name": "artikel___id",
     "path": "/id/artikel",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\artikel\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\artikel\\\\index.vue",
     "chunkName": "pages/artikel/index",
     "url": "/artikel",
-    "_name": "_055863a8"
+    "_name": "_57559872"
   },
   {
     "name": "daftar___id",
     "path": "/id/daftar",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\daftar.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\daftar.vue",
     "chunkName": "pages/daftar",
     "url": "/daftar",
-    "_name": "_22f78b02"
+    "_name": "_41b9bb9d"
   },
   {
     "name": "hubungi-kami___id",
     "path": "/id/hubungi-kami",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\hubungi-kami\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\hubungi-kami\\\\index.vue",
     "chunkName": "pages/hubungi-kami/index",
     "url": "/hubungi-kami",
-    "_name": "_430459ed"
+    "_name": "_06993d32"
   },
   {
     "name": "karya-tulis___id",
     "path": "/id/karya-tulis",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\index.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\index.vue",
     "chunkName": "pages/karya-tulis/index",
     "url": "/karya-tulis",
-    "_name": "_2f7633e8"
+    "_name": "_22d7f3b2"
   },
   {
     "name": "lupa-password___id",
     "path": "/id/lupa-password",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\lupa-password.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\lupa-password.vue",
     "chunkName": "pages/lupa-password",
     "url": "/lupa-password",
-    "_name": "_080be2b8"
+    "_name": "_48c9ddbd"
   },
   {
     "name": "masuk___id",
     "path": "/id/masuk",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\masuk.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\masuk.vue",
     "chunkName": "pages/masuk",
     "url": "/masuk",
-    "_name": "_c1ea00c2"
+    "_name": "_f17a60b8"
   },
   {
     "name": "karya-tulis-ilmiah___en",
     "path": "/en/karya-tulis/ilmiah",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\ilmiah.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\ilmiah.vue",
     "chunkName": "pages/karya-tulis/ilmiah",
     "url": "/karya-tulis/ilmiah",
-    "_name": "_4e23a69c"
+    "_name": "_11b889e1"
   },
   {
     "name": "karya-tulis-jurnal___en",
     "path": "/en/karya-tulis/jurnal",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\jurnal.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\jurnal.vue",
     "chunkName": "pages/karya-tulis/jurnal",
     "url": "/karya-tulis/jurnal",
-    "_name": "_ee1b3530"
+    "_name": "_4c8748ad"
   },
   {
     "name": "karya-tulis-non-ilmiah___en",
     "path": "/en/karya-tulis/non-ilmiah",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\non-ilmiah.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\non-ilmiah.vue",
     "chunkName": "pages/karya-tulis/non-ilmiah",
     "url": "/karya-tulis/non-ilmiah",
-    "_name": "_8cb9d2c8"
+    "_name": "_15dacf61"
   },
   {
     "name": "akun-saya-karya-tulis-saya___en",
     "path": "/en/my-account/my-writings",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\karya-tulis-saya.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\karya-tulis-saya.vue",
     "chunkName": "pages/akun-saya/karya-tulis-saya",
     "url": "/akun-saya/karya-tulis-saya",
-    "_name": "_8c874d7e"
+    "_name": "_4e302786"
   },
   {
     "name": "akun-saya-karya-tulis-tersimpan___en",
     "path": "/en/my-account/saved-writings",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\karya-tulis-tersimpan.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\karya-tulis-tersimpan.vue",
     "chunkName": "pages/akun-saya/karya-tulis-tersimpan",
     "url": "/akun-saya/karya-tulis-tersimpan",
-    "_name": "_24439228"
+    "_name": "_25598bc7"
   },
   {
     "name": "akun-saya-unggah___en",
     "path": "/en/profile/upload-writing",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\unggah.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\unggah.vue",
     "chunkName": "pages/akun-saya/unggah",
     "url": "/akun-saya/unggah",
-    "_name": "_6ce4baac"
+    "_name": "_351c932f"
   },
   {
     "name": "akun-saya-karya-tulis-saya___id",
     "path": "/id/akun-saya/karya-tulis-saya",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\karya-tulis-saya.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\karya-tulis-saya.vue",
     "chunkName": "pages/akun-saya/karya-tulis-saya",
     "url": "/akun-saya/karya-tulis-saya",
-    "_name": "_8c874d7e"
+    "_name": "_4e302786"
   },
   {
     "name": "akun-saya-karya-tulis-tersimpan___id",
     "path": "/id/akun-saya/karya-tulis-tersimpan",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\karya-tulis-tersimpan.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\karya-tulis-tersimpan.vue",
     "chunkName": "pages/akun-saya/karya-tulis-tersimpan",
     "url": "/akun-saya/karya-tulis-tersimpan",
-    "_name": "_24439228"
+    "_name": "_25598bc7"
   },
   {
     "name": "akun-saya-unggah___id",
     "path": "/id/akun-saya/unggah",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\unggah.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\unggah.vue",
     "chunkName": "pages/akun-saya/unggah",
     "url": "/akun-saya/unggah",
-    "_name": "_6ce4baac"
+    "_name": "_351c932f"
   },
   {
     "name": "karya-tulis-ilmiah___id",
     "path": "/id/karya-tulis/ilmiah",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\ilmiah.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\ilmiah.vue",
     "chunkName": "pages/karya-tulis/ilmiah",
     "url": "/karya-tulis/ilmiah",
-    "_name": "_4e23a69c"
+    "_name": "_11b889e1"
   },
   {
     "name": "karya-tulis-jurnal___id",
     "path": "/id/karya-tulis/jurnal",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\jurnal.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\jurnal.vue",
     "chunkName": "pages/karya-tulis/jurnal",
     "url": "/karya-tulis/jurnal",
-    "_name": "_ee1b3530"
+    "_name": "_4c8748ad"
   },
   {
     "name": "karya-tulis-non-ilmiah___id",
     "path": "/id/karya-tulis/non-ilmiah",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\non-ilmiah.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\non-ilmiah.vue",
     "chunkName": "pages/karya-tulis/non-ilmiah",
     "url": "/karya-tulis/non-ilmiah",
-    "_name": "_8cb9d2c8"
+    "_name": "_15dacf61"
   },
   {
     "name": "akun-saya-slug___en",
     "path": "/en/akun-saya/:slug?",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\_slug.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\_slug.vue",
     "chunkName": "pages/akun-saya/_slug",
-    "_name": "_78e515f0"
+    "_name": "_d5b8fe6a"
   },
   {
     "name": "artikel-slug___en",
     "path": "/en/artikel/:slug",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\artikel\\\\_slug.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\artikel\\\\_slug.vue",
     "chunkName": "pages/artikel/_slug",
-    "_name": "_08c5a638"
+    "_name": "_5ac2db02"
   },
   {
     "name": "karya-tulis-slug___en",
     "path": "/en/karya-tulis/:slug?",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\_slug.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\_slug.vue",
     "chunkName": "pages/karya-tulis/_slug",
-    "_name": "_32e37678"
+    "_name": "_26453642"
   },
   {
     "name": "akun-saya-slug___id",
     "path": "/id/akun-saya/:slug?",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\akun-saya\\\\_slug.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\akun-saya\\\\_slug.vue",
     "chunkName": "pages/akun-saya/_slug",
-    "_name": "_78e515f0"
+    "_name": "_d5b8fe6a"
   },
   {
     "name": "artikel-slug___id",
     "path": "/id/artikel/:slug",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\artikel\\\\_slug.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\artikel\\\\_slug.vue",
     "chunkName": "pages/artikel/_slug",
-    "_name": "_08c5a638"
+    "_name": "_5ac2db02"
   },
   {
     "name": "karya-tulis-slug___id",
     "path": "/id/karya-tulis/:slug?",
-    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-frontend\\\\pages\\\\karya-tulis\\\\_slug.vue",
+    "component": "C:\\\\Users\\\\aditr\\\\OneDrive\\\\Documents\\\\bagitulis-prod\\\\pages\\\\karya-tulis\\\\_slug.vue",
     "chunkName": "pages/karya-tulis/_slug",
-    "_name": "_32e37678"
+    "_name": "_26453642"
   }
 ]

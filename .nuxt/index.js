@@ -13,18 +13,18 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_eb924a0e from 'nuxt_plugin_plugin_eb924a0e' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_recaptcha_3ed11d0b from 'nuxt_plugin_recaptcha_3ed11d0b' // Source: .\\recaptcha.js (mode: 'all')
-import nuxt_plugin_pluginutils_2339055c from 'nuxt_plugin_pluginutils_2339055c' // Source: .\\nuxt-i18n\\plugin.utils.js (mode: 'all')
-import nuxt_plugin_pluginrouting_cd0c03c6 from 'nuxt_plugin_pluginrouting_cd0c03c6' // Source: .\\nuxt-i18n\\plugin.routing.js (mode: 'all')
-import nuxt_plugin_pluginmain_35882b1c from 'nuxt_plugin_pluginmain_35882b1c' // Source: .\\nuxt-i18n\\plugin.main.js (mode: 'all')
-import nuxt_plugin_srcplugin45987464_70d0b206 from 'nuxt_plugin_srcplugin45987464_70d0b206' // Source: .\\src.plugin.45987464.js (mode: 'client')
-import nuxt_plugin_axios_a92786c8 from 'nuxt_plugin_axios_a92786c8' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_5a2154d8 from 'nuxt_plugin_plugin_5a2154d8' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_recaptcha_e3a13ab4 from 'nuxt_plugin_recaptcha_e3a13ab4' // Source: .\\recaptcha.js (mode: 'all')
+import nuxt_plugin_pluginutils_df3328d2 from 'nuxt_plugin_pluginutils_df3328d2' // Source: .\\nuxt-i18n\\plugin.utils.js (mode: 'all')
+import nuxt_plugin_pluginrouting_730b21bc from 'nuxt_plugin_pluginrouting_730b21bc' // Source: .\\nuxt-i18n\\plugin.routing.js (mode: 'all')
+import nuxt_plugin_pluginmain_5ca0c0e6 from 'nuxt_plugin_pluginmain_5ca0c0e6' // Source: .\\nuxt-i18n\\plugin.main.js (mode: 'all')
+import nuxt_plugin_srcpluginb4db16da_1596c66c from 'nuxt_plugin_srcpluginb4db16da_1596c66c' // Source: .\\src.plugin.b4db16da.js (mode: 'client')
+import nuxt_plugin_axios_2feb87b7 from 'nuxt_plugin_axios_2feb87b7' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_vueslickcarousel_d8b69d56 from 'nuxt_plugin_vueslickcarousel_d8b69d56' // Source: ..\\plugins\\vue-slick-carousel.js (mode: 'all')
 import nuxt_plugin_helpers_1c816d70 from 'nuxt_plugin_helpers_1c816d70' // Source: ..\\plugins\\helpers.js (mode: 'all')
 import nuxt_plugin_vueselect_af0f7784 from 'nuxt_plugin_vueselect_af0f7784' // Source: ..\\plugins\\vue-select.js (mode: 'all')
 import nuxt_plugin_vuelidate_4345260a from 'nuxt_plugin_vuelidate_4345260a' // Source: ..\\plugins\\vuelidate (mode: 'all')
-import nuxt_plugin_auth_82212dd8 from 'nuxt_plugin_auth_82212dd8' // Source: .\\auth.js (mode: 'all')
+import nuxt_plugin_auth_601cce99 from 'nuxt_plugin_auth_601cce99' // Source: .\\auth.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -92,7 +92,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Bagitulis - Repository Jurnal dan Karya Tulis Online","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Suitmedia Frontend Boilerplate"},{"name":"theme-color","content":"#ffffff"},{"name":"format-detection","content":"telephone=no"},{"hid":"og:url","property":"og:url","content":"\u002F"},{"hid":"og:title","property":"og:title","content":"Bagitulis"},{"hid":"og:site_name","property":"og:site_name","content":"Bagitulis"},{"hid":"og:description","property":"og:description","content":"Suitmedia Frontend Boilerplate"},{"hid":"og:image","property":"og:image","content":"\u002Ficon.png"},{"hid":"og:type","property":"og:type","content":"website"},{"hid":"fb:app_id","property":"fb:app_id","content":""},{"hid":"twitter:card","name":"twitter:card","content":""},{"hid":"twitter:site","name":"twitter:site","content":"\u002F"},{"hid":"twitter:description","name":"twitter:description","content":"Suitmedia Frontend Boilerplate"},{"hid":"twitter:title","name":"twitter:title","content":"Bagitulis"},{"hid":"twitter:image","name":"twitter:image","content":"\u002Ficon.png"},{"hid":"keywords","name":"keywords","content":""}],"link":[{"rel":"apple-touch-icon","href":"bagitulis-icon.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Fbagitulis-icon.png"}],"style":[],"script":[]},
+    head: {"title":"Bagitulis - Repository Jurnal dan Karya Tulis Online","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Online Repository"},{"name":"theme-color","content":"#ffffff"},{"name":"format-detection","content":"telephone=no"},{"hid":"og:url","property":"og:url","content":"\u002F"},{"hid":"og:title","property":"og:title","content":"Bagitulis"},{"hid":"og:site_name","property":"og:site_name","content":"Bagitulis"},{"hid":"og:description","property":"og:description","content":"Online Repository"},{"hid":"og:image","property":"og:image","content":"\u002Ficon.png"},{"hid":"og:type","property":"og:type","content":"website"},{"hid":"fb:app_id","property":"fb:app_id","content":""},{"hid":"twitter:card","name":"twitter:card","content":""},{"hid":"twitter:site","name":"twitter:site","content":"\u002F"},{"hid":"twitter:description","name":"twitter:description","content":"Online Repository"},{"hid":"twitter:title","name":"twitter:title","content":"Bagitulis"},{"hid":"twitter:image","name":"twitter:image","content":"\u002Ficon.png"},{"hid":"keywords","name":"keywords","content":""}],"link":[{"rel":"apple-touch-icon","href":"bagitulis-icon.png"},{"rel":"icon","type":"image\u002Fpng","href":"\u002Fbagitulis-icon.png"}],"style":[],"script":[]},
 
     store,
     router,
@@ -221,32 +221,32 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_eb924a0e === 'function') {
-    await nuxt_plugin_plugin_eb924a0e(app.context, inject)
+  if (typeof nuxt_plugin_plugin_5a2154d8 === 'function') {
+    await nuxt_plugin_plugin_5a2154d8(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_recaptcha_3ed11d0b === 'function') {
-    await nuxt_plugin_recaptcha_3ed11d0b(app.context, inject)
+  if (typeof nuxt_plugin_recaptcha_e3a13ab4 === 'function') {
+    await nuxt_plugin_recaptcha_e3a13ab4(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_pluginutils_2339055c === 'function') {
-    await nuxt_plugin_pluginutils_2339055c(app.context, inject)
+  if (typeof nuxt_plugin_pluginutils_df3328d2 === 'function') {
+    await nuxt_plugin_pluginutils_df3328d2(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_pluginrouting_cd0c03c6 === 'function') {
-    await nuxt_plugin_pluginrouting_cd0c03c6(app.context, inject)
+  if (typeof nuxt_plugin_pluginrouting_730b21bc === 'function') {
+    await nuxt_plugin_pluginrouting_730b21bc(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_pluginmain_35882b1c === 'function') {
-    await nuxt_plugin_pluginmain_35882b1c(app.context, inject)
+  if (typeof nuxt_plugin_pluginmain_5ca0c0e6 === 'function') {
+    await nuxt_plugin_pluginmain_5ca0c0e6(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_srcplugin45987464_70d0b206 === 'function') {
-    await nuxt_plugin_srcplugin45987464_70d0b206(app.context, inject)
+  if (process.client && typeof nuxt_plugin_srcpluginb4db16da_1596c66c === 'function') {
+    await nuxt_plugin_srcpluginb4db16da_1596c66c(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_a92786c8 === 'function') {
-    await nuxt_plugin_axios_a92786c8(app.context, inject)
+  if (typeof nuxt_plugin_axios_2feb87b7 === 'function') {
+    await nuxt_plugin_axios_2feb87b7(app.context, inject)
   }
 
   if (typeof nuxt_plugin_vueslickcarousel_d8b69d56 === 'function') {
@@ -265,8 +265,8 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_vuelidate_4345260a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_auth_82212dd8 === 'function') {
-    await nuxt_plugin_auth_82212dd8(app.context, inject)
+  if (typeof nuxt_plugin_auth_601cce99 === 'function') {
+    await nuxt_plugin_auth_601cce99(app.context, inject)
   }
 
   // Lock enablePreview in context

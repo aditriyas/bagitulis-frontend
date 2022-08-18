@@ -123,7 +123,7 @@ jspm_packages/
 # .next
 
 # # nuxt.js build output
-.nuxt/
+# .nuxt/
 
 # # Nuxt generate
 # dist
